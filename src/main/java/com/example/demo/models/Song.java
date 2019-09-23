@@ -32,6 +32,10 @@ public class Song {
 	public String getName() {
 		return name;
 	}
+	
+	public long getId() {
+		return id;
+	}
 	public void setName(String name) {
 		this.name = name;
 	}

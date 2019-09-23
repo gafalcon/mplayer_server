@@ -4,24 +4,31 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import java.util.stream.Stream;
+//import java.util.stream.Stream;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import com.example.demo.models.Playlist;
 import com.example.demo.models.PlaylistRepository;
 import com.example.demo.models.Song;
 import com.example.demo.models.SongRepository;
+import com.example.demo.storage.StorageProperties;
+import com.example.demo.storage.StorageService;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+
 @SpringBootApplication
+@EnableConfigurationProperties(StorageProperties.class)
 public class MplayerServerApplication {
 
 	public static void main(String[] args) {
@@ -29,9 +36,20 @@ public class MplayerServerApplication {
 	}
 
     @Bean
-    CommandLineRunner init(UserRepository userRepository, SongRepository songRepo, PlaylistRepository plrepo) {
+    CommandLineRunner init(UserRepository userRepository, SongRepository songRepo, PlaylistRepository plrepo, StorageService storageService) {
         return args -> {
+        	storageService.init();
+        	initDb(userRepository, songRepo, plrepo);
+        };
+    }
+    
+    public void initDb(UserRepository userRepository, SongRepository songRepo, PlaylistRepository plrepo)
+    {
 		//JSON parser object to parse read file
+    	List<Song> songsInDB = (List<Song>) songRepo.findAll();
+    	if (songsInDB.size() != 0)
+    			return;
+
         JSONParser jsonParser = new JSONParser();	
 		 try (FileReader reader = new FileReader("/home/gabo/Documents/Web/mplayer/src/music/playlists.json"))
 	        {
@@ -42,7 +60,7 @@ public class MplayerServerApplication {
 	            JSONArray playlists = (JSONArray) jobj.get("full_playlists");
 	            System.out.println(playlists);
 	             
-	            playlists.forEach(playlist -> {
+	            for(Object playlist : playlists) {
 	            	JSONObject pl = (JSONObject) playlist;
 	            	String name = (String) pl.get("playlist_name");
 	            	String cover = (String) pl.get("cover_art_url");
@@ -51,7 +69,7 @@ public class MplayerServerApplication {
 	            	Set<Song> pl_songs = new HashSet<Song>();
 	            	
 	            	Playlist p = new Playlist(name, cover, null);
-	            	songs.forEach(s -> {
+	            	for(Object s : songs) {
 	            		JSONObject song = (JSONObject) s;
 	            		String song_name = (String) song.get("name");
 	            		String song_album = (String) song.get("album");
@@ -62,14 +80,11 @@ public class MplayerServerApplication {
 	            		Song sng = new Song(song_name, artist, song_album, song_url, song_cover_art_url);
 	            		songRepo.save(sng);
 	            		pl_songs.add(sng);
-	            	});
-	            	
+	            	}
 	            	p.setSongs(pl_songs);
 	            	plrepo.save(p);
-	            });
+	            }
 	            
-	            //Iterate over employee array
-	            //employeeList.forEach( emp -> parseEmployeeObject( (JSONObject) emp ) );
 	 
 	        } catch (FileNotFoundException e) {
 	            e.printStackTrace();
@@ -84,24 +99,6 @@ public class MplayerServerApplication {
                 User user = new User(name, name.toLowerCase() + "@domain.com");
                 userRepository.save(user);
             });
-        	//public Song(String name, String artist, String album, String url, String cover_art_url) {
-     
-
-            Song song = new Song("song name", "artist", "album", "url", "cover art");
-            songRepo.save(song);
-            Song song2 = new Song("song name 2", "artist2", "album2", "url2", "cover art2");
-            songRepo.save(song2);
-            userRepository.findAll().forEach(System.out::println);
-            songRepo.findAll().forEach(System.out::println);
-            
-            Playlist playlist = new Playlist("Playlist 1", "cover art playlist 1", null);
-            Set<Song> songs = new HashSet<Song>();
-            songs.add(song);
-            songs.add(song2);
-            playlist.setSongs(songs);
-            plrepo.save(playlist);
-            plrepo.findAll().forEach(System.out::println);
             */
-        };
     }
 }
