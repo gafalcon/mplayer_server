@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import com.example.demo.models.Album;
 import com.example.demo.models.AlbumRepository;
 import com.example.demo.models.Song;
 import com.example.demo.models.SongRepository;
+import com.example.demo.storage.AmazonS3ClientService;
 import com.example.demo.storage.StorageService;
 
 
@@ -27,6 +30,12 @@ public class AlbumController {
 	private final SongRepository songRepository;
     private final StorageService storageService;
     private final AlbumRepository alrepo;
+
+    @Autowired
+    private AmazonS3ClientService amazonS3ClientService;
+    @Value("${aws.s3.url}")
+    private String s3url;    
+
 	public AlbumController(SongRepository rep, AlbumRepository alrepo, StorageService storageService) {
 		this.songRepository = rep;
 		this.alrepo = alrepo;
@@ -67,12 +76,11 @@ public class AlbumController {
 
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
         filename = filename.replaceAll("\\s+","");
-        System.out.println(filename);
-        filename = String.format("%d_album_%s",album.getId(), filename);
-        storageService.store(file,filename, false);
-        album.setCoverArt("/images/" + filename);
+        filename = String.format("images/%d_album_%s",album.getId(), filename);
+        amazonS3ClientService.uploadFileToS3Bucket(file, filename, true);
+//        storageService.store(file,filename, false);
+        album.setCoverArt(this.s3url + filename);
         album = alrepo.save(album);
-        System.out.println(album_id);
 
         return album;
     }

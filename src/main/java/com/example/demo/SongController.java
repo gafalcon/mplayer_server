@@ -3,7 +3,8 @@ package com.example.demo;
 import java.util.List;
 import java.util.Map;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import com.example.demo.models.Playlist;
 import com.example.demo.models.PlaylistRepository;
 import com.example.demo.models.Song;
 import com.example.demo.models.SongRepository;
+import com.example.demo.storage.AmazonS3ClientService;
 import com.example.demo.storage.StorageService;
 
 @RestController
@@ -28,6 +30,11 @@ public class SongController {
 	private final SongRepository songRepository;
 	private final PlaylistRepository plrepo;
     private final StorageService storageService;
+
+    @Autowired
+    private AmazonS3ClientService amazonS3ClientService;
+    @Value("${aws.s3.url}")
+    private String s3url;    
 
 	public SongController(SongRepository rep, PlaylistRepository plrepo, StorageService storageService) {
 		this.songRepository = rep;
@@ -68,11 +75,11 @@ public class SongController {
 
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
         filename = filename.replaceAll("\\s+","");
-        filename = String.format("%d_%s",song.getId(), filename);
-        storageService.store(file, filename, true);
-        song.setUrl("/songs/"+filename);
+        filename = String.format("songs/%d_%s",song.getId(), filename);
+        amazonS3ClientService.uploadFileToS3Bucket(file, filename, true);
+        //storageService.store(file, filename, true);
+        song.setUrl(this.s3url+filename);
         song = songRepository.save(song);
-        System.out.println(song_id);
 
         return song;
     }
