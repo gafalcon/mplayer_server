@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.models.User;
+import com.example.demo.models.UserRepository;
+
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
 public class UserController {

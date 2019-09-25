@@ -18,6 +18,7 @@ import com.example.demo.models.Playlist;
 import com.example.demo.models.PlaylistRepository;
 import com.example.demo.models.Song;
 import com.example.demo.models.SongRepository;
+import com.example.demo.models.UserRepository;
 import com.example.demo.storage.StorageProperties;
 import com.example.demo.storage.StorageService;
 

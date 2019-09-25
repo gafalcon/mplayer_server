@@ -29,7 +29,7 @@ import com.example.demo.storage.StorageService;
 public class SongController {
 	private final SongRepository songRepository;
 	private final PlaylistRepository plrepo;
-    private final StorageService storageService;
+    //private final StorageService storageService;
 
     @Autowired
     private AmazonS3ClientService amazonS3ClientService;
@@ -39,33 +39,33 @@ public class SongController {
 	public SongController(SongRepository rep, PlaylistRepository plrepo, StorageService storageService) {
 		this.songRepository = rep;
 		this.plrepo = plrepo;
-		this.storageService = storageService;
+	//	this.storageService = storageService;
 	}
-	@GetMapping("/songs")
+	@GetMapping("/api/songs")
 	public List<Song> getSongs() {
 		return (List <Song>) songRepository.findAll();
 	}
 	
-	@GetMapping("/playlists")
+	@GetMapping("/api/playlists")
 	public List<Playlist> getPlaylists(){
 		return (List <Playlist>) plrepo.findAll();
 	}
 
-	@GetMapping("/playlists/{id}")
+	@GetMapping("/api/playlists/{id}")
 	public Playlist getPlaylist(@PathVariable(value="id") Long pl_id){
 		return plrepo.findById(pl_id).orElseThrow(() -> new ResponseStatusException(
 				  HttpStatus.NOT_FOUND, "playlist not found"
 				));
 	}
 
-	@PostMapping("/songs")
+	@PostMapping("/api/songs")
 	Song addSong(@RequestBody Song song) {
 		System.out.println(song);
 		Song saved_song = songRepository.save(song);
 		return saved_song;
 	}
 	
-    @PostMapping("/songs/upload")
+    @PostMapping("/api/songs/upload")
     public Song SongFileUpload(@RequestParam("media_file") MultipartFile file,
     		@RequestParam("song_id") long song_id) {//, @RequestParam("filename") String filename) {
 
@@ -84,7 +84,7 @@ public class SongController {
         return song;
     }
 
-	@PostMapping("/songs2")
+	@PostMapping("/api/songs2")
 	void addSong2(@RequestBody Map<String, Object> postParams){
 		System.out.println(postParams);
 	}

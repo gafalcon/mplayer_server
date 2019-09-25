@@ -19,7 +19,6 @@ import com.example.demo.models.AlbumRepository;
 import com.example.demo.models.Song;
 import com.example.demo.models.SongRepository;
 import com.example.demo.storage.AmazonS3ClientService;
-import com.example.demo.storage.StorageService;
 
 
 import java.util.List;
@@ -28,7 +27,6 @@ import java.util.List;
 public class AlbumController {
 	
 	private final SongRepository songRepository;
-    private final StorageService storageService;
     private final AlbumRepository alrepo;
 
     @Autowired
@@ -36,25 +34,24 @@ public class AlbumController {
     @Value("${aws.s3.url}")
     private String s3url;    
 
-	public AlbumController(SongRepository rep, AlbumRepository alrepo, StorageService storageService) {
+	public AlbumController(SongRepository rep, AlbumRepository alrepo) {
 		this.songRepository = rep;
 		this.alrepo = alrepo;
-		this.storageService = storageService;
 	}
 	
-	@GetMapping("/albums")
+	@GetMapping("/api/albums")
 	public List<Album> getAlbums(){
 		return (List <Album>) alrepo.findAll();
 	}
 	
-	@GetMapping("/albums/{id}")
+	@GetMapping("/api/albums/{id}")
 	public Album getAlbum(@PathVariable(value="id") Long al_id) {
 		return alrepo.findById(al_id).orElseThrow(() -> new ResponseStatusException(
 					HttpStatus.NOT_FOUND, "album not found"
 				));
 	}
 	
-	@PostMapping("/albums")
+	@PostMapping("/api/albums")
 	Album addAlbum(@RequestBody Album album) {
 		System.out.println(album);
 		songRepository.saveAll(album.getSongs());
@@ -66,7 +63,7 @@ public class AlbumController {
 	}
 	
 	
-    @PostMapping("/albums/cover")
+    @PostMapping("/api/albums/cover")
     public Album SongFileUpload(@RequestParam("cover_file") MultipartFile file,
     		@RequestParam("album_id") long album_id) {//, @RequestParam("filename") String filename) {
 
