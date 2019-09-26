@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<h1>Playlists</h1>\n<div class=\"right\">\n    <div class=\"song-to-add\" *ngFor=\"let playlist of playlists\">\n        <a href=\"\" routerLink=\"/album/{{ playlist.id }}\">\n            <img src=\"{{ playlist.cover_art_url }}\"/>\n        </a>\n        <a class=\"add-to-playlist-button\" (click)=\"addPlaylistToQueue(playlist.id)\">\n            Add To Playlist\n        </a>\n    </div>\n</div>\n\n<h1>Albums</h1>\n<div class=\"right\">\n    <div class=\"song-to-add\" *ngFor=\"let album of albums\">\n        <a href=\"\" routerLink=\"/album/{{ album.id }}\">\n            <img src=\"{{ album.coverArt }}\"/>\n        </a>\n        <a class=\"add-to-playlist-button\" (click)=\"addAlbumToQueue(album.id)\">\n            Add To Playlist\n        </a>\n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<h1>Playlists</h1>\n<div class=\"right\">\n    <div class=\"song-to-add\" *ngFor=\"let playlist of playlists\">\n        <a href=\"\" routerLink=\"/playlist/{{ playlist.id }}\">\n            <img src=\"{{ playlist.cover_art_url }}\"/>\n        </a>\n        <a class=\"add-to-playlist-button\" (click)=\"addPlaylistToQueue(playlist.id)\">\n            Add To Playlist\n        </a>\n    </div>\n</div>\n\n<h1>Albums</h1>\n<div class=\"right\">\n    <div class=\"song-to-add\" *ngFor=\"let album of albums\">\n        <a href=\"\" routerLink=\"/album/{{ album.id }}\">\n            <img src=\"{{ album.coverArt }}\"/>\n        </a>\n        <a class=\"add-to-playlist-button\" (click)=\"addAlbumToQueue(album.id)\">\n            Add To Playlist\n        </a>\n    </div>\n</div>\n");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n<div class=\"playlist-description row\">\n    <img class=\"col-sm\" src=\"{{ playlist.cover_art_url }}\">\n    <div class=\"col-sm\" >\n        <h3>\n            {{ playlist.name }}\n        </h3>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"addPlaylistToQueue()\">Add To Queue</button>\n    </div>\n</div>\n<div class=\"row song-list\">\n    <ul class=\"list-group col-sm\">\n        <li class=\"list-group-item playlist-song\" *ngFor=\"let song of playlist.songs; index as i;\">\n            <div class=\"playlist-song-meta\">\n                <span class=\"playlist-song-name\">{{ song.name }}</span>\n                <span class=\"playlist-artist-album\">{{ song.album }}</span>\n            </div>\n            <div class=\"song-buttons\">\n                <button type=\"button\" class=\"btn btn-primary add-button\" (click)=\"addSongToQueue(song)\" >+</button>\n                <div id=\"play-pause\" (click)=\"playSong(song)\"></div>\n            </div>\n        </li>\n    </ul>\n</div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n<div class=\"playlist-description row\">\n    <img class=\"col-sm\" src=\"{{ album.coverArt }}\">\n    <div class=\"col-sm\" >\n        <h3>\n            {{ album.name }}\n        </h3>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"addPlaylistToQueue()\">Add To Queue</button>\n    </div>\n</div>\n<app-song-list [songs]=\"album.songs\"></app-song-list>\n</div>\n");
 
 /***/ }),
 
@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n  <a class=\"navbar-brand\" href=\"\" routerLink=\"/\">Navbar</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"/\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"new_song\">Upload Song</a>\n      </li>\n      <li class=\"nav-item\">\n          <a class=\"nav-link\" href=\"\" routerLink=\"album/create\">New Album</a>\n      </li>\n      <li class=\"nav-item dropdown\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          Dropdown\n        </a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"dropdown-item\" href=\"#\">Action</a>\n          <a class=\"dropdown-item\" href=\"#\">Another action</a>\n          <div class=\"dropdown-divider\"></div>\n          <a class=\"dropdown-item\" href=\"#\">Something else here</a>\n        </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Disabled</a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n  </div>\n</nav>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n  <a class=\"navbar-brand\" href=\"\" routerLink=\"/\">MUSIC ON</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"/\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"new_song\">Upload Song</a>\n      </li>\n      <li class=\"nav-item\">\n          <a class=\"nav-link\" href=\"\" routerLink=\"album/create\">New Album</a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n  </div>\n</nav>\n");
 
 /***/ }),
 
@@ -123,7 +123,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>playlist works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"playlist-description row\">\n        <img class=\"col-sm\" src=\"{{ playlist.cover_art_url }}\">\n        <div class=\"col-sm\" >\n            <h3>\n                {{ playlist.name }}\n            </h3>\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"addPlaylistToQueue()\">Add To Queue</button>\n        </div>\n    </div>\n    <app-song-list [songs]=\"playlist.songs\"></app-song-list>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/song-list/song-list.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/song-list/song-list.component.html ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row song-list\">\n    <ul class=\"list-group col-sm\">\n        <li class=\"list-group-item playlist-song\" *ngFor=\"let song of songs; index as i;\">\n            <div class=\"playlist-song-meta\">\n                <span class=\"playlist-song-name\">{{ song.name }}</span>\n                <span class=\"playlist-artist-album\">{{ song.album }}</span>\n            </div>\n            <div class=\"song-buttons\">\n                <button id=\"play-pause\" class=\"btn btn-light btn-circle\" (click)=\"playSong(song)\">\n                    <span class=\"oi oi-media-play\" title=\"media play\" aria-hidden=\"true\"></span>\n                </button>\n                <button type=\"button\" class=\"btn btn-light add-button btn-circle\" (click)=\"addSongToQueue(song)\" >\n                    <span class=\"oi oi-plus\" title=\"plus\" aria-hidden=\"true\"></span>\n                </button>\n                <div class=\"dropdown more-button song-button\">\n                    <button class=\"btn btn-light btn-circle dropdown-toggle \" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    </button>\n                    <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"dropdownMenuButton\">\n                        <a class=\"dropdown-item\" href=\"#\">Add to playlist</a>\n                        <a class=\"dropdown-item\" href=\"#\">Add to Queue</a>\n                        <a class=\"dropdown-item\" href=\"#\">View Author</a>\n                        <a class=\"dropdown-item\" href=\"#\">View Song</a>\n                        <a class=\"dropdown-item\" href=\"#\">Add to Favorites</a>\n                    </div>\n                </div>\n            </div>\n        </li>\n    </ul>\n</div>\n");
 
 /***/ }),
 
@@ -356,6 +369,32 @@ function __importDefault(mod) {
 
 /***/ }),
 
+/***/ "./src/app/Album.ts":
+/*!**************************!*\
+  !*** ./src/app/Album.ts ***!
+  \**************************/
+/*! exports provided: Album */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Album", function() { return Album; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class Album {
+    constructor(id, name, artist, releaseDate, coverArt, songs) {
+        this.id = id;
+        this.name = name;
+        this.artist = artist;
+        this.releaseDate = releaseDate;
+        this.coverArt = coverArt;
+        this.songs = songs;
+    }
+}
+
+
+/***/ }),
+
 /***/ "./src/app/album-collection/album-collection.component.css":
 /*!*****************************************************************!*\
   !*** ./src/app/album-collection/album-collection.component.css ***!
@@ -433,7 +472,7 @@ AlbumCollectionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\nli.playlist-song:hover {\n    background-color: #f1f2f3;\n}\ndiv.white-player-playlist-song.amplitude-active-song-container {\n    background-color: rgba(238, 100, 82, 0.3); }\ndiv.white-player-playlist-song img {\n    width: 48px;\n    height: 48px;\n    border-radius: 3px;\n    margin-left: 16px;\n    float: left; }\n.playlist-song div.playlist-song-meta {\n    float: left;\n    margin-left: 15px;\n    /* width: calc( 100% - 80px ); */\n}\n.playlist-song-meta span.playlist-song-name {\n    color: #414344;\n    font-size: 14px;\n    display: block;\n    width: 100%;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n.playlist-song-meta span.playlist-artist-album {\n    color: #AAAFB3;\n    font-size: 12px;\n    display: block;\n    width: 100%;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n.playlist-description {\n    margin-top: 20px;\n}\n.playlist-description img {\n    max-width: 450px;\n}\n.song-list {\n    margin-top: 10px;\n}\n.add-button{\n    float: right;\n    width: 35px;\n    height: 35px;\n    margin: auto 5px;\n}\ndiv#play-pause {\n    width: 35px;\n    height: 35px;\n    cursor: pointer;\n    float: right;\n    background: url(\"/assets/img/play.svg\"); \n    background-size: 35px 35px;\n    /* vertical-align: middle; */\n    margin-right: 16px; }\ndiv#white-player-controls div#play-pause.amplitude-paused {\n    background: url(\"/assets/img/play.svg\"); }\ndiv#white-player-controls div#play-pause.amplitude-playing {\n    background: url(\"/assets/img/pause.svg\"); }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWxidW0vYWxidW0uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7SUFDSSx5QkFBeUI7QUFDN0I7QUFDQTtJQUNJLHlDQUF5QyxFQUFFO0FBQy9DO0lBQ0ksV0FBVztJQUNYLFlBQVk7SUFDWixrQkFBa0I7SUFDbEIsaUJBQWlCO0lBQ2pCLFdBQVcsRUFBRTtBQUNqQjtJQUNJLFdBQVc7SUFDWCxpQkFBaUI7SUFDakIsZ0NBQWdDO0FBQ3BDO0FBQ0E7SUFDSSxjQUFjO0lBQ2QsZUFBZTtJQUNmLGNBQWM7SUFDZCxXQUFXO0lBQ1gsbUJBQW1CO0lBQ25CLGdCQUFnQjtJQUNoQix1QkFBdUIsRUFBRTtBQUM3QjtJQUNJLGNBQWM7SUFDZCxlQUFlO0lBQ2YsY0FBYztJQUNkLFdBQVc7SUFDWCxtQkFBbUI7SUFDbkIsZ0JBQWdCO0lBQ2hCLHVCQUF1QixFQUFFO0FBRTdCO0lBQ0ksZ0JBQWdCO0FBQ3BCO0FBQ0E7SUFDSSxnQkFBZ0I7QUFDcEI7QUFDQTtJQUNJLGdCQUFnQjtBQUNwQjtBQUNBO0lBQ0ksWUFBWTtJQUNaLFdBQVc7SUFDWCxZQUFZO0lBQ1osZ0JBQWdCO0FBQ3BCO0FBRUE7SUFDSSxXQUFXO0lBQ1gsWUFBWTtJQUNaLGVBQWU7SUFDZixZQUFZO0lBQ1osdUNBQXVDO0lBQ3ZDLDBCQUEwQjtJQUMxQiw0QkFBNEI7SUFDNUIsa0JBQWtCLEVBQUU7QUFDeEI7SUFDSSx1Q0FBdUMsRUFBRTtBQUM3QztJQUNJLHdDQUF3QyxFQUFFIiwiZmlsZSI6InNyYy9hcHAvYWxidW0vYWxidW0uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxubGkucGxheWxpc3Qtc29uZzpob3ZlciB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2YxZjJmMztcbn1cbmRpdi53aGl0ZS1wbGF5ZXItcGxheWxpc3Qtc29uZy5hbXBsaXR1ZGUtYWN0aXZlLXNvbmctY29udGFpbmVyIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIzOCwgMTAwLCA4MiwgMC4zKTsgfVxuZGl2LndoaXRlLXBsYXllci1wbGF5bGlzdC1zb25nIGltZyB7XG4gICAgd2lkdGg6IDQ4cHg7XG4gICAgaGVpZ2h0OiA0OHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDNweDtcbiAgICBtYXJnaW4tbGVmdDogMTZweDtcbiAgICBmbG9hdDogbGVmdDsgfVxuLnBsYXlsaXN0LXNvbmcgZGl2LnBsYXlsaXN0LXNvbmctbWV0YSB7XG4gICAgZmxvYXQ6IGxlZnQ7XG4gICAgbWFyZ2luLWxlZnQ6IDE1cHg7XG4gICAgLyogd2lkdGg6IGNhbGMoIDEwMCUgLSA4MHB4ICk7ICovXG59XG4ucGxheWxpc3Qtc29uZy1tZXRhIHNwYW4ucGxheWxpc3Qtc29uZy1uYW1lIHtcbiAgICBjb2xvcjogIzQxNDM0NDtcbiAgICBmb250LXNpemU6IDE0cHg7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzOyB9XG4ucGxheWxpc3Qtc29uZy1tZXRhIHNwYW4ucGxheWxpc3QtYXJ0aXN0LWFsYnVtIHtcbiAgICBjb2xvcjogI0FBQUZCMztcbiAgICBmb250LXNpemU6IDEycHg7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzOyB9XG5cbi5wbGF5bGlzdC1kZXNjcmlwdGlvbiB7XG4gICAgbWFyZ2luLXRvcDogMjBweDtcbn1cbi5wbGF5bGlzdC1kZXNjcmlwdGlvbiBpbWcge1xuICAgIG1heC13aWR0aDogNDUwcHg7XG59XG4uc29uZy1saXN0IHtcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xufVxuLmFkZC1idXR0b257XG4gICAgZmxvYXQ6IHJpZ2h0O1xuICAgIHdpZHRoOiAzNXB4O1xuICAgIGhlaWdodDogMzVweDtcbiAgICBtYXJnaW46IGF1dG8gNXB4O1xufVxuXG5kaXYjcGxheS1wYXVzZSB7XG4gICAgd2lkdGg6IDM1cHg7XG4gICAgaGVpZ2h0OiAzNXB4O1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBmbG9hdDogcmlnaHQ7XG4gICAgYmFja2dyb3VuZDogdXJsKFwiL2Fzc2V0cy9pbWcvcGxheS5zdmdcIik7IFxuICAgIGJhY2tncm91bmQtc2l6ZTogMzVweCAzNXB4O1xuICAgIC8qIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7ICovXG4gICAgbWFyZ2luLXJpZ2h0OiAxNnB4OyB9XG5kaXYjd2hpdGUtcGxheWVyLWNvbnRyb2xzIGRpdiNwbGF5LXBhdXNlLmFtcGxpdHVkZS1wYXVzZWQge1xuICAgIGJhY2tncm91bmQ6IHVybChcIi9hc3NldHMvaW1nL3BsYXkuc3ZnXCIpOyB9XG5kaXYjd2hpdGUtcGxheWVyLWNvbnRyb2xzIGRpdiNwbGF5LXBhdXNlLmFtcGxpdHVkZS1wbGF5aW5nIHtcbiAgICBiYWNrZ3JvdW5kOiB1cmwoXCIvYXNzZXRzL2ltZy9wYXVzZS5zdmdcIik7IH1cbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n.playlist-description {\n    margin-top: 20px;\n}\n.playlist-description img {\n    max-width: 450px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWxidW0vYWxidW0uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7SUFDSSxnQkFBZ0I7QUFDcEI7QUFDQTtJQUNJLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL2FsYnVtL2FsYnVtLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5wbGF5bGlzdC1kZXNjcmlwdGlvbiB7XG4gICAgbWFyZ2luLXRvcDogMjBweDtcbn1cbi5wbGF5bGlzdC1kZXNjcmlwdGlvbiBpbWcge1xuICAgIG1heC13aWR0aDogNDUwcHg7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -449,15 +488,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlbumComponent", function() { return AlbumComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _playlist__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../playlist */ "./src/app/playlist.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
-/* harmony import */ var _amplitude_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../amplitude.service */ "./src/app/amplitude.service.ts");
-
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
+/* harmony import */ var _amplitude_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../amplitude.service */ "./src/app/amplitude.service.ts");
+/* harmony import */ var _Album__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Album */ "./src/app/Album.ts");
 
 
 
 // import { Location } from '@angular/common';
+
 
 
 let AlbumComponent = class AlbumComponent {
@@ -467,32 +506,26 @@ let AlbumComponent = class AlbumComponent {
         this.route = route;
         this.api = api;
         this.amplitude = amplitude;
-        this.playlist = new _playlist__WEBPACK_IMPORTED_MODULE_2__["Playlist"]("Playlist_name", "art", null);
+        this.album = new _Album__WEBPACK_IMPORTED_MODULE_5__["Album"](1, '', '', '', '', []);
     }
     ngOnInit() {
         this.getAlbum();
     }
     getAlbum() {
         const id = +this.route.snapshot.paramMap.get('id');
-        this.api.getPlaylist(id)
-            .subscribe(playlist => {
-            this.playlist = playlist;
+        this.api.getAlbum(id)
+            .subscribe(album => {
+            this.album = album;
         });
     }
     addPlaylistToQueue() {
-        this.amplitude.addSongs(this.playlist.songs);
-    }
-    addSongToQueue(song) {
-        this.amplitude.addSong(song);
-    }
-    playSong(song) {
-        this.amplitude.playNow(song);
+        this.amplitude.addSongs(this.album.songs);
     }
 };
 AlbumComponent.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
-    { type: _api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"] },
-    { type: _amplitude_service__WEBPACK_IMPORTED_MODULE_5__["AmplitudeService"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: _api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"] },
+    { type: _amplitude_service__WEBPACK_IMPORTED_MODULE_4__["AmplitudeService"] }
 ];
 AlbumComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -649,7 +682,7 @@ __webpack_require__.r(__webpack_exports__);
 let ApiService = class ApiService {
     constructor(http) {
         this.http = http;
-        this.api_url = 'http://localhost:8080/api/';
+        this.apiURL = 'http://localhost:8080/api/';
         this.songs = [
             {
                 id: 1,
@@ -697,30 +730,29 @@ let ApiService = class ApiService {
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.songs);
     }
     getPlaylists() {
-        console.log(this.api_url + 'playlists');
-        return this.http.get(this.api_url + 'playlists');
+        return this.http.get(this.apiURL + 'playlists');
     }
     getAlbums(userId) {
-        return this.http.get(this.api_url + 'albums');
+        return this.http.get(this.apiURL + 'albums');
     }
     getPlaylist(id) {
-        return this.http.get(this.api_url + 'playlists/' + id);
+        return this.http.get(this.apiURL + 'playlists/' + id);
         // return of(data.full_playlists[id]);
     }
     newSong(data) {
-        return this.http.post(this.api_url + 'songs', data);
+        return this.http.post(this.apiURL + 'songs', data);
     }
     uploadSong(data) {
-        return this.http.post(this.api_url + 'songs/upload', data);
+        return this.http.post(this.apiURL + 'songs/upload', data);
     }
     getAlbum(id) {
-        return this.http.get(this.api_url + 'albums/' + String(id));
+        return this.http.get(this.apiURL + 'albums/' + String(id));
     }
     newAlbum(album) {
-        return this.http.post(this.api_url + 'albums', album);
+        return this.http.post(this.apiURL + 'albums', album);
     }
     uploadAlbumCover(data) {
-        return this.http.post(this.api_url + 'albums/cover', data);
+        return this.http.post(this.apiURL + 'albums/cover', data);
     }
 };
 ApiService.ctorParameters = () => [
@@ -753,6 +785,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _album_album_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./album/album.component */ "./src/app/album/album.component.ts");
 /* harmony import */ var _new_song_new_song_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./new-song/new-song.component */ "./src/app/new-song/new-song.component.ts");
 /* harmony import */ var _new_album_new_album_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./new-album/new-album.component */ "./src/app/new-album/new-album.component.ts");
+/* harmony import */ var _playlist_playlist_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./playlist/playlist.component */ "./src/app/playlist/playlist.component.ts");
+
 
 
 
@@ -764,6 +798,7 @@ const routes = [
     { path: '', component: _album_collection_album_collection_component__WEBPACK_IMPORTED_MODULE_3__["AlbumCollectionComponent"] },
     { path: 'album/create', component: _new_album_new_album_component__WEBPACK_IMPORTED_MODULE_6__["NewAlbumComponent"] },
     { path: 'album/:id', component: _album_album_component__WEBPACK_IMPORTED_MODULE_4__["AlbumComponent"] },
+    { path: 'playlist/:id', component: _playlist_playlist_component__WEBPACK_IMPORTED_MODULE_7__["PlaylistComponent"] },
     { path: 'new_song', component: _new_song_new_song_component__WEBPACK_IMPORTED_MODULE_5__["NewSongComponent"] }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -850,6 +885,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var angular2_notifications__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(angular2_notifications__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _new_song_new_song_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./new-song/new-song.component */ "./src/app/new-song/new-song.component.ts");
 /* harmony import */ var _new_album_new_album_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./new-album/new-album.component */ "./src/app/new-album/new-album.component.ts");
+/* harmony import */ var _song_list_song_list_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./song-list/song-list.component */ "./src/app/song-list/song-list.component.ts");
+
 
 
 
@@ -879,7 +916,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _album_collection_album_collection_component__WEBPACK_IMPORTED_MODULE_10__["AlbumCollectionComponent"],
             _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_11__["NavbarComponent"],
             _new_song_new_song_component__WEBPACK_IMPORTED_MODULE_14__["NewSongComponent"],
-            _new_album_new_album_component__WEBPACK_IMPORTED_MODULE_15__["NewAlbumComponent"]
+            _new_album_new_album_component__WEBPACK_IMPORTED_MODULE_15__["NewAlbumComponent"],
+            _song_list_song_list_component__WEBPACK_IMPORTED_MODULE_16__["SongListComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -976,15 +1014,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var angular2_notifications__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! angular2-notifications */ "./node_modules/angular2-notifications/angular2-notifications.umd.js");
+/* harmony import */ var angular2_notifications__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(angular2_notifications__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 
 
 
+
+
+ // RxJS 6 syntax
 
 
 let NewAlbumComponent = class NewAlbumComponent {
-    constructor(formBuilder, apiService) {
+    constructor(formBuilder, apiService, notifier, router) {
         this.formBuilder = formBuilder;
         this.apiService = apiService;
+        this.notifier = notifier;
+        this.router = router;
         this.coverArtUrl = 'http://cdn.last.fm/flatness/responsive/2/noimage/default_album_300_g4.png';
         this.form = this.formBuilder.group({
             name: [''],
@@ -1017,25 +1064,28 @@ let NewAlbumComponent = class NewAlbumComponent {
             const data = new FormData();
             data.append('album_id', String(album.id));
             data.append('cover_file', this.imageFile);
+            const requests = [];
             album.songs.forEach((song, idx) => {
                 console.log(this.form.controls.songs.controls[idx].get('media_file').value);
                 const songdata = new FormData();
                 songdata.append('song_id', String(song.id));
                 songdata.append('media_file', this.form.controls.songs.controls[idx].get('media_file').value);
-                this.apiService.uploadSong(songdata).subscribe((res) => {
-                    console.log('media file uploaded!');
-                    console.log(res);
-                });
+                requests.push(this.apiService.uploadSong(songdata));
             });
-            return this.apiService.uploadAlbumCover(data);
-        })).subscribe((res) => console.log(res));
+            requests.push(this.apiService.uploadAlbumCover(data));
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["forkJoin"])(requests);
+        })).subscribe((res) => {
+            console.log(res);
+            this.notifier.success('Album uploaded!');
+            this.router.navigate(['/']);
+        });
     }
     imageSelected(files) {
         if (files.length === 0)
             return;
         const mimeType = files[0].type;
         if (mimeType.match(/image\/*/) == null) {
-            // this.message = "Only images are supported.";
+            // this.message = 'Only images are supported.';
             return;
         }
         const reader = new FileReader();
@@ -1055,7 +1105,9 @@ let NewAlbumComponent = class NewAlbumComponent {
 };
 NewAlbumComponent.ctorParameters = () => [
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-    { type: _api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"] }
+    { type: _api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"] },
+    { type: angular2_notifications__WEBPACK_IMPORTED_MODULE_6__["NotificationsService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] }
 ];
 NewAlbumComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1265,7 +1317,7 @@ class Playlist {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BsYXlsaXN0L3BsYXlsaXN0LmNvbXBvbmVudC5jc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".playlist-description {\n    margin-top: 20px;\n}\n.playlist-description img {\n    max-width: 450px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGxheWxpc3QvcGxheWxpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtBQUNwQjtBQUNBO0lBQ0ksZ0JBQWdCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvcGxheWxpc3QvcGxheWxpc3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wbGF5bGlzdC1kZXNjcmlwdGlvbiB7XG4gICAgbWFyZ2luLXRvcDogMjBweDtcbn1cbi5wbGF5bGlzdC1kZXNjcmlwdGlvbiBpbWcge1xuICAgIG1heC13aWR0aDogNDUwcHg7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -1281,13 +1333,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PlaylistComponent", function() { return PlaylistComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _playlist__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../playlist */ "./src/app/playlist.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
+/* harmony import */ var _amplitude_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../amplitude.service */ "./src/app/amplitude.service.ts");
+
+
+
+
+// import { Location } from '@angular/common';
 
 
 let PlaylistComponent = class PlaylistComponent {
-    constructor() { }
+    constructor(route, 
+    // private location: Location,
+    api, amplitude) {
+        this.route = route;
+        this.api = api;
+        this.amplitude = amplitude;
+        this.playlist = new _playlist__WEBPACK_IMPORTED_MODULE_2__["Playlist"]('Playlist_name', 'art', null);
+    }
     ngOnInit() {
+        this.getPlaylist();
+    }
+    getPlaylist() {
+        const id = +this.route.snapshot.paramMap.get('id');
+        this.api.getPlaylist(id)
+            .subscribe(playlist => {
+            this.playlist = playlist;
+        });
+    }
+    addPlaylistToQueue() {
+        this.amplitude.addSongs(this.playlist.songs);
     }
 };
+PlaylistComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
+    { type: _api_service__WEBPACK_IMPORTED_MODULE_4__["ApiService"] },
+    { type: _amplitude_service__WEBPACK_IMPORTED_MODULE_5__["AmplitudeService"] }
+];
 PlaylistComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-playlist',
@@ -1295,6 +1379,66 @@ PlaylistComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./playlist.component.css */ "./src/app/playlist/playlist.component.css")).default]
     })
 ], PlaylistComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/song-list/song-list.component.css":
+/*!***************************************************!*\
+  !*** ./src/app/song-list/song-list.component.css ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\nli.playlist-song:hover {\n    background-color: #f1f2f3;\n}\n.playlist-song div.playlist-song-meta {\n    float: left;\n    margin-left: 15px;\n    /* width: calc( 100% - 80px ); */\n}\n.playlist-song-meta span.playlist-song-name {\n    color: #414344;\n    font-size: 14px;\n    display: block;\n    width: 100%;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n.playlist-song-meta span.playlist-artist-album {\n    color: #AAAFB3;\n    font-size: 12px;\n    display: block;\n    width: 100%;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis; }\n.song-button {\n    display: inline;\n    width: 30px;\n    height: 30px;\n    text-align: center;\n    padding: 6px 0;\n    font-size: 12px;\n    line-height: 1.428571429;\n    border-radius: 15px;\n    margin: auto 2px;\n}\n.song-list {\n    margin-top: 10px;\n}\n.song-buttons {\n    float: right;\n}\n.btn-circle {\n    width: 30px;\n    height: 30px;\n    text-align: center;\n    padding: 6px 0;\n    font-size: 12px;\n    line-height: 1.428571429;\n    border-radius: 15px;\n    margin: auto 2px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc29uZy1saXN0L3NvbmctbGlzdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLHlCQUF5QjtBQUM3QjtBQUNBO0lBQ0ksV0FBVztJQUNYLGlCQUFpQjtJQUNqQixnQ0FBZ0M7QUFDcEM7QUFDQTtJQUNJLGNBQWM7SUFDZCxlQUFlO0lBQ2YsY0FBYztJQUNkLFdBQVc7SUFDWCxtQkFBbUI7SUFDbkIsZ0JBQWdCO0lBQ2hCLHVCQUF1QixFQUFFO0FBQzdCO0lBQ0ksY0FBYztJQUNkLGVBQWU7SUFDZixjQUFjO0lBQ2QsV0FBVztJQUNYLG1CQUFtQjtJQUNuQixnQkFBZ0I7SUFDaEIsdUJBQXVCLEVBQUU7QUFFN0I7SUFDSSxlQUFlO0lBQ2YsV0FBVztJQUNYLFlBQVk7SUFDWixrQkFBa0I7SUFDbEIsY0FBYztJQUNkLGVBQWU7SUFDZix3QkFBd0I7SUFDeEIsbUJBQW1CO0lBQ25CLGdCQUFnQjtBQUNwQjtBQUNBO0lBQ0ksZ0JBQWdCO0FBQ3BCO0FBRUE7SUFDSSxZQUFZO0FBQ2hCO0FBQ0E7SUFDSSxXQUFXO0lBQ1gsWUFBWTtJQUNaLGtCQUFrQjtJQUNsQixjQUFjO0lBQ2QsZUFBZTtJQUNmLHdCQUF3QjtJQUN4QixtQkFBbUI7SUFDbkIsZ0JBQWdCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvc29uZy1saXN0L3NvbmctbGlzdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG5saS5wbGF5bGlzdC1zb25nOmhvdmVyIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjFmMmYzO1xufVxuLnBsYXlsaXN0LXNvbmcgZGl2LnBsYXlsaXN0LXNvbmctbWV0YSB7XG4gICAgZmxvYXQ6IGxlZnQ7XG4gICAgbWFyZ2luLWxlZnQ6IDE1cHg7XG4gICAgLyogd2lkdGg6IGNhbGMoIDEwMCUgLSA4MHB4ICk7ICovXG59XG4ucGxheWxpc3Qtc29uZy1tZXRhIHNwYW4ucGxheWxpc3Qtc29uZy1uYW1lIHtcbiAgICBjb2xvcjogIzQxNDM0NDtcbiAgICBmb250LXNpemU6IDE0cHg7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzOyB9XG4ucGxheWxpc3Qtc29uZy1tZXRhIHNwYW4ucGxheWxpc3QtYXJ0aXN0LWFsYnVtIHtcbiAgICBjb2xvcjogI0FBQUZCMztcbiAgICBmb250LXNpemU6IDEycHg7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzOyB9XG5cbi5zb25nLWJ1dHRvbiB7XG4gICAgZGlzcGxheTogaW5saW5lO1xuICAgIHdpZHRoOiAzMHB4O1xuICAgIGhlaWdodDogMzBweDtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgcGFkZGluZzogNnB4IDA7XG4gICAgZm9udC1zaXplOiAxMnB4O1xuICAgIGxpbmUtaGVpZ2h0OiAxLjQyODU3MTQyOTtcbiAgICBib3JkZXItcmFkaXVzOiAxNXB4O1xuICAgIG1hcmdpbjogYXV0byAycHg7XG59XG4uc29uZy1saXN0IHtcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xufVxuXG4uc29uZy1idXR0b25zIHtcbiAgICBmbG9hdDogcmlnaHQ7XG59XG4uYnRuLWNpcmNsZSB7XG4gICAgd2lkdGg6IDMwcHg7XG4gICAgaGVpZ2h0OiAzMHB4O1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBwYWRkaW5nOiA2cHggMDtcbiAgICBmb250LXNpemU6IDEycHg7XG4gICAgbGluZS1oZWlnaHQ6IDEuNDI4NTcxNDI5O1xuICAgIGJvcmRlci1yYWRpdXM6IDE1cHg7XG4gICAgbWFyZ2luOiBhdXRvIDJweDtcbn1cbiJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/song-list/song-list.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/song-list/song-list.component.ts ***!
+  \**************************************************/
+/*! exports provided: SongListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SongListComponent", function() { return SongListComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _amplitude_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../amplitude.service */ "./src/app/amplitude.service.ts");
+
+
+
+let SongListComponent = class SongListComponent {
+    constructor(amplitude) {
+        this.amplitude = amplitude;
+    }
+    ngOnInit() {
+    }
+    addSongToQueue(song) {
+        this.amplitude.addSong(song);
+    }
+    playSong(song) {
+        this.amplitude.playNow(song);
+    }
+};
+SongListComponent.ctorParameters = () => [
+    { type: _amplitude_service__WEBPACK_IMPORTED_MODULE_2__["AmplitudeService"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], SongListComponent.prototype, "songs", void 0);
+SongListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-song-list',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./song-list.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/song-list/song-list.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./song-list.component.css */ "./src/app/song-list/song-list.component.css")).default]
+    })
+], SongListComponent);
 
 
 
