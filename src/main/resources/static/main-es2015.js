@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<h1>Playlists</h1>\n<div class=\"right\">\n    <div class=\"song-to-add\" *ngFor=\"let playlist of playlists\">\n        <a href=\"\" routerLink=\"/playlist/{{ playlist.id }}\">\n            <img src=\"{{ playlist.cover_art_url }}\"/>\n        </a>\n        <a class=\"add-to-playlist-button\" (click)=\"addPlaylistToQueue(playlist.id)\">\n            Add To Playlist\n        </a>\n    </div>\n</div>\n\n<h1>Albums</h1>\n<div class=\"right\">\n    <div class=\"song-to-add\" *ngFor=\"let album of albums\">\n        <a href=\"\" routerLink=\"/album/{{ album.id }}\">\n            <img src=\"{{ album.coverArt }}\"/>\n        </a>\n        <a class=\"add-to-playlist-button\" (click)=\"addAlbumToQueue(album.id)\">\n            Add To Playlist\n        </a>\n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<div id=\"playlists\" *ngIf=\"playlists?.length\">\n    <h1>Playlists</h1>\n    <div class=\"right\">\n        <div class=\"song-to-add\" *ngFor=\"let playlist of playlists\">\n            <a href=\"\" routerLink=\"/playlist/{{ playlist.id }}\">\n                <img src=\"{{ playlist.cover_art_url }}\"/>\n            </a>\n            <a class=\"add-to-playlist-button\" (click)=\"addPlaylistToQueue(playlist.id)\">\n                Add To Playlist\n            </a>\n        </div>\n    </div>\n</div>\n<div id=\"albums\" *ngIf=\"albums?.length \">\n    <h1>Albums</h1>\n    <div class=\"right\">\n        <div class=\"song-to-add\" *ngFor=\"let album of albums\">\n            <a href=\"\" routerLink=\"/album/{{ album.id }}\">\n                <img src=\"{{ album.coverArt }}\"/>\n            </a>\n            <a class=\"add-to-playlist-button\" (click)=\"addAlbumToQueue(album.id)\">\n                Add To Playlist\n            </a>\n        </div>\n    </div>\n</div>\n");
 
 /***/ }),
 
@@ -58,7 +58,33 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-navbar></app-navbar>\n<div class=\"container-fluid\">\n    <div class=\"row\">\n        <div class=\"col-4\">\n            <div class=\"left\">\n                <app-player></app-player>\n            </div>\n        </div>\n        <div class=\"col-8\">\n            <router-outlet></router-outlet>\n        </div>\n    </div>\n</div>\n<simple-notifications></simple-notifications>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-navbar></app-navbar>\n<div class=\"container-fluid\">\n    <div class=\"row\" *ngIf=\"!isAuthRoute() ; else login\">\n        <div class=\"col-4\" >\n            <div class=\"left\">\n                <app-player></app-player>\n            </div>\n        </div>\n        <div class=\"col-8\">\n            <router-outlet></router-outlet>\n        </div>\n    </div>\n    <ng-template #login>\n        <router-outlet></router-outlet>\n    </ng-template>\n</div>\n<simple-notifications></simple-notifications>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/login/login.component.html":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/auth/login/login.component.html ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.3.1/css/all.css\" integrity=\"sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU\" crossorigin=\"anonymous\">\n<div class=\"container\">\n\t<div class=\"d-flex justify-content-center h-100\">\n\t\t<div class=\"card\">\n\t\t\t<div class=\"card-header\">\n\t\t\t\t<h3>Log In</h3>\n\t\t\t\t<div class=\"d-flex justify-content-end social_icon\">\n\t\t\t\t\t<span><i class=\"fab fa-facebook-square\"></i></span>\n\t\t\t\t\t<span><i class=\"fab fa-google-plus-square\"></i></span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"card-body\">\n\t\t\t\t<form>\n\t\t\t\t\t<div class=\"input-group form-group\">\n\t\t\t\t\t\t<div class=\"input-group-prepend\">\n\t\t\t\t\t\t\t<span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"username\">\n\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"input-group form-group\">\n\t\t\t\t\t\t<div class=\"input-group-prepend\">\n\t\t\t\t\t\t\t<span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<input type=\"password\" class=\"form-control\" placeholder=\"password\">\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"row align-items-center remember\">\n\t\t\t\t\t\t<input type=\"checkbox\">Remember Me\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t<input type=\"submit\" value=\"Login\" class=\"btn float-right login_btn\">\n\t\t\t\t\t</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t\t<div class=\"card-footer\">\n\t\t\t\t<div class=\"d-flex justify-content-center links\">\n\t\t\t\t\t  Don't have an account?<a href=\"\" routerLink=\"/signup\">Sign Up</a>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"d-flex justify-content-center\">\n\t\t\t\t\t<a href=\"#\">Forgot your password?</a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/signup/signup.component.html":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/auth/signup/signup.component.html ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"container\">\n    <br>\n    <div class=\"text-center\"><h1>MUSIC-ON</h1></div>\n    <hr>\n\n    <div class=\"row justify-content-center\">\n        <div class=\"col-md-6\">\n            <div class=\"card\">\n                <header class=\"card-header\">\n\t                  <a href=\"\" routerLink=\"/login\" class=\"float-right btn btn-outline-primary mt-1\">Log in</a>\n\t                  <h4 class=\"card-title mt-2\">Sign Up</h4>\n                </header>\n                <article class=\"card-body\">\n                    <form>\n\t                      <div class=\"form-row\">\n\t\t                        <div class=\"col form-group\">\n\t\t\t                          <label>First name </label>\n\t\t  \t                        <input type=\"text\" class=\"form-control\" placeholder=\"\">\n\t\t                        </div> <!-- form-group end.// -->\n\t\t                        <div class=\"col form-group\">\n\t\t\t                          <label>Last name</label>\n\t\t  \t                        <input type=\"text\" class=\"form-control\" placeholder=\" \">\n\t\t                        </div> <!-- form-group end.// -->\n\t                      </div> <!-- form-row end.// -->\n\t                      <div class=\"form-group\">\n\t\t                        <label>Email address</label>\n\t\t                        <input type=\"email\" class=\"form-control\" placeholder=\"\">\n\t\t                        <small class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n\t\t\t                      <label class=\"form-check form-check-inline\">\n\t\t                            <input class=\"form-check-input\" type=\"radio\" name=\"gender\" value=\"option1\">\n\t\t                            <span class=\"form-check-label\"> Male </span>\n\t\t                        </label>\n\t\t                        <label class=\"form-check form-check-inline\">\n\t\t                            <input class=\"form-check-input\" type=\"radio\" name=\"gender\" value=\"option2\">\n\t\t                            <span class=\"form-check-label\"> Female</span>\n\t\t                        </label>\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n\t\t                        <label>Country</label>\n\t\t                        <select id=\"inputState\" class=\"form-control\">\n\t\t                            <option> Choose...</option>\n\t\t                            <option>Uzbekistan</option>\n\t\t                            <option>Russia</option>\n\t\t                            <option selected=\"\">United States</option>\n\t\t                            <option>India</option>\n\t\t                            <option>Afganistan</option>\n\t\t                        </select>\n\t\t                    </div> <!-- form-group end.// -->\n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Username</label>\n\t                          <input type=\"text\" class=\"form-control\" placeholder=\"\">\n\t                      </div> <!-- form-group end.// -->  \n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Create password</label>\n\t                          <input class=\"form-control\" type=\"password\">\n\t                      </div> <!-- form-group end.// -->  \n\t                      <div class=\"form-group\">\n                            <button type=\"submit\" class=\"btn btn-primary btn-block\"> Register  </button>\n                        </div> <!-- form-group// -->\n                    </form>\n                </article> <!-- card-body end .// -->\n                <div class=\"border-top card-body text-center\">Have an account? <a href=\"\" routerLink=\"/login\">Log In</a></div>\n            </div> <!-- card.// -->\n        </div> <!-- col.//-->\n\n    </div> <!-- row.//-->\n\n\n</div> \n<!--container end.//-->\n");
 
 /***/ }),
 
@@ -71,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n  <a class=\"navbar-brand\" href=\"\" routerLink=\"/\">MUSIC ON</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"/\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"new_song\">Upload Song</a>\n      </li>\n      <li class=\"nav-item\">\n          <a class=\"nav-link\" href=\"\" routerLink=\"album/create\">New Album</a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n  </div>\n</nav>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"\" routerLink=\"/\">MUSIC ON</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"/\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"new_song\">Upload Song</a>\n      </li>\n      <li class=\"nav-item\">\n          <a class=\"nav-link\" href=\"\" routerLink=\"album/create\">New Album</a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n\n    <ul class=\"navbar-nav left-nav\">\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/login\">\n                Login\n                <span class=\"oi oi-account-login\" title=\"account login\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/signup\">\n                Sign Up\n                <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n    </ul>\n  </div>\n</nav>\n");
 
 /***/ }),
 
@@ -404,7 +430,7 @@ class Album {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("h1{\n    color: white;\n    margin-top: 10px;\n    font-family: \"Lato\", sans-serif;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWxidW0tY29sbGVjdGlvbi9hbGJ1bS1jb2xsZWN0aW9uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0lBQ1osZ0JBQWdCO0lBQ2hCLCtCQUErQjtBQUNuQyIsImZpbGUiOiJzcmMvYXBwL2FsYnVtLWNvbGxlY3Rpb24vYWxidW0tY29sbGVjdGlvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaDF7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIG1hcmdpbi10b3A6IDEwcHg7XG4gICAgZm9udC1mYW1pbHk6IFwiTGF0b1wiLCBzYW5zLXNlcmlmO1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("h1{\n    /* color: white; */\n    margin-top: 10px;\n    font-family: \"Lato\", sans-serif;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWxidW0tY29sbGVjdGlvbi9hbGJ1bS1jb2xsZWN0aW9uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIsZ0JBQWdCO0lBQ2hCLCtCQUErQjtBQUNuQyIsImZpbGUiOiJzcmMvYXBwL2FsYnVtLWNvbGxlY3Rpb24vYWxidW0tY29sbGVjdGlvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaDF7XG4gICAgLyogY29sb3I6IHdoaXRlOyAqL1xuICAgIG1hcmdpbi10b3A6IDEwcHg7XG4gICAgZm9udC1mYW1pbHk6IFwiTGF0b1wiLCBzYW5zLXNlcmlmO1xufVxuIl19 */");
 
 /***/ }),
 
@@ -433,7 +459,9 @@ let AlbumCollectionComponent = class AlbumCollectionComponent {
     }
     ngOnInit() {
         this.apiService.getPlaylists().subscribe(playlists => this.playlists = playlists);
-        this.apiService.getAlbums(0).subscribe(albums => this.albums = albums);
+        this.apiService.getAlbums(0).subscribe(albums => {
+            this.albums = albums;
+        });
     }
     addPlaylistToQueue(id) {
         this.apiService.getPlaylist(id).subscribe(playlist => this.ampService.addSongs(playlist.songs));
@@ -786,6 +814,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _new_song_new_song_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./new-song/new-song.component */ "./src/app/new-song/new-song.component.ts");
 /* harmony import */ var _new_album_new_album_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./new-album/new-album.component */ "./src/app/new-album/new-album.component.ts");
 /* harmony import */ var _playlist_playlist_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./playlist/playlist.component */ "./src/app/playlist/playlist.component.ts");
+/* harmony import */ var _auth_login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./auth/login/login.component */ "./src/app/auth/login/login.component.ts");
+/* harmony import */ var _auth_signup_signup_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./auth/signup/signup.component */ "./src/app/auth/signup/signup.component.ts");
+
+
 
 
 
@@ -799,7 +831,9 @@ const routes = [
     { path: 'album/create', component: _new_album_new_album_component__WEBPACK_IMPORTED_MODULE_6__["NewAlbumComponent"] },
     { path: 'album/:id', component: _album_album_component__WEBPACK_IMPORTED_MODULE_4__["AlbumComponent"] },
     { path: 'playlist/:id', component: _playlist_playlist_component__WEBPACK_IMPORTED_MODULE_7__["PlaylistComponent"] },
-    { path: 'new_song', component: _new_song_new_song_component__WEBPACK_IMPORTED_MODULE_5__["NewSongComponent"] }
+    { path: 'new_song', component: _new_song_new_song_component__WEBPACK_IMPORTED_MODULE_5__["NewSongComponent"] },
+    { path: 'login', component: _auth_login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"] },
+    { path: 'signup', component: _auth_signup_signup_component__WEBPACK_IMPORTED_MODULE_9__["SignupComponent"] }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -839,13 +873,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 let AppComponent = class AppComponent {
-    constructor() {
+    constructor(router) {
+        this.router = router;
         this.title = 'mplayer';
+        this.route = router.url;
+    }
+    isAuthRoute() {
+        return this.router.url === '/login' || this.router.url === '/signup';
     }
 };
+AppComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-root',
@@ -886,6 +930,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _new_song_new_song_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./new-song/new-song.component */ "./src/app/new-song/new-song.component.ts");
 /* harmony import */ var _new_album_new_album_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./new-album/new-album.component */ "./src/app/new-album/new-album.component.ts");
 /* harmony import */ var _song_list_song_list_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./song-list/song-list.component */ "./src/app/song-list/song-list.component.ts");
+/* harmony import */ var _auth_login_login_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./auth/login/login.component */ "./src/app/auth/login/login.component.ts");
+/* harmony import */ var _auth_signup_signup_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./auth/signup/signup.component */ "./src/app/auth/signup/signup.component.ts");
+
+
 
 
 
@@ -917,7 +965,9 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_11__["NavbarComponent"],
             _new_song_new_song_component__WEBPACK_IMPORTED_MODULE_14__["NewSongComponent"],
             _new_album_new_album_component__WEBPACK_IMPORTED_MODULE_15__["NewAlbumComponent"],
-            _song_list_song_list_component__WEBPACK_IMPORTED_MODULE_16__["SongListComponent"]
+            _song_list_song_list_component__WEBPACK_IMPORTED_MODULE_16__["SongListComponent"],
+            _auth_login_login_component__WEBPACK_IMPORTED_MODULE_17__["LoginComponent"],
+            _auth_signup_signup_component__WEBPACK_IMPORTED_MODULE_18__["SignupComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -942,6 +992,94 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/auth/login/login.component.css":
+/*!************************************************!*\
+  !*** ./src/app/auth/login/login.component.css ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("@import url('https://fonts.googleapis.com/css?family=Numans');\n.container{\nheight: 100%;\nalign-content: center;\nmargin-top: 40px;\n}\n.card{\nheight: 370px;\nmargin-top: auto;\nmargin-bottom: auto;\nwidth: 400px;\nbackground-color: rgba(0,0,0,0.5) !important;\n}\n.social_icon span{\nfont-size: 60px;\nmargin-left: 10px;\ncolor: #1298ff;\n}\n.social_icon span:hover{\ncolor: white;\ncursor: pointer;\n}\n.card-header h3{\ncolor: white;\n}\n.social_icon{\nposition: absolute;\nright: 20px;\ntop: -45px;\n}\n.input-group-prepend span{\nwidth: 50px;\nbackground-color: #1298ff;\ncolor: black;\nborder:0 !important;\n}\ninput:focus{\noutline: 0 0 0 0  !important;\nbox-shadow: 0 0 0 0 !important;\n}\n.remember{\ncolor: white;\n}\n.remember input\n{\nwidth: 20px;\nheight: 20px;\nmargin-left: 15px;\nmargin-right: 5px;\n}\n.login_btn{\ncolor: black;\nbackground-color: #1298ff;\nwidth: 100px;\n}\n.login_btn:hover{\ncolor: black;\nbackground-color: white;\n}\n.links{\ncolor: white;\n}\n.links a{\nmargin-left: 4px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDZEQUE2RDtBQUM3RDtBQUNBLFlBQVk7QUFDWixxQkFBcUI7QUFDckIsZ0JBQWdCO0FBQ2hCO0FBQ0E7QUFDQSxhQUFhO0FBQ2IsZ0JBQWdCO0FBQ2hCLG1CQUFtQjtBQUNuQixZQUFZO0FBQ1osNENBQTRDO0FBQzVDO0FBQ0E7QUFDQSxlQUFlO0FBQ2YsaUJBQWlCO0FBQ2pCLGNBQWM7QUFDZDtBQUNBO0FBQ0EsWUFBWTtBQUNaLGVBQWU7QUFDZjtBQUNBO0FBQ0EsWUFBWTtBQUNaO0FBQ0E7QUFDQSxrQkFBa0I7QUFDbEIsV0FBVztBQUNYLFVBQVU7QUFDVjtBQUNBO0FBQ0EsV0FBVztBQUNYLHlCQUF5QjtBQUN6QixZQUFZO0FBQ1osbUJBQW1CO0FBQ25CO0FBQ0E7QUFDQSw0QkFBNEI7QUFDNUIsOEJBQThCO0FBQzlCO0FBQ0E7QUFDQSxZQUFZO0FBQ1o7QUFDQTs7QUFFQSxXQUFXO0FBQ1gsWUFBWTtBQUNaLGlCQUFpQjtBQUNqQixpQkFBaUI7QUFDakI7QUFDQTtBQUNBLFlBQVk7QUFDWix5QkFBeUI7QUFDekIsWUFBWTtBQUNaO0FBQ0E7QUFDQSxZQUFZO0FBQ1osdUJBQXVCO0FBQ3ZCO0FBQ0E7QUFDQSxZQUFZO0FBQ1o7QUFDQTtBQUNBLGdCQUFnQjtBQUNoQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgdXJsKCdodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9TnVtYW5zJyk7XG4uY29udGFpbmVye1xuaGVpZ2h0OiAxMDAlO1xuYWxpZ24tY29udGVudDogY2VudGVyO1xubWFyZ2luLXRvcDogNDBweDtcbn1cbi5jYXJke1xuaGVpZ2h0OiAzNzBweDtcbm1hcmdpbi10b3A6IGF1dG87XG5tYXJnaW4tYm90dG9tOiBhdXRvO1xud2lkdGg6IDQwMHB4O1xuYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLDAsMCwwLjUpICFpbXBvcnRhbnQ7XG59XG4uc29jaWFsX2ljb24gc3BhbntcbmZvbnQtc2l6ZTogNjBweDtcbm1hcmdpbi1sZWZ0OiAxMHB4O1xuY29sb3I6ICMxMjk4ZmY7XG59XG4uc29jaWFsX2ljb24gc3Bhbjpob3ZlcntcbmNvbG9yOiB3aGl0ZTtcbmN1cnNvcjogcG9pbnRlcjtcbn1cbi5jYXJkLWhlYWRlciBoM3tcbmNvbG9yOiB3aGl0ZTtcbn1cbi5zb2NpYWxfaWNvbntcbnBvc2l0aW9uOiBhYnNvbHV0ZTtcbnJpZ2h0OiAyMHB4O1xudG9wOiAtNDVweDtcbn1cbi5pbnB1dC1ncm91cC1wcmVwZW5kIHNwYW57XG53aWR0aDogNTBweDtcbmJhY2tncm91bmQtY29sb3I6ICMxMjk4ZmY7XG5jb2xvcjogYmxhY2s7XG5ib3JkZXI6MCAhaW1wb3J0YW50O1xufVxuaW5wdXQ6Zm9jdXN7XG5vdXRsaW5lOiAwIDAgMCAwICAhaW1wb3J0YW50O1xuYm94LXNoYWRvdzogMCAwIDAgMCAhaW1wb3J0YW50O1xufVxuLnJlbWVtYmVye1xuY29sb3I6IHdoaXRlO1xufVxuLnJlbWVtYmVyIGlucHV0XG57XG53aWR0aDogMjBweDtcbmhlaWdodDogMjBweDtcbm1hcmdpbi1sZWZ0OiAxNXB4O1xubWFyZ2luLXJpZ2h0OiA1cHg7XG59XG4ubG9naW5fYnRue1xuY29sb3I6IGJsYWNrO1xuYmFja2dyb3VuZC1jb2xvcjogIzEyOThmZjtcbndpZHRoOiAxMDBweDtcbn1cbi5sb2dpbl9idG46aG92ZXJ7XG5jb2xvcjogYmxhY2s7XG5iYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn1cbi5saW5rc3tcbmNvbG9yOiB3aGl0ZTtcbn1cbi5saW5rcyBhe1xubWFyZ2luLWxlZnQ6IDRweDtcbn1cbiJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/auth/login/login.component.ts":
+/*!***********************************************!*\
+  !*** ./src/app/auth/login/login.component.ts ***!
+  \***********************************************/
+/*! exports provided: LoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let LoginComponent = class LoginComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-login',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/login/login.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./login.component.css */ "./src/app/auth/login/login.component.css")).default]
+    })
+], LoginComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth/signup/signup.component.css":
+/*!**************************************************!*\
+  !*** ./src/app/auth/signup/signup.component.css ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgvc2lnbnVwL3NpZ251cC5jb21wb25lbnQuY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/auth/signup/signup.component.ts":
+/*!*************************************************!*\
+  !*** ./src/app/auth/signup/signup.component.ts ***!
+  \*************************************************/
+/*! exports provided: SignupComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupComponent", function() { return SignupComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let SignupComponent = class SignupComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+SignupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-signup',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./signup.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/auth/signup/signup.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./signup.component.css */ "./src/app/auth/signup/signup.component.css")).default]
+    })
+], SignupComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/navbar/navbar.component.css":
 /*!*********************************************!*\
   !*** ./src/app/navbar/navbar.component.css ***!
@@ -951,7 +1089,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n.left-nav {\n    margin-left: 5px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuLmxlZnQtbmF2IHtcbiAgICBtYXJnaW4tbGVmdDogNXB4O1xufVxuIl19 */");
 
 /***/ }),
 
