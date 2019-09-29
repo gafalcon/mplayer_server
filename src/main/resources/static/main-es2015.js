@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.3.1/css/all.css\" integrity=\"sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU\" crossorigin=\"anonymous\">\n<div class=\"container\">\n\t<div class=\"d-flex justify-content-center h-100\">\n\t\t<div class=\"card\">\n\t\t\t<div class=\"card-header\">\n\t\t\t\t<h3>Log In</h3>\n\t\t\t\t<div class=\"d-flex justify-content-end social_icon\">\n\t\t\t\t\t<span><i class=\"fab fa-facebook-square\"></i></span>\n\t\t\t\t\t<span><i class=\"fab fa-google-plus-square\"></i></span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"card-body\">\n\t\t\t\t<form>\n\t\t\t\t\t<div class=\"input-group form-group\">\n\t\t\t\t\t\t<div class=\"input-group-prepend\">\n\t\t\t\t\t\t\t<span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"username\">\n\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"input-group form-group\">\n\t\t\t\t\t\t<div class=\"input-group-prepend\">\n\t\t\t\t\t\t\t<span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<input type=\"password\" class=\"form-control\" placeholder=\"password\">\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"row align-items-center remember\">\n\t\t\t\t\t\t<input type=\"checkbox\">Remember Me\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t<input type=\"submit\" value=\"Login\" class=\"btn float-right login_btn\">\n\t\t\t\t\t</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t\t<div class=\"card-footer\">\n\t\t\t\t<div class=\"d-flex justify-content-center links\">\n\t\t\t\t\t  Don't have an account?<a href=\"\" routerLink=\"/signup\">Sign Up</a>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"d-flex justify-content-center\">\n\t\t\t\t\t<a href=\"#\">Forgot your password?</a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.3.1/css/all.css\" integrity=\"sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU\" crossorigin=\"anonymous\">\n<div class=\"container\">\n\t<div class=\"d-flex justify-content-center h-100\">\n\t\t<div class=\"card\">\n\t\t\t<div class=\"card-header\">\n\t\t\t\t<h3>Log In</h3>\n\t\t\t\t<div class=\"d-flex justify-content-end social_icon\">\n\t\t\t\t\t<span><i class=\"fab fa-facebook-square\"></i></span>\n\t\t\t\t\t<span><i class=\"fab fa-google-plus-square\"></i></span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"card-body\">\n\t\t\t\t  <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\n\t\t\t\t\t    <div class=\"input-group form-group\">\n\t\t\t\t\t\t      <div class=\"input-group-prepend\">\n\t\t\t\t\t\t\t        <span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      <input type=\"text\" class=\"form-control\" placeholder=\"username\" formControlName=\"username\">\n\n\t\t\t        </div>\n\t\t\t\t\t    <div class=\"input-group form-group\">\n\t\t\t\t\t\t      <div class=\"input-group-prepend\">\n\t\t\t\t\t\t\t        <span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      <input type=\"password\" class=\"form-control\" placeholder=\"password\" formControlName=\"password\">\n\t\t\t\t\t    </div>\n\t\t\t\t\t    <div class=\"row align-items-center remember\">\n\t\t\t\t\t\t      <input type=\"checkbox\">Remember Me\n\t\t\t\t\t    </div>\n\t\t\t\t\t    <div class=\"form-group\">\n\t\t\t\t\t\t      <input type=\"submit\" value=\"Login\" class=\"btn float-right login_btn\">\n\t\t\t\t\t    </div>\n\t\t\t\t  </form>\n\t\t\t</div>\n\t\t\t<div class=\"card-footer\">\n\t\t\t\t  <div class=\"d-flex justify-content-center links\">\n\t\t\t\t\t    Don't have an account?<a href=\"\" routerLink=\"/signup\">Sign Up</a>\n\t\t\t\t  </div>\n\t\t\t\t  <div class=\"d-flex justify-content-center\">\n\t\t\t\t\t    <a href=\"#\">Forgot your password?</a>\n\t\t\t\t  </div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n");
 
 /***/ }),
 
@@ -84,7 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"container\">\n    <br>\n    <div class=\"text-center\"><h1>MUSIC-ON</h1></div>\n    <hr>\n\n    <div class=\"row justify-content-center\">\n        <div class=\"col-md-6\">\n            <div class=\"card\">\n                <header class=\"card-header\">\n\t                  <a href=\"\" routerLink=\"/login\" class=\"float-right btn btn-outline-primary mt-1\">Log in</a>\n\t                  <h4 class=\"card-title mt-2\">Sign Up</h4>\n                </header>\n                <article class=\"card-body\">\n                    <form>\n\t                      <div class=\"form-row\">\n\t\t                        <div class=\"col form-group\">\n\t\t\t                          <label>First name </label>\n\t\t  \t                        <input type=\"text\" class=\"form-control\" placeholder=\"\">\n\t\t                        </div> <!-- form-group end.// -->\n\t\t                        <div class=\"col form-group\">\n\t\t\t                          <label>Last name</label>\n\t\t  \t                        <input type=\"text\" class=\"form-control\" placeholder=\" \">\n\t\t                        </div> <!-- form-group end.// -->\n\t                      </div> <!-- form-row end.// -->\n\t                      <div class=\"form-group\">\n\t\t                        <label>Email address</label>\n\t\t                        <input type=\"email\" class=\"form-control\" placeholder=\"\">\n\t\t                        <small class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n\t\t\t                      <label class=\"form-check form-check-inline\">\n\t\t                            <input class=\"form-check-input\" type=\"radio\" name=\"gender\" value=\"option1\">\n\t\t                            <span class=\"form-check-label\"> Male </span>\n\t\t                        </label>\n\t\t                        <label class=\"form-check form-check-inline\">\n\t\t                            <input class=\"form-check-input\" type=\"radio\" name=\"gender\" value=\"option2\">\n\t\t                            <span class=\"form-check-label\"> Female</span>\n\t\t                        </label>\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n\t\t                        <label>Country</label>\n\t\t                        <select id=\"inputState\" class=\"form-control\">\n\t\t                            <option> Choose...</option>\n\t\t                            <option>Uzbekistan</option>\n\t\t                            <option>Russia</option>\n\t\t                            <option selected=\"\">United States</option>\n\t\t                            <option>India</option>\n\t\t                            <option>Afganistan</option>\n\t\t                        </select>\n\t\t                    </div> <!-- form-group end.// -->\n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Username</label>\n\t                          <input type=\"text\" class=\"form-control\" placeholder=\"\">\n\t                      </div> <!-- form-group end.// -->  \n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Create password</label>\n\t                          <input class=\"form-control\" type=\"password\">\n\t                      </div> <!-- form-group end.// -->  \n\t                      <div class=\"form-group\">\n                            <button type=\"submit\" class=\"btn btn-primary btn-block\"> Register  </button>\n                        </div> <!-- form-group// -->\n                    </form>\n                </article> <!-- card-body end .// -->\n                <div class=\"border-top card-body text-center\">Have an account? <a href=\"\" routerLink=\"/login\">Log In</a></div>\n            </div> <!-- card.// -->\n        </div> <!-- col.//-->\n\n    </div> <!-- row.//-->\n\n\n</div> \n<!--container end.//-->\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"container\">\n    <br>\n    <div class=\"text-center\"><h1>MUSIC-ON</h1></div>\n    <hr>\n\n    <div class=\"row justify-content-center\">\n        <div class=\"col-md-6\">\n            <div class=\"card\">\n                <header class=\"card-header\">\n\t                  <a href=\"\" routerLink=\"/login\" class=\"float-right btn btn-outline-primary mt-1\">Log in</a>\n\t                  <h4 class=\"card-title mt-2\">Sign Up</h4>\n                </header>\n                <article class=\"card-body\">\n                    <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\n\t                      <div class=\"form-row\">\n\t\t                        <div class=\"col form-group\">\n\t\t\t                          <label>First name </label>\n\t\t  \t                        <input type=\"text\" class=\"form-control\" placeholder=\"\" formControlName=\"firstName\">\n\t\t                        </div> <!-- form-group end.// -->\n\t\t                        <div class=\"col form-group\">\n\t\t\t                          <label>Last name</label>\n\t\t  \t                        <input type=\"text\" class=\"form-control\" placeholder=\" \" formControlName=\"lastName\">\n\t\t                        </div> <!-- form-group end.// -->\n\t                      </div> <!-- form-row end.// -->\n\t                      <div class=\"form-group\">\n\t\t                        <label>Email address</label>\n\t\t                        <input type=\"email\" class=\"form-control\" placeholder=\"\" formControlName=\"email\">\n\t\t                        <small class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n\t\t\t                      <label class=\"form-check form-check-inline\">\n\t\t                            <input class=\"form-check-input\" type=\"radio\" name=\"gender\" value=\"male\" formControlName=\"gender\">\n\t\t                            <span class=\"form-check-label\"> Male </span>\n\t\t                        </label>\n\t\t                        <label class=\"form-check form-check-inline\">\n\t\t                            <input class=\"form-check-input\" type=\"radio\" name=\"gender\" value=\"female\" formControlName=\"gender\">\n\t\t                            <span class=\"form-check-label\"> Female</span>\n\t\t                        </label>\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n\t\t                        <label>Country</label>\n\t\t                        <select id=\"inputState\" class=\"form-control\" formControlName=\"country\">\n                                <option *ngFor=\"let country of country_list\" value=\"{{ country }}\">{{ country }}</option>\n\t\t                            <option selected=\"\">United States</option>\n\t\t                        </select>\n\t\t                    </div> <!-- form-group end.// -->\n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Username</label>\n\t                          <input type=\"text\" class=\"form-control\" placeholder=\"\" formControlName=\"username\">\n\t                      </div> <!-- form-group end.// -->\n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Create password</label>\n\t                          <input class=\"form-control\" type=\"password\" formControlName=\"password\">\n\t                      </div> <!-- form-group end.// -->\n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Confirm password</label>\n\t                          <input class=\"form-control\" type=\"password\" formControlName=\"confirmPassword\">\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n                            <button type=\"submit\" class=\"btn btn-primary btn-block\"> Register  </button>\n                        </div> <!-- form-group// -->\n                    </form>\n                </article> <!-- card-body end .// -->\n                <div class=\"border-top card-body text-center\">Have an account? <a href=\"\" routerLink=\"/login\">Log In</a></div>\n            </div> <!-- card.// -->\n        </div> <!-- col.//-->\n\n    </div> <!-- row.//-->\n\n\n</div> \n<!--container end.//-->\n");
 
 /***/ }),
 
@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"\" routerLink=\"/\">MUSIC ON</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"/\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"new_song\">Upload Song</a>\n      </li>\n      <li class=\"nav-item\">\n          <a class=\"nav-link\" href=\"\" routerLink=\"album/create\">New Album</a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n\n    <ul class=\"navbar-nav left-nav\">\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/login\">\n                Login\n                <span class=\"oi oi-account-login\" title=\"account login\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/signup\">\n                Sign Up\n                <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n    </ul>\n  </div>\n</nav>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"\" routerLink=\"/\">MUSIC ON</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"/\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"new_song\">Upload Song</a>\n      </li>\n      <li class=\"nav-item\">\n          <a class=\"nav-link\" href=\"\" routerLink=\"album/create\">New Album</a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n\n    <ul class=\"navbar-nav left-nav\" *ngIf=\"!auth.isAuthenticated() ; else user\">\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/login\">\n                Login\n                <span class=\"oi oi-account-login\" title=\"account login\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/signup\">\n                Sign Up\n                <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n    </ul>\n    <ng-template #user>\n        <ul class=\"navbar-nav left-nav\">\n            <li class=\"nav-item dropdown\">\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    {{ auth.user.username }}\n                    <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n                </a>\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdown\">\n                    <a class=\"dropdown-item\" href=\"#\">Profile</a>\n                    <div class=\"dropdown-divider\"></div>\n                    <a class=\"dropdown-item\" href=\"\">\n                        Logout\n                        <span class=\"oi oi-account-logout\" title=\"account login\" aria-hidden=\"true\"></span>\n                    </a>\n                </div>\n            </li>\n        </ul>\n    </ng-template>\n  </div>\n</nav>\n");
 
 /***/ }),
 
@@ -395,32 +395,6 @@ function __importDefault(mod) {
 
 /***/ }),
 
-/***/ "./src/app/Album.ts":
-/*!**************************!*\
-  !*** ./src/app/Album.ts ***!
-  \**************************/
-/*! exports provided: Album */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Album", function() { return Album; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-
-class Album {
-    constructor(id, name, artist, releaseDate, coverArt, songs) {
-        this.id = id;
-        this.name = name;
-        this.artist = artist;
-        this.releaseDate = releaseDate;
-        this.coverArt = coverArt;
-        this.songs = songs;
-    }
-}
-
-
-/***/ }),
-
 /***/ "./src/app/album-collection/album-collection.component.css":
 /*!*****************************************************************!*\
   !*** ./src/app/album-collection/album-collection.component.css ***!
@@ -519,7 +493,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
 /* harmony import */ var _amplitude_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../amplitude.service */ "./src/app/amplitude.service.ts");
-/* harmony import */ var _Album__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Album */ "./src/app/Album.ts");
+/* harmony import */ var _models_album__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../models/album */ "./src/app/models/album.ts");
 
 
 
@@ -534,7 +508,7 @@ let AlbumComponent = class AlbumComponent {
         this.route = route;
         this.api = api;
         this.amplitude = amplitude;
-        this.album = new _Album__WEBPACK_IMPORTED_MODULE_5__["Album"](1, '', '', '', '', []);
+        this.album = new _models_album__WEBPACK_IMPORTED_MODULE_5__["Album"](1, '', '', '', '', []);
     }
     ngOnInit() {
         this.getAlbum();
@@ -992,6 +966,61 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/auth/auth.service.ts":
+/*!**************************************!*\
+  !*** ./src/app/auth/auth.service.ts ***!
+  \**************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _models_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/user */ "./src/app/models/user.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+
+
+
+
+let AuthService = class AuthService {
+    constructor() {
+        this.apiUrl = 'http://localhost:8080/auth/';
+        this.username = 'gabo';
+        this.password = 'password';
+    }
+    login(user) {
+        if (user.username === this.username && user.password === this.password) {
+            this.user = new _models_user__WEBPACK_IMPORTED_MODULE_2__["User"](1, this.username, '', '', '', this.password, '');
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(this.user);
+        }
+        else {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])('username or password incorrect.');
+        }
+    }
+    logout() {
+        this.user = null;
+    }
+    signup(user) {
+        this.user = user;
+        this.user.id = 1;
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(this.user);
+    }
+    isAuthenticated() {
+        return this.user != null;
+    }
+};
+AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], AuthService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/auth/login/login.component.css":
 /*!************************************************!*\
   !*** ./src/app/auth/login/login.component.css ***!
@@ -1017,13 +1046,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var angular2_notifications__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angular2-notifications */ "./node_modules/angular2-notifications/angular2-notifications.umd.js");
+/* harmony import */ var angular2_notifications__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angular2_notifications__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
 
 
 let LoginComponent = class LoginComponent {
-    constructor() { }
+    constructor(formBuilder, authService, notifier, router) {
+        this.formBuilder = formBuilder;
+        this.authService = authService;
+        this.notifier = notifier;
+        this.router = router;
+        this.form = this.formBuilder.group({
+            username: [''],
+            password: ['']
+        });
+    }
     ngOnInit() {
     }
+    onSubmit() {
+        console.log(this.form.value);
+        this.authService.login(this.form.value).subscribe((user) => {
+            console.log(user);
+            this.router.navigate(['/']);
+        }, (error) => {
+            console.log('error: ' + error);
+            this.notifier.alert(error);
+        });
+    }
 };
+LoginComponent.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+    { type: _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
+    { type: angular2_notifications__WEBPACK_IMPORTED_MODULE_5__["NotificationsService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
+];
 LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-login',
@@ -1061,13 +1124,64 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignupComponent", function() { return SignupComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth/auth.service.ts");
+/* harmony import */ var src_app_models_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/models/user */ "./src/app/models/user.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
 
 
 let SignupComponent = class SignupComponent {
-    constructor() { }
+    constructor(formBuilder, authService, router) {
+        this.formBuilder = formBuilder;
+        this.authService = authService;
+        this.router = router;
+        this.country_list = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas",
+            "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands",
+            "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica",
+            "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
+            "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana",
+            "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India",
+            "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia",
+            "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania",
+            "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia",
+            "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
+            "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles",
+            "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan",
+            "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia",
+            "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay",
+            "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
+        this.form = this.formBuilder.group({
+            firstName: [''],
+            lastName: [''],
+            gender: [''],
+            email: [''],
+            username: [''],
+            password: [''],
+            confirmPassword: [''],
+            country: ['']
+        });
+    }
     ngOnInit() {
     }
+    onSubmit() {
+        console.log(this.form.value);
+        const vals = Object.assign({}, this.form.value);
+        const user = new src_app_models_user__WEBPACK_IMPORTED_MODULE_4__["User"](null, vals.username, vals.firstName, vals.lastName, vals.gender, vals.password, vals.email);
+        this.authService.signup(user).subscribe((user) => {
+            console.log(user);
+            this.router.navigate(['/']);
+        });
+    }
 };
+SignupComponent.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+    { type: _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
+];
 SignupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-signup',
@@ -1076,6 +1190,82 @@ SignupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     })
 ], SignupComponent);
 
+
+
+/***/ }),
+
+/***/ "./src/app/models/album.ts":
+/*!*********************************!*\
+  !*** ./src/app/models/album.ts ***!
+  \*********************************/
+/*! exports provided: Album */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Album", function() { return Album; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class Album {
+    constructor(id, name, artist, releaseDate, coverArt, songs) {
+        this.id = id;
+        this.name = name;
+        this.artist = artist;
+        this.releaseDate = releaseDate;
+        this.coverArt = coverArt;
+        this.songs = songs;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/models/playlist.ts":
+/*!************************************!*\
+  !*** ./src/app/models/playlist.ts ***!
+  \************************************/
+/*! exports provided: Playlist */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Playlist", function() { return Playlist; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class Playlist {
+    constructor(playlist_name, cover_art_url, songs) {
+        this.playlist_name = playlist_name;
+        this.cover_art_url = cover_art_url;
+        this.songs = songs;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/models/user.ts":
+/*!********************************!*\
+  !*** ./src/app/models/user.ts ***!
+  \********************************/
+/*! exports provided: User */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class User {
+    constructor(id, username, firstName, lastName, gender, password, email) {
+        this.id = id;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.password = password;
+        this.email = email;
+    }
+}
 
 
 /***/ }),
@@ -1105,13 +1295,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../auth/auth.service */ "./src/app/auth/auth.service.ts");
+
 
 
 let NavbarComponent = class NavbarComponent {
-    constructor() { }
+    constructor(auth) {
+        this.auth = auth;
+    }
     ngOnInit() {
     }
 };
+NavbarComponent.ctorParameters = () => [
+    { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+];
 NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-navbar',
@@ -1423,29 +1620,6 @@ PlayerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/playlist.ts":
-/*!*****************************!*\
-  !*** ./src/app/playlist.ts ***!
-  \*****************************/
-/*! exports provided: Playlist */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Playlist", function() { return Playlist; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-
-class Playlist {
-    constructor(playlist_name, cover_art_url, songs) {
-        this.playlist_name = playlist_name;
-        this.cover_art_url = cover_art_url;
-        this.songs = songs;
-    }
-}
-
-
-/***/ }),
-
 /***/ "./src/app/playlist/playlist.component.css":
 /*!*************************************************!*\
   !*** ./src/app/playlist/playlist.component.css ***!
@@ -1471,7 +1645,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PlaylistComponent", function() { return PlaylistComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _playlist__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../playlist */ "./src/app/playlist.ts");
+/* harmony import */ var _models_playlist__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/playlist */ "./src/app/models/playlist.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
 /* harmony import */ var _amplitude_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../amplitude.service */ "./src/app/amplitude.service.ts");
@@ -1489,7 +1663,7 @@ let PlaylistComponent = class PlaylistComponent {
         this.route = route;
         this.api = api;
         this.amplitude = amplitude;
-        this.playlist = new _playlist__WEBPACK_IMPORTED_MODULE_2__["Playlist"]('Playlist_name', 'art', null);
+        this.playlist = new _models_playlist__WEBPACK_IMPORTED_MODULE_2__["Playlist"]('Playlist_name', 'art', null);
     }
     ngOnInit() {
         this.getPlaylist();
