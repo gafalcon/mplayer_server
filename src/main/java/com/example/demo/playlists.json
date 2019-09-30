@@ -24,11 +24,6 @@
             "id": 4,
             "playlist_name": "Playlist 5",
             "cover_art_url": "https://521dimensions.com/img/open-source/amplitudejs/album-art/soon-it-will-be-cold-enough.jpg"
-        },
-        {
-            "id": 5,
-            "playlist_name": "Playlist 6",
-            "cover_art_url": "https://521dimensions.com/img/open-source/amplitudejs/album-art/key.jpg"
         }
     ],
     "full_playlists": [
@@ -40,28 +35,28 @@
                     "name": "6 AM",
                     "artist": "J Balvin",
                     "album": "Album x",
-                    "url": "/assets/songs/6am.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/6am.mp3",
                     "cover_art_url": ""
                 },
                 {
                     "name": "Ay Vamos",
                     "artist": "J Balvin",
                     "album": "Album X",
-                    "url": "/assets/songs/ay_vamos.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/ay_vamos.mp3",
                     "cover_art_url": ""
                 },
                 {
                     "name": "Danza Kuduro",
                     "artist": "Don Omar",
                     "album": "Album X",
-                    "url": "/assets/songs/danza_kuduro.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/danza_kuduro.mp3",
                     "cover_art_url": "https://521dimensions.com/img/open-source/amplitudejs/album-art/die-digital.jpg"
                 },
                 {
                     "name": "Mal de Amores",
                     "artist": "Juan Magán",
                     "album": "Album X",
-                    "url": "/assets/songs/mal_de_amores.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/mal_de_amores.mp3",
                     "cover_art_url": "https://521dimensions.com/img/open-source/amplitudejs/album-art/we-are-but-hunks-of-wood.jpg"
                 }
             ]
@@ -122,28 +117,28 @@
                     "name": "Can't Stop me",
                     "artist": "Afrojack",
                     "album": "Album Y",
-                    "url": "/assets/songs/cant_stop_me.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/cant_stop_me.mp3",
                     "cover_art_url": ""
                 },
                 {
                     "name": "Creep",
                     "artist": "Radiohead",
                     "album": "Album Y",
-                    "url": "/assets/songs/creep.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/creep.mp3",
                     "cover_art_url": ""
                 },
                 {
                     "name": "Firestone",
                     "artist": "Kygo",
                     "album": "Album Y",
-                    "url": "/assets/songs/firestone.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/firestone.mp3",
                     "cover_art_url": ""
                 },
                 {
                     "name": "Hey There Delilah",
                     "artist": "Plain White Ts",
                     "album": "Album Y",
-                    "url": "/assets/songs/hey_there_delila.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/hey_there_delila.mp3",
                     "cover_art_url": ""
                 }            ]
         },
@@ -155,28 +150,28 @@
                     "name": "I don't wanna miss a thing",
                     "artist": "Aerosmith",
                     "album": "Album Z",
-                    "url": "/assets/songs/i_dont_wanna_miss_a_thing.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/i_dont_wanna_miss_a_thing.mp3",
                     "cover_art_url": ""
                 },
                 {
                     "name": "Mariposas",
                     "artist": "Enanitos Verdes",
                     "album": "Album Z",
-                    "url": "/assets/songs/mariposas.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/mariposas.mp3",
                     "cover_art_url": ""
                 },
                 {
                     "name": "Midnight Sun",
                     "artist": "Jimkata",
                     "album": "Album Z",
-                    "url": "/assets/songs/midnight_sun.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/midnight_sun.mp3",
                     "cover_art_url": ""
                 },
                 {
                     "name": "Photograph",
                     "artist": "Ed Sheeran",
                     "album": "Album Z",
-                    "url": "/assets/songs/photograph.mp3",
+                    "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/photograph.mp3",
                     "cover_art_url": ""
                 }
             ]
@@ -188,37 +183,23 @@
                 {"name":"Piensas",
                  "artist": "Pitbull",
                  "album": "Album W",
-                 "url": "/assets/songs/piensas.mp3",
+                 "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/piensas.mp3",
                  "cover_art_url": ""},
                 {"name":"Scars",
                  "artist": "Papa Roach",
                  "album": "Album W",
-                 "url": "/assets/songs/scars.mp3",
+                 "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/scars.mp3",
                  "cover_art_url": ""},
                 {"name":"The Lazy Song",
                  "artist": "Bruno Mars",
                  "album": "Album W",
-                 "url": "/assets/songs/the_lazy_song.mp3",
+                 "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/the_lazy_song.mp3",
                  "cover_art_url": ""},
                 {"name":"Yo también",
                  "artist": "Marc Anthony",
                  "album": "Album W",
-                 "url": "/assets/songs/yo_tambien.mp3",
+                 "url": "https://player-storage.s3.us-east-2.amazonaws.com/songs/yo_tambien.mp3",
                  "cover_art_url": ""}
-            ]
-        },
-        {
-            "playlist_name": "Playlist 4",
-            "cover_art_url": "http://cdn.last.fm/flatness/responsive/2/noimage/default_album_300_g4.png",
-            "songs": [
-                {"name":"", "artist": "", "album": "", "url": "", "cover_art_url": ""}
-            ]
-        },
-        {
-            "playlist_name": "Playlist 5",
-            "cover_art_url": "http://cdn.last.fm/flatness/responsive/2/noimage/default_album_300_g4.png",
-            "songs": [
-                {"name":"", "artist": "", "album": "", "url": "", "cover_art_url": ""}
             ]
         }
     ],
