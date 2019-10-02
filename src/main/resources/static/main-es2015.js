@@ -684,7 +684,7 @@ __webpack_require__.r(__webpack_exports__);
 let ApiService = class ApiService {
     constructor(http) {
         this.http = http;
-        this.apiURL = 'http://localhost:8080/api/';
+        this.apiURL = '/api/';
         this.songs = [
             {
                 id: 1,
