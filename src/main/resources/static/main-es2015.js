@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.3.1/css/all.css\" integrity=\"sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU\" crossorigin=\"anonymous\">\n<div class=\"container\">\n\t<div class=\"d-flex justify-content-center h-100\">\n\t\t<div class=\"card\">\n\t\t\t<div class=\"card-header\">\n\t\t\t\t<h3>Log In</h3>\n\t\t\t\t<div class=\"d-flex justify-content-end social_icon\">\n\t\t\t\t\t<span><i class=\"fab fa-facebook-square\"></i></span>\n\t\t\t\t\t<span><i class=\"fab fa-google-plus-square\"></i></span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"card-body\">\n\t\t\t\t  <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\n\t\t\t\t\t    <div class=\"input-group form-group\">\n\t\t\t\t\t\t      <div class=\"input-group-prepend\">\n\t\t\t\t\t\t\t        <span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      <input type=\"text\" class=\"form-control\" placeholder=\"username\" formControlName=\"username\">\n\n\t\t\t        </div>\n\t\t\t\t\t    <div class=\"input-group form-group\">\n\t\t\t\t\t\t      <div class=\"input-group-prepend\">\n\t\t\t\t\t\t\t        <span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      <input type=\"password\" class=\"form-control\" placeholder=\"password\" formControlName=\"password\">\n\t\t\t\t\t    </div>\n\t\t\t\t\t    <div class=\"row align-items-center remember\">\n\t\t\t\t\t\t      <input type=\"checkbox\">Remember Me\n\t\t\t\t\t    </div>\n\t\t\t\t\t    <div class=\"form-group\">\n\t\t\t\t\t\t      <input type=\"submit\" value=\"Login\" class=\"btn float-right login_btn\">\n\t\t\t\t\t    </div>\n\t\t\t\t  </form>\n\t\t\t</div>\n\t\t\t<div class=\"card-footer\">\n\t\t\t\t  <div class=\"d-flex justify-content-center links\">\n\t\t\t\t\t    Don't have an account?<a href=\"\" routerLink=\"/signup\">Sign Up</a>\n\t\t\t\t  </div>\n\t\t\t\t  <div class=\"d-flex justify-content-center\">\n\t\t\t\t\t    <a href=\"#\">Forgot your password?</a>\n\t\t\t\t  </div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.3.1/css/all.css\" integrity=\"sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU\" crossorigin=\"anonymous\">\n<div class=\"container\">\n\t<div class=\"d-flex justify-content-center h-100\">\n\t\t<div class=\"card\">\n\t\t\t<div class=\"card-header\">\n\t\t\t\t<h3>Log In</h3>\n\t\t\t\t<div class=\"d-flex justify-content-end social_icon\">\n\t\t\t\t\t<span><i class=\"fab fa-facebook-square\"></i></span>\n\t\t\t\t\t<span><i class=\"fab fa-google-plus-square\"></i></span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"card-body\">\n\t\t\t\t  <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\" [class.was-validated]=\"wasValidated\">\n\t\t\t\t\t    <div class=\"input-group form-group\">\n\t\t\t\t\t\t      <div class=\"input-group-prepend\">\n\t\t\t\t\t\t\t        <span class=\"input-group-text\"><i class=\"fas fa-user\"></i></span>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      <input type=\"text\" class=\"form-control\" [class.is-invalid]=\"usernameValid()\" placeholder=\"username\" formControlName=\"username\" required>\n                  <div class=\"invalid-feedback\">\n                      {{ usernameError }}\n                  </div>\n\t\t\t        </div>\n\t\t\t\t\t    <div class=\"input-group form-group\">\n\t\t\t\t\t\t      <div class=\"input-group-prepend\">\n\t\t\t\t\t\t\t        <span class=\"input-group-text\"><i class=\"fas fa-key\"></i></span>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      <input type=\"password\" class=\"form-control\" [class.is-invalid]=\"passwordValid()\" placeholder=\"password\" formControlName=\"password\" required>\n                  <div class=\"invalid-feedback\">\n                      {{ passwordError }}\n                  </div>\n\t\t\t\t\t    </div>\n\t\t\t\t\t    <div class=\"row align-items-center remember\">\n\t\t\t\t\t\t      <input type=\"checkbox\">Remember Me\n\t\t\t\t\t    </div>\n\t\t\t\t\t    <div class=\"form-group\">\n\t\t\t\t\t\t      <input type=\"submit\" value=\"Login\" class=\"btn float-right login_btn\">\n\t\t\t\t\t    </div>\n\t\t\t\t  </form>\n\t\t\t</div>\n\t\t\t<div class=\"card-footer\">\n\t\t\t\t  <div class=\"d-flex justify-content-center links\">\n\t\t\t\t\t    Don't have an account?<a href=\"\" routerLink=\"/signup\">Sign Up</a>\n\t\t\t\t  </div>\n\t\t\t\t  <div class=\"d-flex justify-content-center\">\n\t\t\t\t\t    <a href=\"#\">Forgot your password?</a>\n\t\t\t\t  </div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n");
 
 /***/ }),
 
@@ -84,7 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"container\">\n    <br>\n\n    <div class=\"row justify-content-center\">\n        <div class=\"col-md-6\">\n            <div class=\"card\">\n                <header class=\"card-header\">\n\t                  <a href=\"\" routerLink=\"/login\" class=\"float-right btn btn-outline-primary mt-1\">Log in</a>\n\t                  <h4 class=\"card-title mt-2\">Sign Up</h4>\n                </header>\n                <article class=\"card-body\">\n                    <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\n\t                      <div class=\"form-row\">\n\t\t                        <div class=\"col form-group\">\n\t\t\t                          <label>First name </label>\n\t\t  \t                        <input type=\"text\" class=\"form-control\" placeholder=\"\" formControlName=\"firstName\">\n\t\t                        </div> <!-- form-group end.// -->\n\t\t                        <div class=\"col form-group\">\n\t\t\t                          <label>Last name</label>\n\t\t  \t                        <input type=\"text\" class=\"form-control\" placeholder=\" \" formControlName=\"lastName\">\n\t\t                        </div> <!-- form-group end.// -->\n\t                      </div> <!-- form-row end.// -->\n\t                      <div class=\"form-group\">\n\t\t                        <label>Email address</label>\n\t\t                        <input type=\"email\" class=\"form-control\" placeholder=\"\" formControlName=\"email\">\n\t\t                        <small class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n\t\t\t                      <label class=\"form-check form-check-inline\">\n\t\t                            <input class=\"form-check-input\" type=\"radio\" name=\"gender\" value=\"male\" formControlName=\"gender\">\n\t\t                            <span class=\"form-check-label\"> Male </span>\n\t\t                        </label>\n\t\t                        <label class=\"form-check form-check-inline\">\n\t\t                            <input class=\"form-check-input\" type=\"radio\" name=\"gender\" value=\"female\" formControlName=\"gender\">\n\t\t                            <span class=\"form-check-label\"> Female</span>\n\t\t                        </label>\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n\t\t                        <label>Country</label>\n\t\t                        <select id=\"inputState\" class=\"form-control\" formControlName=\"country\">\n                                <option *ngFor=\"let country of country_list\" value=\"{{ country }}\">{{ country }}</option>\n\t\t                            <option selected=\"\">United States</option>\n\t\t                        </select>\n\t\t                    </div> <!-- form-group end.// -->\n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Username</label>\n\t                          <input type=\"text\" class=\"form-control\" placeholder=\"\" formControlName=\"username\">\n\t                      </div> <!-- form-group end.// -->\n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Create password</label>\n\t                          <input class=\"form-control\" type=\"password\" formControlName=\"password\">\n\t                      </div> <!-- form-group end.// -->\n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Confirm password</label>\n\t                          <input class=\"form-control\" type=\"password\" formControlName=\"confirmPassword\">\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n                            <button type=\"submit\" class=\"btn btn-primary btn-block\"> Register  </button>\n                        </div> <!-- form-group// -->\n                    </form>\n                </article> <!-- card-body end .// -->\n                <div class=\"border-top card-body text-center\">Have an account? <a href=\"\" routerLink=\"/login\">Log In</a></div>\n            </div> <!-- card.// -->\n        </div> <!-- col.//-->\n\n    </div> <!-- row.//-->\n\n\n</div> \n<!--container end.//-->\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"container\">\n    <br>\n\n    <div class=\"row justify-content-center\">\n        <div class=\"col-md-6\">\n            <div class=\"card\">\n                <header class=\"card-header\">\n\t                  <a href=\"\" routerLink=\"/login\" class=\"float-right btn btn-outline-primary mt-1\">Log in</a>\n\t                  <h4 class=\"card-title mt-2\">Sign Up</h4>\n                </header>\n                <article class=\"card-body\">\n                    <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\n\t                      <div class=\"form-row\">\n\t\t                        <div class=\"col form-group\">\n\t\t\t                          <label>First name </label>\n\t  \t                        <input type=\"text\" class=\"form-control\" [class]=\"getFieldClass(firstName)\" placeholder=\"\" formControlName=\"firstName\">\n                              <div class=\"invalid-input\" *ngIf=\"invalidField(firstName)\">\n                                  You need to enter your first name.\n                              </div>\n\t\t                        </div> <!-- form-group end.// -->\n\t\t                        <div class=\"col form-group\">\n\t\t\t                          <label>Last name</label>\n\t\t  \t                        <input type=\"text\" class=\"form-control\" [class]=\"getFieldClass(lastName)\" placeholder=\" \" formControlName=\"lastName\">\n                                <div class=\"invalid-input\" *ngIf=\"invalidField(lastName)\">\n                                    You need to enter your last name.\n                                </div>\n\t\t                        </div> <!-- form-group end.// -->\n\t                      </div> <!-- form-row end.// -->\n\t                      <div class=\"form-group\">\n\t\t                        <label>Email address</label>\n\t\t                        <input type=\"email\" class=\"form-control\" [class]=\"getFieldClass(email)\" placeholder=\"\" formControlName=\"email\">\n\t\t                        <small class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\n\n                            <div class=\"invalid-input\" *ngIf=\"invalidField(email)\">\n                                You need to enter a valid email.\n                            </div>\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n                            <label>Gender</label>\n                            <br />\n\t\t\t                      <label class=\"form-check form-check-inline\">\n\t\t                            <input class=\"form-check-input\" [class]=\"getFieldClass(gender, 'form-check-input')\" type=\"radio\" name=\"gender\" value=\"male\" formControlName=\"gender\">\n\t\t                            <span class=\"form-check-label\"> Male </span>\n\t\t                        </label>\n\t\t                        <label class=\"form-check form-check-inline\">\n\t\t                            <input class=\"form-check-input\" [class]=\"getFieldClass(gender, 'form-check-input')\" type=\"radio\" name=\"gender\" value=\"female\" formControlName=\"gender\">\n\t\t                            <span class=\"form-check-label\"> Female</span>\n\t\t                        </label>\n\n                            <div class=\"invalid-input\" *ngIf=\"invalidField(gender)\">\n                                Please select your gender.\n                            </div>\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n\t\t                        <label>Country</label>\n\t\t                        <select id=\"inputState\" class=\"form-control\" [class]=\"getFieldClass(country)\" formControlName=\"country\">\n                                <option *ngFor=\"let country of country_list\" value=\"{{ country }}\">{{ country }}</option>\n\t\t                            <option selected=\"\">United States</option>\n\t\t                        </select>\n                            <div class=\"invalid-input\" *ngIf=\"invalidField(country)\">\n                                Please select your country.\n                            </div>\n\t\t                    </div> <!-- form-group end.// -->\n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Username</label>\n\t                          <input type=\"text\" class=\"form-control\" [class]=\"getFieldClass(username)\" placeholder=\"\" formControlName=\"username\">\n                            <div class=\"invalid-input\" *ngIf=\"invalidField(username)\">\n                                You need to select an username.\n                            </div>\n\t                      </div> <!-- form-group end.// -->\n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Create password</label>\n\t                          <input class=\"form-control\" [class]=\"getFieldClass(password)\" type=\"password\" formControlName=\"password\">\n\n                            <div class=\"invalid-input\" *ngIf=\"invalidField(password)\">\n                                You need to enter a password.\n                            </div>\n\t                      </div> <!-- form-group end.// -->\n\t\t                    <div class=\"form-group\">\n\t\t                        <label>Confirm password</label>\n\t                          <input class=\"form-control\" [class]=\"getConfirmPassClass()\" type=\"password\" formControlName=\"confirmPassword\">\n                            <div class=\"invalid-input\" *ngIf=\"invalidField(confirmPassword)\">\n                                You need to confirm your password.\n                            </div>\n                            <div class=\"invalid-input\" *ngIf=\"form.errors && form.errors.passwordMismatch\">\n                                The passwords must match.\n                            </div>\n\t                      </div> <!-- form-group end.// -->\n\t                      <div class=\"form-group\">\n                            <button type=\"submit\" class=\"btn btn-primary btn-block\"> Register  </button>\n                            <!-- <p> -->\n                            <!-- Form Status: {{ form.status }} <br /> -->\n                            <!-- </p> -->\n                        </div> <!-- form-group// -->\n                    </form>\n                </article> <!-- card-body end .// -->\n                <div class=\"border-top card-body text-center\">Have an account? <a href=\"\" routerLink=\"/login\">Log In</a></div>\n            </div> <!-- card.// -->\n        </div> <!-- col.//-->\n\n    </div> <!-- row.//-->\n\n\n</div> \n<!--container end.//-->\n");
 
 /***/ }),
 
@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"\" routerLink=\"/\">MUSIC ON</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"/\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"auth.isAuthenticated()\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"new_song\">Upload Song</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"auth.isAuthenticated()\">\n          <a class=\"nav-link\" href=\"\" routerLink=\"album/create\">New Album</a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n\n    <ul class=\"navbar-nav left-nav\" *ngIf=\"!auth.isAuthenticated() ; else user\">\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/login\">\n                Login\n                <span class=\"oi oi-account-login\" title=\"account login\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/signup\">\n                Sign Up\n                <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n    </ul>\n    <ng-template #user>\n        <ul class=\"navbar-nav left-nav\">\n            <li class=\"nav-item dropdown\">\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    {{ auth.user.username }}\n                    <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n                </a>\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdown\">\n                    <a class=\"dropdown-item\" href=\"#\">Profile</a>\n                    <div class=\"dropdown-divider\"></div>\n                    <a class=\"dropdown-item\" href=\"\">\n                        Logout\n                        <span class=\"oi oi-account-logout\" title=\"account login\" aria-hidden=\"true\"></span>\n                    </a>\n                </div>\n            </li>\n        </ul>\n    </ng-template>\n  </div>\n</nav>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"\" routerLink=\"/\">Music ON!</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"/\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item dropdown\" *ngIf=\"auth.isAuthenticated()\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              Upload\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n              <a class=\"dropdown-item\" href=\"\" routerLink=\"new_song\">Upload Song</a>\n              <a class=\"dropdown-item\" href=\"\" routerLink=\"album/create\">New Album</a>\n          </div>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n\n    <ul class=\"navbar-nav left-nav\" *ngIf=\"!auth.isAuthenticated() ; else user\">\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/login\">\n                Login\n                <span class=\"oi oi-account-login\" title=\"account login\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/signup\">\n                Sign Up\n                <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n    </ul>\n    <ng-template #user>\n        <ul class=\"navbar-nav left-nav\">\n            <li class=\"nav-item dropdown\">\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    {{ auth.user.username }}\n                    <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n                </a>\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdown\">\n                    <a class=\"dropdown-item\" href=\"#\">Profile</a>\n                    <div class=\"dropdown-divider\"></div>\n                    <a class=\"dropdown-item\" href=\"\">\n                        Logout\n                        <span class=\"oi oi-account-logout\" title=\"account login\" aria-hidden=\"true\"></span>\n                    </a>\n                </div>\n            </li>\n        </ul>\n    </ng-template>\n  </div>\n</nav>\n");
 
 /***/ }),
 
@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container upload-form\">\n    <div class=\"row\">\n        <div class=\"col\">\n            <h1>New Album</h1>\n            <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\n                <div class=\"row\">\n                    <div class=\"col-4\">\n                        <img class=\"\" [src]=\" coverArtUrl\">\n                        <div class=\"form-group\">\n                            <label for=\"exampleFormControlInput1\">Cover Art Image</label>\n                            <input #file type=\"file\" accept=\"image/*\" class=\"form-control-file\" id=\"exampleFormControlFile1\" formControlName=\"cover_art_img\" (change)=\"imageSelected(file.files)\">\n                        </div>\n                    </div>\n                    <div class=\"col-8\">\n                        <div class=\"form-group\">\n                            <label for=\"exampleFormControlInput1\">Name</label>\n                            <input type=\"tex\" class=\"form-control\" id=\"exampleFormControlInput1\" placeholder=\"\" formControlName=\"name\">\n                        </div>\n                        <div class=\"form-group\">\n                            <label for=\"exampleFormControlInput1\">Artist</label>\n                            <input type=\"tex\" class=\"form-control\" id=\"exampleFormControlInput1\" placeholder=\"\" formControlName=\"author\">\n                        </div>\n                        <div class=\"form-group\">\n                            <label for=\"exampleFormControlInput1\">Release Date</label>\n                            <input type=\"date\" class=\"form-control\" id=\"exampleFormControlInput1\" placeholder=\"\" formControlName=\"release_date\">\n                        </div>\n                    </div>\n                </div>\n\n                <br />\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <h2>List of Songs</h2>\n                    </div>\n                    <div class=\"col\">\n                        <a class=\"btn btn-primary btn-add-song\" href=\"\" (click)=\"addSongForm($event)\">Add Song</a>\n                    </div>\n                </div>\n\n                <div formArrayName=\"songs\">\n\n                    <div *ngFor=\"let songform of songs.controls; let i=index\">\n                        <div [formGroupName]=\"i\" class=\"form-row\">\n                            <label class=\"my-1 mr-2\">{{ i + 1 }}.</label>\n                            <div class=\"col\">\n                                <input class=\"form-control form-control-sm\" type=\"text\" placeholder=\"Name of the song\" formControlName=\"name\" />\n                            </div>\n                            <div class=\"col\">\n                                <input #file type=\"file\" class=\"form-control-file\" (change)=\"songFileSelected(file.files, i)\">\n                            </div>\n                        </div>\n\n                    </div>\n                </div>\n\n                <button class=\"btn btn-primary btn-lg\">Create Album</button>\n            </form>\n\n        </div>\n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container upload-form\">\n    <div class=\"row\">\n        <div class=\"col\">\n            <h1>New Album</h1>\n            <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\" [class.was-validated]=\"wasValidated\">\n                <div class=\"row\">\n                    <div class=\"col-4\">\n                        <img class=\"\" [src]=\" coverArtUrl\">\n                        <div class=\"custom-file\">\n                            <input #file type=\"file\" accept=\"image/*\" formControlName=\"cover_art_img\"  class=\"custom-file-input\" id=\"customFile\" (change)=\"imageSelected(file.files)\">\n                            <label class=\"custom-file-label\" [class.invalid-file]=\"invalidImage\" for=\"customFile\">Cover Art Image</label>\n                            <div class=\"invalid-file-feedback\">{{ imgFileError }}</div>\n                        </div>\n                    </div>\n                    <div class=\"col-8\">\n                        <div class=\"form-group\">\n                            <label for=\"exampleFormControlInput1\">Name</label>\n                            <input type=\"tex\" class=\"form-control\" id=\"exampleFormControlInput1\" placeholder=\"\" formControlName=\"name\" required>\n                            <div class=\"invalid-feedback\">\n                                Please enter a name for the album.\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <label for=\"exampleFormControlInput1\">Author</label>\n                            <input type=\"tex\" class=\"form-control\" id=\"exampleFormControlInput1\" placeholder=\"\" formControlName=\"author\" required>\n                            <div class=\"invalid-feedback\">\n                                Please enter the author of the album.\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <label for=\"exampleFormControlInput1\">Release Date</label>\n                            <input type=\"date\" class=\"form-control\" id=\"exampleFormControlInput1\" placeholder=\"\" formControlName=\"release_date\" required>\n                            <div class=\"invalid-feedback\">\n                                Please select a release date.\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <br />\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <h2>List of Songs</h2>\n                    </div>\n                    <div class=\"col\">\n                        <a class=\"btn btn-primary btn-add-song\" href=\"\" (click)=\"addSongForm($event)\">Add Song</a>\n                    </div>\n                </div>\n\n                <div formArrayName=\"songs\">\n\n                    <div *ngFor=\"let songform of songs.controls; let i=index\">\n                        <div [formGroupName]=\"i\" class=\"form-row\">\n                            <label class=\"my-1 mr-2\">{{ i + 1 }}.</label>\n                            <div class=\"col\">\n                                <input class=\"form-control form-control-sm\" type=\"text\" placeholder=\"Name of the song\" formControlName=\"name\" required/>\n                            </div>\n                            <div class=\"col\">\n                                <div class=\"custom-file form-control-sm\">\n                                    <input #file type=\"file\" accept=\"audio/*\" class=\"custom-file-input form-control-file\" (change)=\"songFileSelected(file.files, i, $event)\" required>\n                                    <label class=\"custom-file-label form-control-sm\" [class.invalid-file]=\"invalidImage\" for=\"customFile\">Audio File</label>\n                                    <div class=\"invalid-file-feedback\">{{ audioFileError[i] }}</div>\n                                </div>\n                                <!-- <input #file type=\"file\" accept=\"audio/*\" class=\"form-control-file\" (change)=\"songFileSelected(file.files, i)\" required> -->\n                            </div>\n                            <div class=\"col\">\n                                <button class=\"btn btn-small btn-danger btn-delete\" type=\"button\" (click)=\"deleteSongForm(i)\">\n                                    <span class=\"oi oi-delete\" title=\"plus\" aria-hidden=\"true\"></span>\n                                </button>\n                            </div>\n                        </div>\n\n                    </div>\n                </div>\n                <p>\n                   Form Status: {{ form.status }}\n                </p>\n                <button class=\"btn btn-primary btn-lg\">Create Album</button>\n            </form>\n\n        </div>\n    </div>\n</div>\n");
 
 /***/ }),
 
@@ -404,7 +404,7 @@ function __importDefault(mod) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("h1{\n    color: white;\n    margin-top: 10px;\n    font-family: \"Lato\", sans-serif;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWxidW0tY29sbGVjdGlvbi9hbGJ1bS1jb2xsZWN0aW9uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0lBQ1osZ0JBQWdCO0lBQ2hCLCtCQUErQjtBQUNuQyIsImZpbGUiOiJzcmMvYXBwL2FsYnVtLWNvbGxlY3Rpb24vYWxidW0tY29sbGVjdGlvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaDF7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIG1hcmdpbi10b3A6IDEwcHg7XG4gICAgZm9udC1mYW1pbHk6IFwiTGF0b1wiLCBzYW5zLXNlcmlmO1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("h1{\n    color: white;\n    margin-top: 10px;\n    font-family: \"Lato\", sans-serif;\n}\n\ndiv.song-to-add {\n    width: 45%;\n    padding: 10px;\n    background-color: white;\n    margin: 5px;\n    max-width: 250px;\n    border-radius: 20px;\n}\n\ndiv.song-to-add img {\n    border-radius: 6px;\n    /* margin-top: 50px; */\n    width: 100%; }\n\ndiv.song-to-add a.add-to-playlist-button {\n    background-color: white;\n    color: #CC5CAD;\n    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.12);\n    text-align: center;\n    max-width: 150px;\n    border-radius: 6px;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    margin: auto;\n    display: block;\n    margin-top: 10px;\n    font-weight: bold;\n    cursor: pointer; }\n\n/* Medium only */\n\n@media screen and (min-width: 40em) and (max-width: 63.9375em) {\n    div.song-to-add {\n        width: 40%;\n        padding: 5px; } }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWxidW0tY29sbGVjdGlvbi9hbGJ1bS1jb2xsZWN0aW9uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0lBQ1osZ0JBQWdCO0lBQ2hCLCtCQUErQjtBQUNuQzs7QUFFQTtJQUNJLFVBQVU7SUFDVixhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLFdBQVc7SUFDWCxnQkFBZ0I7SUFDaEIsbUJBQW1CO0FBQ3ZCOztBQUNBO0lBQ0ksa0JBQWtCO0lBQ2xCLHNCQUFzQjtJQUN0QixXQUFXLEVBQUU7O0FBQ2pCO0lBQ0ksdUJBQXVCO0lBQ3ZCLGNBQWM7SUFDZCw2Q0FBNkM7SUFDN0Msa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixrQkFBa0I7SUFDbEIsZ0JBQWdCO0lBQ2hCLG1CQUFtQjtJQUNuQixZQUFZO0lBQ1osY0FBYztJQUNkLGdCQUFnQjtJQUNoQixpQkFBaUI7SUFDakIsZUFBZSxFQUFFOztBQUVyQixnQkFBZ0I7O0FBQ2hCO0lBQ0k7UUFDSSxVQUFVO1FBQ1YsWUFBWSxFQUFFLEVBQUUiLCJmaWxlIjoic3JjL2FwcC9hbGJ1bS1jb2xsZWN0aW9uL2FsYnVtLWNvbGxlY3Rpb24uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImgxe1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xuICAgIGZvbnQtZmFtaWx5OiBcIkxhdG9cIiwgc2Fucy1zZXJpZjtcbn1cblxuZGl2LnNvbmctdG8tYWRkIHtcbiAgICB3aWR0aDogNDUlO1xuICAgIHBhZGRpbmc6IDEwcHg7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gICAgbWFyZ2luOiA1cHg7XG4gICAgbWF4LXdpZHRoOiAyNTBweDtcbiAgICBib3JkZXItcmFkaXVzOiAyMHB4O1xufVxuZGl2LnNvbmctdG8tYWRkIGltZyB7XG4gICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgIC8qIG1hcmdpbi10b3A6IDUwcHg7ICovXG4gICAgd2lkdGg6IDEwMCU7IH1cbmRpdi5zb25nLXRvLWFkZCBhLmFkZC10by1wbGF5bGlzdC1idXR0b24ge1xuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAgIGNvbG9yOiAjQ0M1Q0FEO1xuICAgIGJveC1zaGFkb3c6IDBweCAxMnB4IDI0cHggcmdiYSgwLCAwLCAwLCAwLjEyKTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgbWF4LXdpZHRoOiAxNTBweDtcbiAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgcGFkZGluZy10b3A6IDVweDtcbiAgICBwYWRkaW5nLWJvdHRvbTogNXB4O1xuICAgIG1hcmdpbjogYXV0bztcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGN1cnNvcjogcG9pbnRlcjsgfVxuXG4vKiBNZWRpdW0gb25seSAqL1xuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogNDBlbSkgYW5kIChtYXgtd2lkdGg6IDYzLjkzNzVlbSkge1xuICAgIGRpdi5zb25nLXRvLWFkZCB7XG4gICAgICAgIHdpZHRoOiA0MCU7XG4gICAgICAgIHBhZGRpbmc6IDVweDsgfSB9XG4iXX0= */");
 
 /***/ }),
 
@@ -684,7 +684,7 @@ __webpack_require__.r(__webpack_exports__);
 let ApiService = class ApiService {
     constructor(http) {
         this.http = http;
-        this.apiURL = '/api/';
+        this.apiURL = 'http://localhost:8080/api/';
         this.songs = [
             {
                 id: 1,
@@ -951,7 +951,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
             angular2_notifications__WEBPACK_IMPORTED_MODULE_13__["SimpleNotificationsModule"].forRoot({
-                position: ['bottom', 'right'],
+                position: ['top', 'right'],
                 timeOut: 5000,
                 showProgressBar: true,
                 maxStack: 3
@@ -1063,21 +1063,39 @@ let LoginComponent = class LoginComponent {
         this.authService = authService;
         this.notifier = notifier;
         this.router = router;
+        this.wasValidated = false;
+        this.loginInvalid = false;
+        this.usernameError = 'Please enter your username';
+        this.passwordError = 'Please enter your password';
         this.form = this.formBuilder.group({
-            username: [''],
-            password: ['']
+            username: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
     }
+    get password() { return this.form.get('password'); }
+    get username() { return this.form.get('username'); }
     ngOnInit() {
     }
+    usernameValid() {
+        return this.username.invalid && (this.username.dirty || this.username.touched) || this.loginInvalid;
+    }
+    passwordValid() {
+        return this.password.invalid && (this.password.dirty || this.password.touched) || this.loginInvalid;
+    }
     onSubmit() {
+        this.wasValidated = true;
         console.log(this.form.value);
+        if (this.form.status !== 'VALID') {
+            this.notifier.error('There are errors in your form');
+            return;
+        }
         this.authService.login(this.form.value).subscribe((user) => {
             console.log(user);
             this.router.navigate(['/']);
         }, (error) => {
-            console.log('error: ' + error);
-            this.notifier.alert(error);
+            this.loginInvalid = true;
+            this.wasValidated = false;
+            this.notifier.error(error);
         });
     }
 };
@@ -1108,7 +1126,7 @@ LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2F1dGgvc2lnbnVwL3NpZ251cC5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n.invalid-input {\n    width: 100%;\n    margin-top: .25rem;\n    font-size: 80%;\n    color: #dc3545;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXV0aC9zaWdudXAvc2lnbnVwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBO0lBQ0ksV0FBVztJQUNYLGtCQUFrQjtJQUNsQixjQUFjO0lBQ2QsY0FBYztBQUNsQiIsImZpbGUiOiJzcmMvYXBwL2F1dGgvc2lnbnVwL3NpZ251cC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4uaW52YWxpZC1pbnB1dCB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgbWFyZ2luLXRvcDogLjI1cmVtO1xuICAgIGZvbnQtc2l6ZTogODAlO1xuICAgIGNvbG9yOiAjZGMzNTQ1O1xufVxuIl19 */");
 
 /***/ }),
 
@@ -1128,6 +1146,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth/auth.service.ts");
 /* harmony import */ var src_app_models_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/models/user */ "./src/app/models/user.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var angular2_notifications__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! angular2-notifications */ "./node_modules/angular2-notifications/angular2-notifications.umd.js");
+/* harmony import */ var angular2_notifications__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(angular2_notifications__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -1135,44 +1156,84 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let SignupComponent = class SignupComponent {
-    constructor(formBuilder, authService, router) {
+    constructor(formBuilder, authService, router, notifier) {
         this.formBuilder = formBuilder;
         this.authService = authService;
         this.router = router;
-        this.country_list = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas",
-            "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands",
-            "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica",
-            "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
-            "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana",
-            "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India",
-            "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia",
-            "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania",
-            "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia",
-            "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
-            "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles",
-            "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan",
-            "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia",
-            "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay",
-            "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
+        this.notifier = notifier;
+        this.country_list = ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Anguilla', 'Antigua &amp; Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas',
+            'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia &amp; Herzegovina', 'Botswana', 'Brazil', 'British Virgin Islands',
+            'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands', 'Chad', 'Chile', 'China', 'Colombia', 'Congo', 'Cook Islands', 'Costa Rica',
+            'Cote D Ivoire', 'Croatia', 'Cruise Ship', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea',
+            'Estonia', 'Ethiopia', 'Falkland Islands', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Polynesia', 'French West Indies', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana',
+            'Gibraltar', 'Greece', 'Greenland', 'Grenada', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea Bissau', 'Guyana', 'Haiti', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India',
+            'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jersey', 'Jordan', 'Kazakhstan', 'Kenya', 'Kuwait', 'Kyrgyz Republic', 'Laos', 'Latvia',
+            'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macau', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Mauritania',
+            'Mauritius', 'Mexico', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Montserrat', 'Morocco', 'Mozambique', 'Namibia', 'Nepal', 'Netherlands', 'Netherlands Antilles', 'New Caledonia',
+            'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Norway', 'Oman', 'Pakistan', 'Palestine', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal',
+            'Puerto Rico', 'Qatar', 'Reunion', 'Romania', 'Russia', 'Rwanda', 'Saint Pierre &amp; Miquelon', 'Samoa', 'San Marino', 'Satellite', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles',
+            'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa', 'South Korea', 'Spain', 'Sri Lanka', 'St Kitts &amp; Nevis', 'St Lucia', 'St Vincent', 'St. Lucia', 'Sudan',
+            'Suriname', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor L\'Este', 'Togo', 'Tonga', 'Trinidad &amp; Tobago', 'Tunisia',
+            'Turkey', 'Turkmenistan', 'Turks &amp; Caicos', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'United States Minor Outlying Islands', 'Uruguay',
+            'Uzbekistan', 'Venezuela', 'Vietnam', 'Virgin Islands (US)', 'Yemen', 'Zambia', 'Zimbabwe'];
+        this.confirmPassValidator = (control) => {
+            const password = control.get('password');
+            const confirmPassword = control.get('confirmPassword');
+            return password && confirmPassword && password.value === confirmPassword.value ? null : { 'passwordMismatch': true };
+        };
         this.form = this.formBuilder.group({
-            firstName: [''],
-            lastName: [''],
-            gender: [''],
-            email: [''],
-            username: [''],
-            password: [''],
-            confirmPassword: [''],
-            country: ['']
-        });
+            firstName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            lastName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            gender: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            username: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            confirmPassword: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            country: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+        }, { validators: this.confirmPassValidator });
+    }
+    get firstName() { return this.form.get('firstName'); }
+    get lastName() { return this.form.get('lastName'); }
+    get gender() { return this.form.get('gender'); }
+    get email() { return this.form.get('email'); }
+    get username() { return this.form.get('username'); }
+    get password() { return this.form.get('password'); }
+    get confirmPassword() { return this.form.get('confirmPassword'); }
+    get country() { return this.form.get('country'); }
+    invalidField(formField) {
+        return formField.invalid && (formField.dirty || formField.touched);
+    }
+    getFieldClass(formField, addClass = 'form-control') {
+        if (formField.touched || formField.dirty) {
+            const classes = formField.invalid ? ' is-invalid' : ' is-valid';
+            return addClass + classes;
+        }
+        return addClass;
+    }
+    getConfirmPassClass() {
+        const addClass = 'form-control';
+        const formField = this.confirmPassword;
+        if (formField.touched || formField.dirty) {
+            const classes = (formField.invalid || (this.form.errors && this.form.errors.passwordMismatch)) ? ' is-invalid' : ' is-valid';
+            return addClass + classes;
+        }
+        return addClass;
     }
     ngOnInit() {
     }
     onSubmit() {
+        this.form.markAllAsTouched();
+        if (this.form.status !== 'VALID') {
+            this.notifier.error('There are errors in your form');
+            console.log(this.form.errors);
+            return;
+        }
         console.log(this.form.value);
         const vals = Object.assign({}, this.form.value);
         const user = new src_app_models_user__WEBPACK_IMPORTED_MODULE_4__["User"](null, vals.username, vals.firstName, vals.lastName, vals.gender, vals.password, vals.email);
         this.authService.signup(user).subscribe((user) => {
             console.log(user);
+            this.notifier.success('User created!');
             this.router.navigate(['/']);
         });
     }
@@ -1180,7 +1241,8 @@ let SignupComponent = class SignupComponent {
 SignupComponent.ctorParameters = () => [
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
     { type: _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
+    { type: angular2_notifications__WEBPACK_IMPORTED_MODULE_6__["NotificationsService"] }
 ];
 SignupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1279,7 +1341,7 @@ class User {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n.left-nav {\n    margin-left: 5px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuLmxlZnQtbmF2IHtcbiAgICBtYXJnaW4tbGVmdDogNXB4O1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');\n.left-nav {\n    margin-left: 5px;\n}\n.navbar-brand {\n    font-family: 'Pacifico', cursive;\n    font-size: 20px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDRFQUE0RTtBQUM1RTtJQUNJLGdCQUFnQjtBQUNwQjtBQUVBO0lBQ0ksZ0NBQWdDO0lBQ2hDLGVBQWU7QUFDbkIiLCJmaWxlIjoic3JjL2FwcC9uYXZiYXIvbmF2YmFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAaW1wb3J0IHVybCgnaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3M/ZmFtaWx5PVBhY2lmaWNvJmRpc3BsYXk9c3dhcCcpO1xuLmxlZnQtbmF2IHtcbiAgICBtYXJnaW4tbGVmdDogNXB4O1xufVxuXG4ubmF2YmFyLWJyYW5kIHtcbiAgICBmb250LWZhbWlseTogJ1BhY2lmaWNvJywgY3Vyc2l2ZTtcbiAgICBmb250LXNpemU6IDIwcHg7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -1330,7 +1392,7 @@ NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n.upload-form {\n    background-color: white;\n    margin-top: 15px;\n    /* width: 500px; */\n    padding: 20px;\n}\n.new-album-link{\n    float: right;\n}\nimg{\n    width: 100%;\n}\n.btn-add-song{\n    float: right;\n}\n.form-row {\n    margin-bottom: 5px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmV3LWFsYnVtL25ldy1hbGJ1bS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLHVCQUF1QjtJQUN2QixnQkFBZ0I7SUFDaEIsa0JBQWtCO0lBQ2xCLGFBQWE7QUFDakI7QUFDQTtJQUNJLFlBQVk7QUFDaEI7QUFFQTtJQUNJLFdBQVc7QUFDZjtBQUVBO0lBQ0ksWUFBWTtBQUNoQjtBQUVBO0lBQ0ksa0JBQWtCO0FBQ3RCIiwiZmlsZSI6InNyYy9hcHAvbmV3LWFsYnVtL25ldy1hbGJ1bS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4udXBsb2FkLWZvcm0ge1xuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAgIG1hcmdpbi10b3A6IDE1cHg7XG4gICAgLyogd2lkdGg6IDUwMHB4OyAqL1xuICAgIHBhZGRpbmc6IDIwcHg7XG59XG4ubmV3LWFsYnVtLWxpbmt7XG4gICAgZmxvYXQ6IHJpZ2h0O1xufVxuXG5pbWd7XG4gICAgd2lkdGg6IDEwMCU7XG59XG5cbi5idG4tYWRkLXNvbmd7XG4gICAgZmxvYXQ6IHJpZ2h0O1xufVxuXG4uZm9ybS1yb3cge1xuICAgIG1hcmdpbi1ib3R0b206IDVweDtcbn1cbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n.upload-form {\n    background-color: white;\n    margin-top: 15px;\n    /* width: 500px; */\n    padding: 20px;\n}\n.new-album-link{\n    float: right;\n}\nimg{\n    width: 100%;\n}\n.btn-add-song{\n    float: right;\n}\n.form-row {\n    margin-bottom: 5px;\n}\n.invalid-file-feedback {\n    width: 100%;\n    margin-top: .25rem;\n    font-size: 80%;\n    color: #dc3545;\n}\n.invalid-file {\n    border-color: #dc3545 !important;\n}\n.invalid-file:focus {\n    border-color: #dc3545 !important;\n    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6) !important;\n}\n.btn-delete{\n    height: calc(1.5em + .5rem + 2px);\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmV3LWFsYnVtL25ldy1hbGJ1bS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLHVCQUF1QjtJQUN2QixnQkFBZ0I7SUFDaEIsa0JBQWtCO0lBQ2xCLGFBQWE7QUFDakI7QUFDQTtJQUNJLFlBQVk7QUFDaEI7QUFFQTtJQUNJLFdBQVc7QUFDZjtBQUVBO0lBQ0ksWUFBWTtBQUNoQjtBQUVBO0lBQ0ksa0JBQWtCO0FBQ3RCO0FBRUE7SUFDSSxXQUFXO0lBQ1gsa0JBQWtCO0lBQ2xCLGNBQWM7SUFDZCxjQUFjO0FBQ2xCO0FBRUE7SUFDSSxnQ0FBZ0M7QUFDcEM7QUFFQTtJQUNJLGdDQUFnQztJQUNoQyx5RkFBeUY7QUFDN0Y7QUFFQTtJQUNJLGlDQUFpQztBQUNyQyIsImZpbGUiOiJzcmMvYXBwL25ldy1hbGJ1bS9uZXctYWxidW0uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuLnVwbG9hZC1mb3JtIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xuICAgIC8qIHdpZHRoOiA1MDBweDsgKi9cbiAgICBwYWRkaW5nOiAyMHB4O1xufVxuLm5ldy1hbGJ1bS1saW5re1xuICAgIGZsb2F0OiByaWdodDtcbn1cblxuaW1ne1xuICAgIHdpZHRoOiAxMDAlO1xufVxuXG4uYnRuLWFkZC1zb25ne1xuICAgIGZsb2F0OiByaWdodDtcbn1cblxuLmZvcm0tcm93IHtcbiAgICBtYXJnaW4tYm90dG9tOiA1cHg7XG59XG5cbi5pbnZhbGlkLWZpbGUtZmVlZGJhY2sge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi10b3A6IC4yNXJlbTtcbiAgICBmb250LXNpemU6IDgwJTtcbiAgICBjb2xvcjogI2RjMzU0NTtcbn1cblxuLmludmFsaWQtZmlsZSB7XG4gICAgYm9yZGVyLWNvbG9yOiAjZGMzNTQ1ICFpbXBvcnRhbnQ7XG59XG5cbi5pbnZhbGlkLWZpbGU6Zm9jdXMge1xuICAgIGJvcmRlci1jb2xvcjogI2RjMzU0NSAhaW1wb3J0YW50O1xuICAgIGJveC1zaGFkb3c6IGluc2V0IDAgMXB4IDFweCByZ2JhKDAsIDAsIDAsIDAuMDc1KSwgMCAwIDhweCByZ2JhKDI1NSwgMCwgMCwgMC42KSAhaW1wb3J0YW50O1xufVxuXG4uYnRuLWRlbGV0ZXtcbiAgICBoZWlnaHQ6IGNhbGMoMS41ZW0gKyAuNXJlbSArIDJweCk7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -1368,12 +1430,15 @@ let NewAlbumComponent = class NewAlbumComponent {
         this.notifier = notifier;
         this.router = router;
         this.coverArtUrl = 'http://cdn.last.fm/flatness/responsive/2/noimage/default_album_300_g4.png';
+        this.wasValidated = false;
+        this.invalidImage = false;
+        this.imgFileError = '';
+        this.audioFileError = [];
         this.form = this.formBuilder.group({
-            name: [''],
-            author: [''],
-            release_date: [''],
+            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            author: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            release_date: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             songs: this.formBuilder.array([]),
-            album: [''],
             cover_art_img: ['']
         });
     }
@@ -1386,19 +1451,25 @@ let NewAlbumComponent = class NewAlbumComponent {
         console.log('Add song form');
         event.preventDefault();
         const songform = this.formBuilder.group({
-            name: [''],
-            media_file: ['']
+            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            media_file: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
         this.form.controls.songs.push(songform);
+        this.audioFileError.push('');
+    }
+    deleteSongForm(i) {
+        this.form.controls.songs.removeAt(i);
+        this.audioFileError.splice(i, 1);
     }
     onSubmit() {
-        console.log(this.form.value);
+        this.wasValidated = true;
+        if (this.form.status !== 'VALID') {
+            this.notifier.error('There are errors in your form');
+            return;
+        }
         // this.apiService.newAlbum(this.form.value).subscribe((res) => console.log(res));
         this.apiService.newAlbum(this.form.value).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["mergeMap"])((album) => {
             console.log(album);
-            const data = new FormData();
-            data.append('album_id', String(album.id));
-            data.append('cover_file', this.imageFile);
             const requests = [];
             album.songs.forEach((song, idx) => {
                 console.log(this.form.controls.songs.controls[idx].get('media_file').value);
@@ -1407,7 +1478,12 @@ let NewAlbumComponent = class NewAlbumComponent {
                 songdata.append('media_file', this.form.controls.songs.controls[idx].get('media_file').value);
                 requests.push(this.apiService.uploadSong(songdata));
             });
-            requests.push(this.apiService.uploadAlbumCover(data));
+            if (this.imageFile) {
+                const data = new FormData();
+                data.append('album_id', String(album.id));
+                data.append('cover_file', this.imageFile);
+                requests.push(this.apiService.uploadAlbumCover(data));
+            }
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["forkJoin"])(requests);
         })).subscribe((res) => {
             console.log(res);
@@ -1416,13 +1492,17 @@ let NewAlbumComponent = class NewAlbumComponent {
         });
     }
     imageSelected(files) {
-        if (files.length === 0)
-            return;
-        const mimeType = files[0].type;
-        if (mimeType.match(/image\/*/) == null) {
-            // this.message = 'Only images are supported.';
+        if (files.length === 0) {
             return;
         }
+        const mimeType = files[0].type;
+        if (mimeType.match(/image\/*/) == null) {
+            this.invalidImage = true;
+            this.imgFileError = 'Only images are supported';
+            return;
+        }
+        this.invalidImage = false;
+        this.imgFileError = '';
         const reader = new FileReader();
         this.imageFile = files[0];
         reader.readAsDataURL(files[0]);
@@ -1431,10 +1511,17 @@ let NewAlbumComponent = class NewAlbumComponent {
         };
         // this.form.get('cover_art_img').setValue(this.imageFile)
     }
-    songFileSelected(files, idx) {
-        if (files.length === 0)
+    songFileSelected(files, idx, evt) {
+        if (files.length === 0) {
             return;
-        // TODO Check mimeType
+        }
+        const mimeType = files[0].type;
+        if (mimeType.match(/audio\/*/) == null) {
+            this.audioFileError[idx] = 'You need to select and audio file';
+            evt.target.value = '';
+            return;
+        }
+        this.audioFileError[idx] = '';
         this.form.controls.songs.controls[idx].get('media_file').setValue(files[0]);
     }
 };
@@ -1629,7 +1716,7 @@ PlayerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".playlist-description {\n    margin-top: 20px;\n}\n.playlist-description img {\n    max-width: 450px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGxheWxpc3QvcGxheWxpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtBQUNwQjtBQUNBO0lBQ0ksZ0JBQWdCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvcGxheWxpc3QvcGxheWxpc3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wbGF5bGlzdC1kZXNjcmlwdGlvbiB7XG4gICAgbWFyZ2luLXRvcDogMjBweDtcbn1cbi5wbGF5bGlzdC1kZXNjcmlwdGlvbiBpbWcge1xuICAgIG1heC13aWR0aDogNDUwcHg7XG59XG4iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".playlist-description {\n    margin-top: 20px;\n}\n.playlist-description img {\n    max-width: 450px;\n    border-radius: 30px;\n}\nh3 {\n    color: white;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGxheWxpc3QvcGxheWxpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtBQUNwQjtBQUNBO0lBQ0ksZ0JBQWdCO0lBQ2hCLG1CQUFtQjtBQUN2QjtBQUNBO0lBQ0ksWUFBWTtBQUNoQiIsImZpbGUiOiJzcmMvYXBwL3BsYXlsaXN0L3BsYXlsaXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGxheWxpc3QtZGVzY3JpcHRpb24ge1xuICAgIG1hcmdpbi10b3A6IDIwcHg7XG59XG4ucGxheWxpc3QtZGVzY3JpcHRpb24gaW1nIHtcbiAgICBtYXgtd2lkdGg6IDQ1MHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDMwcHg7XG59XG5oMyB7XG4gICAgY29sb3I6IHdoaXRlO1xufVxuIl19 */");
 
 /***/ }),
 
