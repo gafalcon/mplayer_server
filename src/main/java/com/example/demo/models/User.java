@@ -12,6 +12,9 @@ public class User {
 	private long id;
 	private String name;
 	private String email;
+	private int flag;
+	private String passwd;
+	
 	
 	public User() {
 		
@@ -37,6 +40,25 @@ public class User {
 	}
 	public String getEmail() {
 		return email;
+		
+	}
+	public int getFlag() {
+		return flag;
+	}
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+	public String getPasswd() {
+		return passwd;
+	}
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	
