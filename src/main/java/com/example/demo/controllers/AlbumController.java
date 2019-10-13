@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,9 +15,9 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.util.StringUtils;
 
 import com.example.demo.models.Album;
-import com.example.demo.models.AlbumRepository;
 import com.example.demo.models.Song;
-import com.example.demo.models.SongRepository;
+import com.example.demo.repository.AlbumRepository;
+import com.example.demo.repository.SongRepository;
 import com.example.demo.storage.AmazonS3ClientService;
 
 

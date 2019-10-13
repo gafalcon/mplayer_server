@@ -7,18 +7,23 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 //import java.util.stream.Stream;
+import java.util.TimeZone;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import com.example.demo.models.Playlist;
-import com.example.demo.models.PlaylistRepository;
 import com.example.demo.models.Song;
-import com.example.demo.models.SongRepository;
-import com.example.demo.models.UserRepository;
+import com.example.demo.repository.PlaylistRepository;
+import com.example.demo.repository.SongRepository;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.storage.StorageProperties;
 import com.example.demo.storage.StorageService;
 
@@ -30,8 +35,16 @@ import org.json.simple.parser.ParseException;
 
 @SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)
+@EntityScan(basePackageClasses = {
+		MplayerServerApplication.class,
+		Jsr310JpaConverters.class
+})
 public class MplayerServerApplication {
 
+	@PostConstruct
+	void init() {
+		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+	}
 	public static void main(String[] args) {
 		SpringApplication.run(MplayerServerApplication.class, args);
 	}
