@@ -31,9 +31,12 @@ public class User extends DateAudit {
 	
 	@NotBlank
 	@Size(max = 40)
-	private String name;
+	private String firstName;
 	
-	
+	@NotBlank
+	@Size(max = 40)
+	private String lastName;
+
 	@NotBlank
 	@Size(max = 15)
 	private String username;
@@ -44,7 +47,6 @@ public class User extends DateAudit {
     @Email
 	private String email;
     
-    
     @NotBlank
     @Size(max = 100)
     private String password;
@@ -53,22 +55,30 @@ public class User extends DateAudit {
     @NaturalId
     @Column(length = 60)
     private Role role;
+    
+    private String country;
+    
+    private String gender;
 
 	public User() {
 		
 	}
-	public User(String name, String username, String email, String password, Role role) {
+
+	public User(String firstName, String lastName, String username, String email, String password, Role role, String country, String gender) {
 		super();
-		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.role = role;
 		this.password = password;
 		this.username = username;
+		this.country = country;
+		this.gender = gender;
 	}
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + "]";
+		return "User [id=" + id + ", name=" + firstName + ", email=" + email + "]";
 	}
 	public Long getId() {
 		return id;
@@ -76,8 +86,8 @@ public class User extends DateAudit {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 	public String getEmail() {
 		return email;
@@ -96,8 +106,8 @@ public class User extends DateAudit {
 	public void setPassword(String passwd) {
 		this.password = passwd;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String name) {
+		this.firstName = name;
 	}
 	public void setEmail(String email) {
 		this.email = email;
@@ -107,6 +117,30 @@ public class User extends DateAudit {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	
 	

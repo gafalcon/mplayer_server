@@ -6,6 +6,7 @@ import com.example.demo.payloads.ApiResponse;
 import com.example.demo.payloads.JwtAuthenticationResponse;
 import com.example.demo.payloads.LoginRequest;
 import com.example.demo.payloads.SignUpRequest;
+import com.example.demo.payloads.UserSummary;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.security.JwtTokenProvider;
 import com.example.demo.security.Role;
@@ -44,21 +45,33 @@ public class AuthController {
 
     @Autowired
     JwtTokenProvider tokenProvider;
+    
+    private Authentication authenticate(String usernameOrEmail, String password) {
+    	
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(usernameOrEmail,password)
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return authentication;
+    }
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
-        Authentication authentication = authenticationManager.authenticate(
+        /*Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequest.getUsernameOrEmail(),
                         loginRequest.getPassword()
                 )
         );
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        SecurityContextHolder.getContext().setAuthentication(authentication);*/
+
+        Authentication authentication = authenticate(loginRequest.getUsernameOrEmail(), 
+        		loginRequest.getPassword());
         UserPrincipal auth_user = (UserPrincipal) authentication.getPrincipal();
-        User user = new User(auth_user.getName(), auth_user.getUsername(), auth_user.getEmail(),
-        		auth_user.getPassword(), auth_user.getRole());
+        UserSummary user = new UserSummary(auth_user.getId(), auth_user.getUsername(), auth_user.getRole());
         /*String usernameOrEmail = loginRequest.getUsernameOrEmail();
         User logged_user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "username", usernameOrEmail));*/
@@ -80,17 +93,27 @@ public class AuthController {
         }
 
         // Creating user's account
-        User user = new User(signUpRequest.getName(), signUpRequest.getUsername(),
-        		signUpRequest.getEmail(), signUpRequest.getPassword(), Role.ROLE_USER);
+        User user = new User(signUpRequest.getFirstName(), signUpRequest.getLastName(),
+        		signUpRequest.getUsername(),
+        		signUpRequest.getEmail(), signUpRequest.getPassword(), Role.ROLE_USER,
+        		signUpRequest.getCountry(), signUpRequest.getGender()
+        		);
+        
+        String unencrypted_passwd = user.getPassword();
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(unencrypted_passwd));
 
         User result = userRepository.save(user);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/api/users/{username}")
                 .buildAndExpand(result.getUsername()).toUri();
+        
+        Authentication authentication = authenticate(signUpRequest.getUsername(), unencrypted_passwd);
 
-        return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
+        String jwt = tokenProvider.generateToken(authentication);
+        //return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
+        return ResponseEntity.created(location).body(new JwtAuthenticationResponse(jwt,
+        		new UserSummary(result.getId(), result.getUsername(), result.getRole())));
     }
 }
