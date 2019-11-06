@@ -8,18 +8,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import com.example.demo.models.audit.UserDateAudit;
 
 @Entity
-public class Playlist {
+@Table(name = "playlists")
+public class Playlist extends UserDateAudit {
 	
-/*    constructor(public playlist_name: string,
-            public cover_art_url: string,
-            public songs: Array<Song> ) {
-*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@NotBlank
 	private String name;
+
 	private String cover_art_url;
 	
 	@ManyToMany(cascade=CascadeType.MERGE)

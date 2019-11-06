@@ -5,6 +5,7 @@ import com.example.demo.models.User;
 import com.example.demo.payloads.ApiResponse;
 import com.example.demo.payloads.JwtAuthenticationResponse;
 import com.example.demo.payloads.LoginRequest;
+import com.example.demo.payloads.OAuthRequest;
 import com.example.demo.payloads.SignUpRequest;
 import com.example.demo.payloads.UserSummary;
 import com.example.demo.repository.UserRepository;
@@ -116,4 +117,32 @@ public class AuthController {
         return ResponseEntity.created(location).body(new JwtAuthenticationResponse(jwt,
         		new UserSummary(result.getId(), result.getUsername(), result.getRole())));
     }
+
+    //For login with Google, will create a user in db with info collected by google
+    @PostMapping("/oauthLogin")
+    public ResponseEntity<?> oAuth(@Valid @RequestBody OAuthRequest oauthRequest) {
+    	System.out.println("oauth Login");
+    	String googlePass = "googleSignin";
+    	User regUser;
+    	//TODO validate the idToken from google
+    	if(userRepository.existsByEmail(oauthRequest.getEmail())) { //User already registered
+    		regUser = userRepository.findByEmail(oauthRequest.getEmail()).get();
+    	}else { //Register new user
+    		regUser = new User(oauthRequest.getFirstName(), oauthRequest.getLastName(), oauthRequest.getFirstName(), oauthRequest.getEmail(), googlePass, Role.ROLE_USER, null, null);
+    		regUser.setPassword(passwordEncoder.encode(regUser.getPassword()));
+    		regUser = userRepository.save(regUser);
+    	}
+
+    	// TODO setting username as firstName, but generates error if there is already username
+    	// TODO If user has already registered without google, it wont be able to register with google, because email already exists, and needs to authenticate with password
+        Authentication authentication = authenticate(regUser.getUsername(), googlePass);
+
+        UserSummary user = new UserSummary(regUser.getId(), regUser.getUsername(), regUser.getRole());
+        /*String usernameOrEmail = loginRequest.getUsernameOrEmail();
+        User logged_user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "username", usernameOrEmail));*/
+        String jwt = tokenProvider.generateToken(authentication);
+        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt, user));
+    }
+
 }

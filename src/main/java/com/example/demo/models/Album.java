@@ -1,29 +1,53 @@
 package com.example.demo.models;
 
+import java.time.Instant;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.example.demo.models.audit.UserDateAudit;
 
 @Entity
-public class Album {
+@Table(name = "albums")
+public class Album extends UserDateAudit{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@NotBlank
 	private String name;
+	
+	@NotBlank
 	private String artist;
-	private String releaseDate;
+	
+	private Instant releaseDate;
 	private String coverArt;
 	
-	@ManyToMany(cascade=CascadeType.MERGE)
+	@OneToMany(
+			mappedBy = "album",
+			cascade=CascadeType.ALL,
+			fetch = FetchType.EAGER,
+			orphanRemoval = true
+			)
+	//@JoinColumn(name = "fk_album")
+	@Fetch(FetchMode.SELECT)
 	private Set<Song> songs;
 
-	public Album(String name, String artist, String releaseDate, String coverArt, Set<Song> songs) {
+	public Album(String name, String artist, Instant releaseDate, String coverArt, Set<Song> songs) {
 		super();
 		this.name = name;
 		this.artist = artist;
@@ -60,11 +84,11 @@ public class Album {
 		this.artist = artist;
 	}
 
-	public String getReleaseDate() {
+	public Instant getReleaseDate() {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(String releaseDate) {
+	public void setReleaseDate(Instant releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 

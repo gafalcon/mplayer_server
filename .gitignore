@@ -32,3 +32,5 @@ build/
 
 *mp3
 /src/main/resources/static/images
+/src/main/resources/application.properties
+

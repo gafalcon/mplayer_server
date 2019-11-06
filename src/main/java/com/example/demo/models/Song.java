@@ -1,19 +1,38 @@
 package com.example.demo.models;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "songs")
 public class Song {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@NotBlank
 	private String name;
 	private String artist;
-	private String album;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "album_id", nullable = true) //Change nullable if every song NEEDS to have an album
+    @OnDelete(action = OnDeleteAction.CASCADE)
+	private Album album;
+
+	//@NotBlank
 	private String url;
 	private String cover_art_url;
 	
@@ -21,7 +40,8 @@ public class Song {
 	public Song() {
 		super();
 	}
-	public Song(String name, String artist, String album, String url, String cover_art_url) {
+
+	public Song(String name, String artist, String url, Album album, String cover_art_url) {
 		super();
 		this.name = name;
 		this.artist = artist;
@@ -45,12 +65,15 @@ public class Song {
 	public void setArtist(String artist) {
 		this.artist = artist;
 	}
-	public String getAlbum() {
+    @JsonIgnore
+	public Album getAlbum() {
 		return album;
 	}
-	public void setAlbum(String album) {
+    @JsonIgnore
+	public void setAlbum(Album album) {
 		this.album = album;
 	}
+	
 	public String getUrl() {
 		return url;
 	}
@@ -65,7 +88,7 @@ public class Song {
 	}
 	@Override
 	public String toString() {
-		return "Song [id=" + id + ", name=" + name + ", artist=" + artist + ", album=" + album + ", url=" + url
+		return "Song [id=" + id + ", name=" + name + ", artist=" + artist + ", url=" + url
 				+ ", cover_art_url=" + cover_art_url + "]";
 	}
 	

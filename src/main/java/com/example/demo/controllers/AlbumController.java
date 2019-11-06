@@ -54,10 +54,11 @@ public class AlbumController {
 	@PostMapping("/api/albums")
 	Album addAlbum(@RequestBody Album album) {
 		System.out.println(album);
-		songRepository.saveAll(album.getSongs());
+		//songRepository.saveAll(album.getSongs());
 		for(Song s: album.getSongs()) {
+			s.setAlbum(album);
 			System.out.println(s);
-		}
+		}//
 		Album saved_album = alrepo.save(album);
 		return saved_album;
 	}

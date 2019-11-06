@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,8 +20,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
+import com.example.demo.models.Album;
 import com.example.demo.models.Playlist;
 import com.example.demo.models.Song;
+import com.example.demo.repository.AlbumRepository;
 import com.example.demo.repository.PlaylistRepository;
 import com.example.demo.repository.SongRepository;
 import com.example.demo.repository.UserRepository;
@@ -50,14 +53,14 @@ public class MplayerServerApplication {
 	}
 
     @Bean
-    CommandLineRunner init(UserRepository userRepository, SongRepository songRepo, PlaylistRepository plrepo, StorageService storageService) {
+    CommandLineRunner init(UserRepository userRepository, SongRepository songRepo, PlaylistRepository plrepo, AlbumRepository alrepo, StorageService storageService) {
         return args -> {
         	storageService.init();
-        	initDb(userRepository, songRepo, plrepo);
+        	initDb(userRepository, songRepo, plrepo, alrepo);
         };
     }
     
-    public void initDb(UserRepository userRepository, SongRepository songRepo, PlaylistRepository plrepo)
+    public void initDb(UserRepository userRepository, SongRepository songRepo, PlaylistRepository plrepo, AlbumRepository arepo)
     {
 		//JSON parser object to parse read file
     	List<Song> songsInDB = (List<Song>) songRepo.findAll();
@@ -65,7 +68,8 @@ public class MplayerServerApplication {
     			return;
 
         JSONParser jsonParser = new JSONParser();	
-		 try (FileReader reader = new FileReader("/home/gabo/Documents/Web/mplayer/src/music/playlists.json"))
+
+		 try (FileReader reader = new FileReader("./src/main/java/com/example/demo/playlists.json"))
 	        {
 	            //Read JSON file
 	            Object obj = jsonParser.parse(reader);
@@ -82,7 +86,11 @@ public class MplayerServerApplication {
 	            	System.out.println(name + " " + cover);
 	            	Set<Song> pl_songs = new HashSet<Song>();
 	            	
+	            	Album a = new Album(name, "artist", null, cover, null);
+	            	Album saved_al = arepo.save(a);
 	            	Playlist p = new Playlist(name, cover, null);
+	            	//Set<Song> 
+
 	            	for(Object s : songs) {
 	            		JSONObject song = (JSONObject) s;
 	            		String song_name = (String) song.get("name");
@@ -91,11 +99,15 @@ public class MplayerServerApplication {
 	            		String song_url = (String) song.get("url");
 	            		String song_cover_art_url = (String) song.get("cover_art_url");
 	            		
-	            		Song sng = new Song(song_name, artist, song_album, song_url, song_cover_art_url);
+	            		System.out.println("Song: " + song_name + " " + song_url + " " + song_album);
+	            		
+	            		Song sng = new Song(song_name, artist, song_url,null, song_cover_art_url);
 	            		songRepo.save(sng);
 	            		pl_songs.add(sng);
 	            	}
 	            	p.setSongs(pl_songs);
+	            	saved_al.setSongs(pl_songs);
+	            	arepo.save(saved_al);
 	            	plrepo.save(p);
 	            }
 	            
