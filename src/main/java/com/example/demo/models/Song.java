@@ -34,20 +34,37 @@ public class Song {
 
 	//@NotBlank
 	private String url;
-	private String cover_art_url;
+	private String coverArtUrl;
 	
+	private long totalLikes;
+	private long totalDislikes;
+	private long totalReproductions;
+	private String genres;
+	private String lyrics;
 	
 	public Song() {
 		super();
 	}
 
-	public Song(String name, String artist, String url, Album album, String cover_art_url) {
+	public Song(String name, String artist, String url, Album album, String cover_art_url, String genres) {
 		super();
 		this.name = name;
 		this.artist = artist;
 		this.album = album;
 		this.url = url;
-		this.cover_art_url = cover_art_url;
+		this.coverArtUrl = cover_art_url;
+		this.genres = genres;
+		this.totalDislikes = 0;
+		this.totalLikes = 0;
+		this.totalReproductions = 0;
+	}
+	public Song(String name, String artist, String url, Album album, String cover_art_url, long totalLikes, long totalDislikes, String genres, String lyrics, long totalReps) {
+		super();
+		this.name = name;
+		this.artist = artist;
+		this.album = album;
+		this.url = url;
+		this.coverArtUrl = cover_art_url;
 	}
 	public String getName() {
 		return name;
@@ -81,15 +98,55 @@ public class Song {
 		this.url = url;
 	}
 	public String getCover_art_url() {
-		return cover_art_url;
+		return coverArtUrl;
 	}
 	public void setCover_art_url(String cover_art_url) {
-		this.cover_art_url = cover_art_url;
+		this.coverArtUrl = cover_art_url;
 	}
 	@Override
 	public String toString() {
 		return "Song [id=" + id + ", name=" + name + ", artist=" + artist + ", url=" + url
-				+ ", cover_art_url=" + cover_art_url + "]";
+				+ ", cover_art_url=" + coverArtUrl + "]";
+	}
+
+	public long getTotalLikes() {
+		return totalLikes;
+	}
+
+	public void setTotalLikes(long totalLikes) {
+		this.totalLikes = totalLikes;
+	}
+
+	public long getTotalDislikes() {
+		return totalDislikes;
+	}
+
+	public void setTotalDislikes(long totalDislikes) {
+		this.totalDislikes = totalDislikes;
+	}
+
+	public long getTotalReproductions() {
+		return totalReproductions;
+	}
+
+	public void setTotalReproductions(long totalReproductions) {
+		this.totalReproductions = totalReproductions;
+	}
+
+	public String getGenres() {
+		return genres;
+	}
+
+	public void setGenres(String genres) {
+		this.genres = genres;
+	}
+
+	public String getLyrics() {
+		return lyrics;
+	}
+
+	public void setLyrics(String lyrics) {
+		this.lyrics = lyrics;
 	}
 	
 	

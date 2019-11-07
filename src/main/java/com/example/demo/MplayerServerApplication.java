@@ -86,7 +86,7 @@ public class MplayerServerApplication {
 	            	System.out.println(name + " " + cover);
 	            	Set<Song> pl_songs = new HashSet<Song>();
 	            	
-	            	Album a = new Album(name, "artist", null, cover, null);
+	            	Album a = new Album(name, "artist", null, cover, null, "rock");
 	            	Album saved_al = arepo.save(a);
 	            	Playlist p = new Playlist(name, cover, null);
 	            	//Set<Song> 
@@ -101,7 +101,7 @@ public class MplayerServerApplication {
 	            		
 	            		System.out.println("Song: " + song_name + " " + song_url + " " + song_album);
 	            		
-	            		Song sng = new Song(song_name, artist, song_url,null, song_cover_art_url);
+	            		Song sng = new Song(song_name, artist, song_url,null, song_cover_art_url, "rock");
 	            		songRepo.save(sng);
 	            		pl_songs.add(sng);
 	            	}

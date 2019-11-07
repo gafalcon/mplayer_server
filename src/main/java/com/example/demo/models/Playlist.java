@@ -24,14 +24,14 @@ public class Playlist extends UserDateAudit {
 	@NotBlank
 	private String name;
 
-	private String cover_art_url;
+	private String coverArtUrl;
 	
 	@ManyToMany(cascade=CascadeType.MERGE)
 	private Set<Song> songs;
 
 	public Playlist(String name, String cover_art_url, Set<Song> songs) {
 		this.name = name;
-		this.cover_art_url = cover_art_url;
+		this.coverArtUrl = cover_art_url;
 		this.songs = songs;
 	}
 
@@ -56,11 +56,11 @@ public class Playlist extends UserDateAudit {
 	}
 
 	public String getCover_art_url() {
-		return cover_art_url;
+		return coverArtUrl;
 	}
 
 	public void setCover_art_url(String cover_art_url) {
-		this.cover_art_url = cover_art_url;
+		this.coverArtUrl = cover_art_url;
 	}
 
 	public Set<Song> getSongs() {
@@ -73,7 +73,7 @@ public class Playlist extends UserDateAudit {
 
 	@Override
 	public String toString() {
-		return "Playlist [id=" + id + ", name=" + name + ", cover_art_url=" + cover_art_url  + "]";
+		return "Playlist [id=" + id + ", name=" + name + ", cover_art_url=" + coverArtUrl  + "]";
 	}
 	
 	

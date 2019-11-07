@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
 
+import com.example.demo.enums.UserStatus;
 import com.example.demo.models.audit.DateAudit;
 import com.example.demo.security.Role;
 
@@ -59,6 +60,9 @@ public class User extends DateAudit {
     private String country;
     
     private String gender;
+    
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
 
 	public User() {
 		

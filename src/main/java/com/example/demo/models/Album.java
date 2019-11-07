@@ -47,13 +47,22 @@ public class Album extends UserDateAudit{
 	@Fetch(FetchMode.SELECT)
 	private Set<Song> songs;
 
-	public Album(String name, String artist, Instant releaseDate, String coverArt, Set<Song> songs) {
+	private long totalLikes;
+	private long totalDislikes;
+	private long totalReproductions;
+	private String genres;
+	
+	public Album(String name, String artist, Instant releaseDate, String coverArt, Set<Song> songs, String genres) {
 		super();
 		this.name = name;
 		this.artist = artist;
 		this.releaseDate = releaseDate;
 		this.coverArt = coverArt;
 		this.songs = songs;
+		this.totalDislikes = 0;
+		this.totalLikes = 0;
+		this.totalReproductions = 0;
+		this.genres = genres;
 	}
 	
 	public Album() {
@@ -112,6 +121,38 @@ public class Album extends UserDateAudit{
 	public String toString() {
 		return "Album [id=" + id + ", name=" + name + ", artist=" + artist + ", releaseDate=" + releaseDate
 				+ ", coverArt=" + coverArt + ", songs=" + songs + "]";
+	}
+
+	public long getTotalLikes() {
+		return totalLikes;
+	}
+
+	public void setTotalLikes(long totalLikes) {
+		this.totalLikes = totalLikes;
+	}
+
+	public long getTotalDislikes() {
+		return totalDislikes;
+	}
+
+	public void setTotalDislikes(long totalDislikes) {
+		this.totalDislikes = totalDislikes;
+	}
+
+	public long getTotalReproductions() {
+		return totalReproductions;
+	}
+
+	public void setTotalReproductions(long totalReproductions) {
+		this.totalReproductions = totalReproductions;
+	}
+
+	public String getGenres() {
+		return genres;
+	}
+
+	public void setGenres(String genres) {
+		this.genres = genres;
 	}
 	
 	
