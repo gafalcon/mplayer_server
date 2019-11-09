@@ -53,7 +53,7 @@ public class User extends DateAudit {
     private String password;
     
     @Enumerated(EnumType.STRING)
-    @NaturalId
+    //@NaturalId
     @Column(length = 60)
     private Role role;
     
@@ -61,6 +61,8 @@ public class User extends DateAudit {
     
     private String gender;
     
+    private String profilePhoto;
+
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
@@ -145,6 +147,14 @@ public class User extends DateAudit {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public String getProfilePhoto() {
+		return profilePhoto;
+	}
+
+	public void setProfilePhoto(String profilePhoto) {
+		this.profilePhoto = profilePhoto;
 	}
 	
 	
