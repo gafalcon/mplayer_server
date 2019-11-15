@@ -14,6 +14,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.example.demo.models.audit.UserDateAudit;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "song_comments")
@@ -27,6 +28,7 @@ public class SongComment extends UserDateAudit{
 	private String comment;
 	
 	
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "song_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -68,7 +70,7 @@ public class SongComment extends UserDateAudit{
 	}
 
 
-	public void setAlbum(Song song) {
+	public void setSong(Song song) {
 		this.song = song;
 	}
 	

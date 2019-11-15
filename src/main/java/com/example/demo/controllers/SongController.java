@@ -8,25 +8,33 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.util.StringUtils;
 
+import com.amazonaws.services.appstream.model.ResourceNotAvailableException;
+import com.example.demo.models.Comment;
 import com.example.demo.models.Song;
+import com.example.demo.models.SongComment;
+import com.example.demo.repository.SongCommentRepository;
 import com.example.demo.repository.SongRepository;
 import com.example.demo.storage.AmazonS3ClientService;
 import com.example.demo.storage.StorageService;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
+@RequestMapping("/api/songs")
 public class SongController {
 	private final SongRepository songRepository;
     //private final StorageService storageService;
-
+	@Autowired
+	private SongCommentRepository commentRepo;
     @Autowired
     private AmazonS3ClientService amazonS3ClientService;
     @Value("${aws.s3.url}")
@@ -36,20 +44,20 @@ public class SongController {
 		this.songRepository = rep;
 	//	this.storageService = storageService;
 	}
-	@GetMapping("/api/all_songs")
+	@GetMapping("")
 	public List<Song> getSongs() {
 		return (List <Song>) songRepository.findAll();
 	}
 	
 
-	@PostMapping("/api/songs")
+	@PostMapping("")
 	Song addSong(@RequestBody Song song) {
 		System.out.println(song);
 		Song saved_song = songRepository.save(song);
 		return saved_song;
 	}
 	
-    @PostMapping("/api/songs/upload")
+    @PostMapping("/upload")
     public Song SongFileUpload(@RequestParam("media_file") MultipartFile file,
     		@RequestParam("song_id") long song_id) {//, @RequestParam("filename") String filename) {
 
@@ -68,7 +76,7 @@ public class SongController {
         return song;
     }
 
-	@PostMapping("/api/songs2")
+	@PostMapping("/songs2")
 	void addSong2(@RequestBody Map<String, Object> postParams){
 		System.out.println(postParams);
 	}

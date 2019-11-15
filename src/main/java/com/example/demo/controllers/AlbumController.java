@@ -4,18 +4,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.util.StringUtils;
 
+import com.amazonaws.services.appstream.model.ResourceNotAvailableException;
+import com.amazonaws.services.opsworkscm.model.ResourceNotFoundException;
 import com.example.demo.models.Album;
+import com.example.demo.models.AlbumComment;
+import com.example.demo.models.Comment;
 import com.example.demo.models.Song;
+import com.example.demo.payloads.ApiResponse;
+import com.example.demo.repository.AlbumCommentRepository;
 import com.example.demo.repository.AlbumRepository;
 import com.example.demo.repository.SongRepository;
 import com.example.demo.storage.AmazonS3ClientService;
@@ -24,11 +33,12 @@ import com.example.demo.storage.AmazonS3ClientService;
 import java.util.List;
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
+@RequestMapping("/api/albums")
 public class AlbumController {
 	
 	private final SongRepository songRepository;
     private final AlbumRepository alrepo;
-
+    
     @Autowired
     private AmazonS3ClientService amazonS3ClientService;
     @Value("${aws.s3.url}")
@@ -39,19 +49,18 @@ public class AlbumController {
 		this.alrepo = alrepo;
 	}
 	
-	@GetMapping("/api/albums")
+	@GetMapping("")
 	public List<Album> getAlbums(){
 		return (List <Album>) alrepo.findAll();
 	}
 	
-	@GetMapping("/api/albums/{id}")
+	@GetMapping("/{id}")
 	public Album getAlbum(@PathVariable(value="id") Long al_id) {
 		return alrepo.findById(al_id).orElseThrow(() -> new ResponseStatusException(
 					HttpStatus.NOT_FOUND, "album not found"
 				));
 	}
-	
-	@PostMapping("/api/albums")
+	@PostMapping("")
 	Album addAlbum(@RequestBody Album album) {
 		System.out.println(album);
 		//songRepository.saveAll(album.getSongs());
@@ -64,7 +73,7 @@ public class AlbumController {
 	}
 	
 	
-    @PostMapping("/api/albums/cover")
+    @PostMapping("/cover")
     public Album SongFileUpload(@RequestParam("cover_file") MultipartFile file,
     		@RequestParam("album_id") long album_id) {//, @RequestParam("filename") String filename) {
 
@@ -82,4 +91,6 @@ public class AlbumController {
 
         return album;
     }
+    
+    
 }

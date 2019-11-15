@@ -40,7 +40,7 @@ public class Album extends UserDateAudit{
 	@OneToMany(
 			mappedBy = "album",
 			cascade=CascadeType.ALL,
-			fetch = FetchType.EAGER,
+			fetch = FetchType.LAZY,
 			orphanRemoval = true
 			)
 	//@JoinColumn(name = "fk_album")
