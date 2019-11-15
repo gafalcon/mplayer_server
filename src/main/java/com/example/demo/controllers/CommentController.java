@@ -25,6 +25,9 @@ import com.example.demo.repository.AlbumCommentRepository;
 import com.example.demo.repository.AlbumRepository;
 import com.example.demo.repository.SongCommentRepository;
 import com.example.demo.repository.SongRepository;
+import com.example.demo.security.CurrentUser;
+import com.example.demo.security.Role;
+import com.example.demo.security.UserPrincipal;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
@@ -54,9 +57,14 @@ public class CommentController {
     }
     
     @DeleteMapping("/albums/{comment_id}")
-    public ApiResponse deleteAlbumComment(@PathVariable(value="comment_id") Long comment_id) {
-    	alcommentRepo.deleteById(comment_id);
-    	return new ApiResponse(true, "comment deleted");
+    public ApiResponse deleteAlbumComment(@PathVariable(value="comment_id") Long comment_id, @CurrentUser UserPrincipal user) {
+    	AlbumComment saved_comment = alcommentRepo.findById(comment_id).orElseThrow(() -> new ResourceNotFoundException("Album Comment", "id", comment_id));
+    	if (user.getRole().equals(Role.ROLE_ADMIN) || saved_comment.getCreatedBy() == user.getId()) {
+    		alcommentRepo.delete(saved_comment);
+    		return new ApiResponse(true, "comment deleted");
+    	}else {
+    		return new ApiResponse(false, "only creator or admin can delete comment");
+    	}
     }
     
     @PutMapping("/albums/{comment_id}")
@@ -82,9 +90,15 @@ public class CommentController {
     }
 
     @DeleteMapping("/song/{comment_id}")
-    public ApiResponse deleteSongComment(@PathVariable(value="comment_id") Long comment_id) {
-    	scommentRepo.deleteById(comment_id);
-    	return new ApiResponse(true, "comment deleted");
+    public ApiResponse deleteSongComment(@PathVariable(value="comment_id") Long comment_id, @CurrentUser UserPrincipal user) {
+    	
+    	SongComment c = scommentRepo.findById(comment_id).orElseThrow(() -> new ResourceNotFoundException("Song Comment", "id", comment_id));
+    	if (user.getRole().equals(Role.ROLE_ADMIN) || c.getCreatedBy() == user.getId()) {
+    		scommentRepo.delete(c);
+    		return new ApiResponse(true, "comment deleted");
+    	}else {
+    		return new ApiResponse(false, "only creator or admin can delete comment");
+    	}
     }
 
     @PutMapping("/song/{comment_id}")
