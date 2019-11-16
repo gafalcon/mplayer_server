@@ -31,7 +31,7 @@ import com.example.demo.security.UserPrincipal;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
-@RequestMapping("/api/comment")
+@RequestMapping("/api")
 public class CommentController {
 
     @Autowired
@@ -43,12 +43,12 @@ public class CommentController {
     @Autowired
     private SongRepository songRepository;
 
-    @GetMapping("/albums/{album_id}")
+    @GetMapping("/albums/{album_id}/comments")
     public List<Comment> getAlbumComments(@PathVariable(value="album_id") Long album_id){
     	return alcommentRepo.findAlbumComments(album_id);
     }
 
-    @PostMapping("/albums/{album_id}")
+    @PostMapping("/albums/{album_id}/comments")
     public AlbumComment postComment(@PathVariable(value="album_id") Long album_id, @RequestBody AlbumComment comment) {
     	Album a = alrepo.findById(album_id).orElseThrow(() -> new ResourceNotAvailableException("Album not found"));
     	comment.setAlbum(a);
@@ -56,7 +56,7 @@ public class CommentController {
     	return comment;
     }
     
-    @DeleteMapping("/albums/{comment_id}")
+    @DeleteMapping("/albums/{album_id}/comments/{comment_id}")
     public ApiResponse deleteAlbumComment(@PathVariable(value="comment_id") Long comment_id, @CurrentUser UserPrincipal user) {
     	AlbumComment saved_comment = alcommentRepo.findById(comment_id).orElseThrow(() -> new ResourceNotFoundException("Album Comment", "id", comment_id));
     	if (user.getRole().equals(Role.ROLE_ADMIN) || saved_comment.getCreatedBy() == user.getId()) {
@@ -67,7 +67,7 @@ public class CommentController {
     	}
     }
     
-    @PutMapping("/albums/{comment_id}")
+    @PutMapping("/albums/{album_id}/comments/{comment_id}")
     public AlbumComment editAlbumComment(@PathVariable(value="comment_id") Long comment_id, @RequestBody AlbumComment comment) {
     	AlbumComment saved_comment = alcommentRepo.findById(comment_id).orElseThrow(() -> new ResourceNotFoundException("Album Comment", "id", comment_id));
     	saved_comment.setComment(comment.getComment());
@@ -76,12 +76,12 @@ public class CommentController {
     }
     
     
-    @GetMapping("/song/{song_id}")
+    @GetMapping("/songs/{song_id}/comments")
     public List<Comment> getSongComments(@PathVariable(value="song_id") Long song_id){
     	return scommentRepo.findComments(song_id);
     }
 
-    @PostMapping("/song/{song_id}")
+    @PostMapping("/songs/{song_id}/comments")
     public SongComment postComment(@PathVariable(value="song_id") Long song_id, @RequestBody SongComment comment) {
     	Song s = songRepository.findById(song_id).orElseThrow(() -> new ResourceNotAvailableException("Song not found"));
     	comment.setSong(s);
@@ -89,7 +89,7 @@ public class CommentController {
     	return comment;
     }
 
-    @DeleteMapping("/song/{comment_id}")
+    @DeleteMapping("/songs/{song_id}/comments/{comment_id}")
     public ApiResponse deleteSongComment(@PathVariable(value="comment_id") Long comment_id, @CurrentUser UserPrincipal user) {
     	
     	SongComment c = scommentRepo.findById(comment_id).orElseThrow(() -> new ResourceNotFoundException("Song Comment", "id", comment_id));
@@ -101,7 +101,7 @@ public class CommentController {
     	}
     }
 
-    @PutMapping("/song/{comment_id}")
+    @PutMapping("/songs/{song_id}/comments/{comment_id}")
     public SongComment editSongComment(@PathVariable(value="comment_id") Long comment_id, @RequestBody SongComment comment) {
     	SongComment saved_comment = scommentRepo.findById(comment_id).orElseThrow(() -> new ResourceNotFoundException("Album Comment", "id", comment_id));
     	saved_comment.setComment(comment.getComment());

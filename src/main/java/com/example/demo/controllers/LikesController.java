@@ -20,9 +20,11 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.models.Album;
 import com.example.demo.models.AlbumDislike;
 import com.example.demo.models.AlbumLike;
+import com.example.demo.models.AlbumSummary;
 import com.example.demo.models.Song;
 import com.example.demo.models.SongDislike;
 import com.example.demo.models.SongLike;
+import com.example.demo.models.SongSummary;
 import com.example.demo.payloads.ApiResponse;
 import com.example.demo.repository.AlbumDislikeRepository;
 import com.example.demo.repository.AlbumLikeRepository;
@@ -53,19 +55,15 @@ public class LikesController {
 
 	@Secured({"ROLE_USER", "ROLE_ADMIN"})
 	@GetMapping("/likes/albums")
-	public List<Album> getLikedAlbums(@CurrentUser UserPrincipal user){
-		List<AlbumLike> likes = albumLikeRepo.findAllByCreatedBy(user.getId());
-		System.out.println("Num of liked albums" + likes.size());
-		List<Album> likedAlbums = likes.stream().map(like -> like.getAlbum()).collect(Collectors.toList());
-		System.out.println(likedAlbums);
+	public List<AlbumSummary> getLikedAlbums(@CurrentUser UserPrincipal user){
+		List<AlbumSummary> likedAlbums = albumLikeRepo.findLikedAlbums(user.getId());
 		return likedAlbums;
 	}
 
 	@Secured({"ROLE_USER", "ROLE_ADMIN"})
 	@GetMapping("/likes/songs")
-	public List<Song> getLikedSongs(@CurrentUser UserPrincipal user){
-		List<SongLike> likes = songLikeRepo.findAllByCreatedBy(user.getId());
-		List<Song> likedSongs = likes.stream().map(like -> like.getSong()).collect(Collectors.toList());
+	public List<SongSummary> getLikedSongs(@CurrentUser UserPrincipal user){
+		List<SongSummary> likedSongs = songLikeRepo.findLikedSongs(user.getId());
 		return likedSongs;
 	}
 
@@ -93,7 +91,7 @@ public class LikesController {
 		return new ApiResponse(true, "disliked album");
 	}
 
-	@PostMapping("/song/{song_id}/like")
+	@PostMapping("/songs/{song_id}/like")
 	public ApiResponse likeSong(@PathVariable("song_id") Long song_id, @CurrentUser UserPrincipal user) {
 		Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
 		if (songLikeRepo.existsByCreatedByAndSong(user.getId(), song)) {
@@ -105,7 +103,7 @@ public class LikesController {
 		return new ApiResponse(true, "liked song");
 	}
 
-	@PostMapping("/song/{song_id}/dislike")
+	@PostMapping("/songs/{song_id}/dislike")
 	public ApiResponse dislikeSong(@PathVariable("song_id") Long song_id, @CurrentUser UserPrincipal user) {
 		Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
 		if (songDislikeRepo.existsByCreatedByAndSong(user.getId(), song)) {
@@ -133,7 +131,7 @@ public class LikesController {
 		return new ApiResponse(true, "deleted album dislike");
 	}
 
-	@DeleteMapping("/song/{song_id}/like")
+	@DeleteMapping("/songs/{song_id}/like")
 	public ApiResponse deleteSongLike(@PathVariable("song_id") Long song_id, @CurrentUser UserPrincipal user) {
 		Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
 		SongLike like = songLikeRepo.findByCreatedByAndSong(user.getId(), song).orElseThrow(() -> new ResourceNotFoundException("Song Like", "song_id", song_id));
@@ -142,7 +140,7 @@ public class LikesController {
 	}
 	
 	
-	@DeleteMapping("/song/{song_id}/dislike")
+	@DeleteMapping("/songs/{song_id}/dislike")
 	public ApiResponse deleteSongDislike(@PathVariable("song_id") Long song_id, @CurrentUser UserPrincipal user) {
 		Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
 		SongDislike dislike = songDislikeRepo.findByCreatedByAndSong(user.getId(), song).orElseThrow(() -> new ResourceNotFoundException("Song Dislike", "song_id", song_id));
@@ -151,7 +149,7 @@ public class LikesController {
 	}
 	
 	@Secured({"ROLE_USER", "ROLE_ADMIN"})
-	@GetMapping("/song/{song_id}/is_liked_disliked")
+	@GetMapping("/songs/{song_id}/is_liked_disliked")
 	public ApiResponse isSongLikedOrDisliked(@PathVariable("song_id") Long song_id, @CurrentUser UserPrincipal user) {
 		Song song = entityManager.getReference(Song.class, song_id);
 		if (songLikeRepo.existsByCreatedByAndSong(user.getId(), song)) {

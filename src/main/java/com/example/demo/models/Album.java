@@ -68,6 +68,12 @@ public class Album extends UserDateAudit{
 	public Album() {
 		
 	}
+	
+	public Album(Long id, String name, String coverArt) {
+		this.id = id;
+		this.name = name;
+		this.coverArt = coverArt;
+	}
 
 	public long getId() {
 		return id;

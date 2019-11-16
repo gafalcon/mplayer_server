@@ -92,5 +92,8 @@ public class AlbumController {
         return album;
     }
     
-    
+    @GetMapping("/user/{user_id}")
+    public List<Album> getUserAlbums(@PathVariable("user_id") Long userId){
+    	return alrepo.findAllByCreatedBy(userId);
+    }
 }

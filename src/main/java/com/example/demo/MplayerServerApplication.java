@@ -56,7 +56,7 @@ public class MplayerServerApplication {
     CommandLineRunner init(UserRepository userRepository, SongRepository songRepo, PlaylistRepository plrepo, AlbumRepository alrepo, StorageService storageService) {
         return args -> {
         	storageService.init();
-        	initDb(userRepository, songRepo, plrepo, alrepo);
+        	//initDb(userRepository, songRepo, plrepo, alrepo);
         };
     }
     
