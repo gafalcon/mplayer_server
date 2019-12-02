@@ -21,7 +21,8 @@ public interface SongLikeRepository  extends CrudRepository<SongLike, Long>{
 	
 	List<SongLike> findAllByCreatedBy(Long createdBy);
 	
-	
+	long countBySong(Song song);
+
     @Query("SELECT NEW com.example.demo.models.SongSummary(s.song.id, s.song.name, s.song.album.name, s.song.album.id) FROM SongLike s WHERE s.createdBy = :createdBy")
     List<SongSummary> findLikedSongs(@Param("createdBy") Long createdBy);
 }

@@ -13,5 +13,7 @@ public interface SongDislikeRepository  extends CrudRepository<SongDislike, Long
 
 	Optional<SongDislike> findByCreatedByAndSong(Long createdBy, Song song);
 	
+	long countBySong(Song song);
+
 	boolean existsByCreatedByAndSong(Long createdBy, Song song);
 }

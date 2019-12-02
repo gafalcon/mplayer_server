@@ -14,4 +14,6 @@ public interface AlbumDislikeRepository  extends CrudRepository<AlbumDislike, Lo
 	Optional<AlbumDislike> findByCreatedByAndAlbum(Long createdBy, Album album);
 	
 	boolean existsByCreatedByAndAlbum(Long createdBy, Album album);
+	
+	long countByAlbum(Album album);
 }

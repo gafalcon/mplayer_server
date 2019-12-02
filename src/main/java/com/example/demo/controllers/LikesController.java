@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,8 +30,10 @@ import com.example.demo.models.SongSummary;
 import com.example.demo.payloads.ApiResponse;
 import com.example.demo.repository.AlbumDislikeRepository;
 import com.example.demo.repository.AlbumLikeRepository;
+import com.example.demo.repository.AlbumRepository;
 import com.example.demo.repository.SongDislikeRepository;
 import com.example.demo.repository.SongLikeRepository;
+import com.example.demo.repository.SongRepository;
 import com.example.demo.security.CurrentUser;
 import com.example.demo.security.UserPrincipal;
 
@@ -49,6 +53,12 @@ public class LikesController {
 	
 	@Autowired
 	private AlbumLikeRepository albumLikeRepo;
+	
+	@Autowired
+	private AlbumRepository albumRepo;
+	
+	@Autowired
+	private SongRepository songRepo;
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -69,13 +79,16 @@ public class LikesController {
 
 	@PostMapping("/albums/{album_id}/like")
 	public ApiResponse likeAlbum(@PathVariable("album_id") Long album_id, @CurrentUser UserPrincipal user) {
+		System.out.println("Album like");
 		Album album = entityManager.getReference(Album.class, album_id); // session.load() for native Session API  
 		if (albumLikeRepo.existsByCreatedByAndAlbum(user.getId(), album)) {
+			System.out.println("Album already liked");
 			return new ApiResponse(false, "album already liked");
 		}
 		AlbumLike like = new AlbumLike();
 		like.setAlbum(album);
 		albumLikeRepo.save(like);
+		System.out.println(like);
 		return new ApiResponse(true, "liked album");
 	}
 
@@ -172,4 +185,42 @@ public class LikesController {
 		return new ApiResponse(false, "no likes ni dislikes");
 	}
 	
+	@Secured({"ROLE_ADMIN"})
+	@PutMapping("/albums/likes/update")
+	public ApiResponse updateTotalLikes() {
+		List<Album> updatedAlbums = new ArrayList<Album>();
+		albumRepo.findAll().forEach((album) -> {
+			long totalLikes = albumLikeRepo.countByAlbum(album);
+			long totalDislikes = albumLikeRepo.countByAlbum(album);
+			if ((totalLikes + totalDislikes) > 0) {
+				System.out.println(String.format("%s - likes: %d , dislikes: %d", album.getName(), totalLikes, totalDislikes));
+			}
+			album.setTotalDislikes(totalDislikes);
+			album.setTotalLikes(totalLikes);
+			updatedAlbums.add(album);
+		}); 
+		
+		albumRepo.saveAll(updatedAlbums);
+		return new ApiResponse(true, "Albums updated");
+	}
+	
+	@Secured({"ROLE_ADMIN"})
+	@PutMapping("/songs/likes/update")
+	public ApiResponse updateTotalSongLikes() {
+		List<Song> updatedSongs = new ArrayList<Song>();
+		songRepo.findAll().forEach((song) -> {
+			long totalLikes = songLikeRepo.countBySong(song);
+			long totalDislikes = songLikeRepo.countBySong(song);
+			if ((totalLikes + totalDislikes) > 0) {
+				System.out.println(String.format("%s - likes: %d , dislikes: %d", song.getName(), totalLikes, totalDislikes));
+			}
+			song.setTotalDislikes(totalDislikes);
+			song.setTotalLikes(totalLikes);
+			// TODO only add if there was a change
+			updatedSongs.add(song);
+		}); 
+		
+		songRepo.saveAll(updatedSongs);
+		return new ApiResponse(true, "Albums updated");
+	}
 }
