@@ -12,6 +12,7 @@ public class UserResponse {
 	private String country;
 	private String gender;
 	private String profilePhoto;
+	private String email;
 	public UserResponse(Long id, String firstName, String lastName, String username, Role role, String country,
 			String gender) {
 		this.id = id;
@@ -30,6 +31,8 @@ public class UserResponse {
 		this.role = user.getRole();
 		this.country = user.getCountry();
 		this.gender = user.getGender();
+		this.setEmail(user.getEmail());
+		this.setUsername(user.getUsername());
 		this.setProfilePhoto(user.getProfilePhoto());
 	}
 	public Long getId() {
@@ -81,6 +84,14 @@ public class UserResponse {
 
 	public void setProfilePhoto(String profilePhoto) {
 		this.profilePhoto = profilePhoto;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

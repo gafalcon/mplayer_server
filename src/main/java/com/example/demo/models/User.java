@@ -66,6 +66,14 @@ public class User extends DateAudit {
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
+	public UserStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(UserStatus status) {
+		this.status = status;
+	}
+
 	public User() {
 		
 	}
@@ -80,6 +88,7 @@ public class User extends DateAudit {
 		this.username = username;
 		this.country = country;
 		this.gender = gender;
+		this.status = UserStatus.ACTIVE;
 	}
 	
 	@Override

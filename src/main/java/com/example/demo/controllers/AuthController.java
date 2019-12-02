@@ -99,7 +99,6 @@ public class AuthController {
         		signUpRequest.getEmail(), signUpRequest.getPassword(), Role.ROLE_USER,
         		signUpRequest.getCountry(), signUpRequest.getGender()
         		);
-        
         String unencrypted_passwd = user.getPassword();
 
         user.setPassword(passwordEncoder.encode(unencrypted_passwd));
