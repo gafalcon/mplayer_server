@@ -8,13 +8,15 @@ public class Comment {
 	private String username;
 	private Long createdBy;
 	private Instant createdAt;
-
-	public Comment(Long id, String comment, String username, Long createdBy, Instant createdAt) {
+    private String userPhoto;
+    
+	public Comment(Long id, String comment, String username, Long createdBy, Instant createdAt, String userPhoto) {
 		this.id = id;
 		this.comment = comment;
 		this.username = username;
 		this.createdBy = createdBy;
 		this.createdAt = createdAt;
+		this.setUserPhoto(userPhoto);
 	}
 	public String getComment() {
 		return comment;
@@ -45,6 +47,12 @@ public class Comment {
 	}
 	public void setCreatedAt(Instant createdAt) {
 		this.createdAt = createdAt;
+	}
+	public String getUserPhoto() {
+		return userPhoto;
+	}
+	public void setUserPhoto(String userPhoto) {
+		this.userPhoto = userPhoto;
 	}
 	
 	

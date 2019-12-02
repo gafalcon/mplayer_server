@@ -16,6 +16,6 @@ public interface AlbumCommentRepository  extends CrudRepository<AlbumComment, Lo
 
     List<AlbumComment> findAllByAlbum(Album album);
     
-    @Query("SELECT NEW com.example.demo.models.Comment(c.id, c.comment, u.username, c.createdBy, c.createdAt) FROM AlbumComment c, User u WHERE c.album.id = :albumId AND c.createdBy = u.id")
+    @Query("SELECT NEW com.example.demo.models.Comment(c.id, c.comment, u.username, c.createdBy, c.createdAt, u.profilePhoto) FROM AlbumComment c, User u WHERE c.album.id = :albumId AND c.createdBy = u.id ORDER BY c.createdAt DESC")
     List<Comment> findAlbumComments(@Param("albumId") Long album_id);
 }
