@@ -27,6 +27,7 @@ import com.example.demo.security.CurrentUser;
 import com.example.demo.security.Role;
 import com.example.demo.security.UserPrincipal;
 import com.example.demo.storage.StorageService;
+import com.example.demo.enums.UserStatus;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.storage.AmazonS3ClientService;
 
@@ -103,4 +104,12 @@ public class UserController {
 
         return new UserResponse(user);
     }
+    
+	@PostMapping("/{user_id}/update_status")
+	@Secured("ROLE_ADMIN")
+	public UserResponse updateStatus(@PathVariable(value="user_id") long id, @RequestParam("status") UserStatus status) {
+		User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+		user.setStatus(status);
+		return new UserResponse(userRepository.save(user));
+	}
 }

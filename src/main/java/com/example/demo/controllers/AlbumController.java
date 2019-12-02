@@ -20,13 +20,9 @@ import org.springframework.util.StringUtils;
 import com.amazonaws.services.appstream.model.ResourceNotAvailableException;
 import com.amazonaws.services.opsworkscm.model.ResourceNotFoundException;
 import com.example.demo.models.Album;
-import com.example.demo.models.AlbumComment;
-import com.example.demo.models.Comment;
 import com.example.demo.models.Song;
 import com.example.demo.payloads.ApiResponse;
-import com.example.demo.repository.AlbumCommentRepository;
 import com.example.demo.repository.AlbumRepository;
-import com.example.demo.repository.SongRepository;
 import com.example.demo.storage.AmazonS3ClientService;
 
 
@@ -36,7 +32,6 @@ import java.util.List;
 @RequestMapping("/api/albums")
 public class AlbumController {
 	
-	private final SongRepository songRepository;
     private final AlbumRepository alrepo;
     
     @Autowired
@@ -44,8 +39,7 @@ public class AlbumController {
     @Value("${aws.s3.url}")
     private String s3url;    
 
-	public AlbumController(SongRepository rep, AlbumRepository alrepo) {
-		this.songRepository = rep;
+	public AlbumController(AlbumRepository alrepo) {
 		this.alrepo = alrepo;
 	}
 	
@@ -60,6 +54,18 @@ public class AlbumController {
 					HttpStatus.NOT_FOUND, "album not found"
 				));
 	}
+	
+	@DeleteMapping("/{id}")
+	public ApiResponse deleteAlbum(@PathVariable(value="id") Long id) {
+		try {
+			alrepo.deleteById(id);
+		}catch(IllegalArgumentException ex) {
+			return new ApiResponse(false, "Could not find Album id");
+		}
+		//TODO 
+		return new ApiResponse(true, "Album deleted!");
+	}
+
 	@PostMapping("")
 	Album addAlbum(@RequestBody Album album) {
 		System.out.println(album);
