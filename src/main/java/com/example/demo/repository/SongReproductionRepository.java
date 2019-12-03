@@ -16,6 +16,7 @@ public interface SongReproductionRepository extends CrudRepository<SongReproduct
 
 	long countBySong(Song song);
 	
-	List<Song> findSongByCreatedByOrderByCreatedAtDesc(Long createdBy, Pageable pageable);
+    @Query("SELECT s.song FROM SongReproduction s WHERE s.createdBy = :createdBy ORDER BY s.createdAt DESC")
+	List<Song> findSongByCreatedByOrderByCreatedAtDesc(@Param("createdBy") Long createdBy, Pageable pageable);
 }
 

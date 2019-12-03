@@ -17,5 +17,6 @@ public interface AlbumReproductionRepository extends CrudRepository<AlbumReprodu
 	
 	long countByAlbum(Album album);
 
-	List<Album> findAlbumByCreatedByOrderByCreatedAtDesc(Long createdBy, Pageable pageable);
+    @Query("SELECT a.album FROM AlbumReproduction a WHERE a.createdBy = :createdBy ORDER BY a.createdAt DESC")
+	List<Album> findAlbumByCreatedByOrderByCreatedAtDesc(@Param("createdBy") Long createdBy, Pageable pageable);
 }

@@ -15,7 +15,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.example.demo.models.audit.UserDateAudit;
 
 @Entity
-@Table(name = "song_likes")
+@Table(name = "song_reproductions")
 public class SongReproduction extends UserDateAudit{
 	
 	@Id

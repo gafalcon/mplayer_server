@@ -58,7 +58,6 @@ public class ReproductionController {
 	
 	@PostMapping("/albums/{album_id}/repr")
 	public ApiResponse albumRepr(@PathVariable("album_id") Long album_id, @CurrentUser UserPrincipal user) {
-		System.out.println("Album like");
 		Album album = entityManager.getReference(Album.class, album_id); // session.load() for native Session API  
 
 		AlbumReproduction ar = new AlbumReproduction();
@@ -70,7 +69,6 @@ public class ReproductionController {
 	
 	@PostMapping("/songs/{song_id}/repr")
 	public ApiResponse songRepr(@PathVariable("song_id") Long song_id, @CurrentUser UserPrincipal user) {
-		System.out.println("Album like");
 		Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
 
 		SongReproduction sr = new SongReproduction();
