@@ -22,16 +22,19 @@ public interface MessageRepository extends CrudRepository<Message, Long>
 	
 	Long countByStatusAndReceiver(MessageStatus status, User receiver);
 	
-	@Query("SELECT NEW com.example.demo.models.MessageResponse(m.id, m.sender.username, m.receiver.username, m.sender.id, m.receiver.id, m.message, m.createdAt, m.status) FROM Message m WHERE m.receiver = :receiver AND m.status = :status")
+	@Query("SELECT NEW com.example.demo.models.MessageResponse(m.id, m.sender.username, m.receiver.username, m.sender.id, m.receiver.id, m.message, m.createdAt, m.status, m.sender.profilePhoto) FROM Message m WHERE m.receiver = :receiver AND m.status = :status")
 	List<MessageResponse> findAllUnread(@Param("receiver") User receiver, @Param("status") MessageStatus status);
 
-	@Query("SELECT NEW com.example.demo.models.MessageResponse(m.id, m.sender.username, m.receiver.username, m.sender.id, m.receiver.id, m.message, m.createdAt, m.status) FROM Message m WHERE m.receiver = :receiver ORDER BY m.createdAt DESC")
+	@Query("SELECT NEW com.example.demo.models.MessageResponse(m.id, m.sender.username, m.receiver.username, m.sender.id, m.receiver.id, m.message, m.createdAt, m.status, m.sender.profilePhoto) FROM Message m WHERE m.receiver = :receiver ORDER BY m.createdAt DESC")
 	List<MessageResponse> findAllReceived(@Param("receiver") User receiver);
 	
 	
-	@Query("SELECT NEW com.example.demo.models.MessageResponse(m.id, m.sender.username, m.receiver.username, m.sender.id, m.receiver.id, m.message, m.createdAt, m.status) FROM Message m WHERE m.sender = :sender ORDER BY m.createdAt DESC")
+	@Query("SELECT NEW com.example.demo.models.MessageResponse(m.id, m.sender.username, m.receiver.username, m.sender.id, m.receiver.id, m.message, m.createdAt, m.status, m.sender.profilePhoto) FROM Message m WHERE m.sender = :sender ORDER BY m.createdAt DESC")
 	List<MessageResponse> findAllSent(@Param("sender") User sender);
 
-	@Query("SELECT NEW com.example.demo.models.MessageResponse(m.id, m.sender.username, m.receiver.username, m.sender.id, m.receiver.id, m.message, m.createdAt, m.status) FROM Message m WHERE m.id = :message_id")
+	@Query("SELECT NEW com.example.demo.models.MessageResponse(m.id, m.sender.username, m.receiver.username, m.sender.id, m.receiver.id, m.message, m.createdAt, m.status, m.sender.profilePhoto) FROM Message m WHERE m.id = :message_id")
 	Optional<MessageResponse>findMessage(@Param("message_id") Long message_id);
+	
+
+	//List<User> findAllConversations(@Param("user_id") Long logged_user_id);
 }

@@ -7,11 +7,21 @@ public class UserSummary {
 	private String username;
 	private Long id;
 	private Role role;
+	private String profilePhoto;
 	
-	public UserSummary(Long id, String username, Role role) {
+	public UserSummary(Long id, String username, Role role, String profilePhoto) {
 		this.username = username;
 		this.id = id;
 		this.role = role;
+		this.profilePhoto = profilePhoto;
+	}
+
+	public String getProfilePhoto() {
+		return profilePhoto;
+	}
+
+	public void setProfilePhoto(String profilePhoto) {
+		this.profilePhoto = profilePhoto;
 	}
 
 	public String getUsername() {

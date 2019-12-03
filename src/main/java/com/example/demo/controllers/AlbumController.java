@@ -20,9 +20,11 @@ import org.springframework.util.StringUtils;
 import com.amazonaws.services.appstream.model.ResourceNotAvailableException;
 import com.amazonaws.services.opsworkscm.model.ResourceNotFoundException;
 import com.example.demo.models.Album;
+import com.example.demo.models.Genre;
 import com.example.demo.models.Song;
 import com.example.demo.payloads.ApiResponse;
 import com.example.demo.repository.AlbumRepository;
+import com.example.demo.repository.GenreRepository;
 import com.example.demo.storage.AmazonS3ClientService;
 
 
@@ -33,6 +35,8 @@ import java.util.List;
 public class AlbumController {
 	
     private final AlbumRepository alrepo;
+    @Autowired
+    private GenreRepository genre_repo;
     
     @Autowired
     private AmazonS3ClientService amazonS3ClientService;
@@ -75,6 +79,11 @@ public class AlbumController {
 			System.out.println(s);
 		}//
 		Album saved_album = alrepo.save(album);
+		for (String str_genre : saved_album.getGenres().split(",")) {
+			Genre genre = this.genre_repo.findByGenre(str_genre).get();
+			genre.getAlbums().add(saved_album);
+			genre_repo.save(genre);
+		}
 		return saved_album;
 	}
 	
@@ -93,6 +102,9 @@ public class AlbumController {
         amazonS3ClientService.uploadFileToS3Bucket(file, filename, true);
 //        storageService.store(file,filename, false);
         album.setCoverArt(this.s3url + filename);
+        for (Song s : album.getSongs()) {
+        	s.setCover_art_url(this.s3url + filename);
+        }
         album = alrepo.save(album);
 
         return album;

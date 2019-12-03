@@ -69,7 +69,9 @@ public class MessageController {
 		
 		Message m = new Message(messageRequest.getMessage(), sender, receiver);
 		m = messageRepo.save(m);
-		return new MessageResponse(m.getId(), m.getSender().getUsername(), m.getReceiver().getUsername(), m.getSender().getId(), m.getReceiver().getId(), m.getMessage(), m.getCreatedAt(), m.getStatus());
+		return new MessageResponse(m.getId(), m.getSender().getUsername(), 
+				m.getReceiver().getUsername(), m.getSender().getId(), 
+				m.getReceiver().getId(), m.getMessage(), m.getCreatedAt(), m.getStatus(), "");
 	}
 
 	@DeleteMapping("/{message_id}")

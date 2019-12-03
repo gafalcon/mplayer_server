@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import com.example.demo.enums.UserStatus;
+
 public interface UserProfile {
     String getId();
     String getUsername();
@@ -7,4 +9,5 @@ public interface UserProfile {
     String getLastName();
     String getEmail();
     String getRole();
+    UserStatus getStatus();
 }

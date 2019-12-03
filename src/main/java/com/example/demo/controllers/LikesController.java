@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -222,5 +223,15 @@ public class LikesController {
 		
 		songRepo.saveAll(updatedSongs);
 		return new ApiResponse(true, "Albums updated");
+	}
+	
+	@GetMapping("/albums/likes/most")
+	public List<Album> mostLikedAlbums(){
+		return albumRepo.findAllByOrderByTotalLikesDesc(PageRequest.of(0, 10));
+	}
+	
+	@GetMapping("/songs/likes/most")
+	public List<Song> mostLikedSongs() {
+		return songRepo.findAllByOrderByTotalLikesDesc(PageRequest.of(0, 10));
 	}
 }

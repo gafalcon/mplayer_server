@@ -72,7 +72,8 @@ public class AuthController {
         Authentication authentication = authenticate(loginRequest.getUsernameOrEmail(), 
         		loginRequest.getPassword());
         UserPrincipal auth_user = (UserPrincipal) authentication.getPrincipal();
-        UserSummary user = new UserSummary(auth_user.getId(), auth_user.getUsername(), auth_user.getRole());
+        UserSummary user = new UserSummary(auth_user.getId(), auth_user.getUsername(),
+        		auth_user.getRole(), auth_user.getProfilePhoto());
         /*String usernameOrEmail = loginRequest.getUsernameOrEmail();
         User logged_user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "username", usernameOrEmail));*/
@@ -114,7 +115,7 @@ public class AuthController {
         String jwt = tokenProvider.generateToken(authentication);
         //return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
         return ResponseEntity.created(location).body(new JwtAuthenticationResponse(jwt,
-        		new UserSummary(result.getId(), result.getUsername(), result.getRole())));
+        		new UserSummary(result.getId(), result.getUsername(), result.getRole(), result.getProfilePhoto())));
     }
 
     //For login with Google, will create a user in db with info collected by google
@@ -136,7 +137,7 @@ public class AuthController {
     	// TODO If user has already registered without google, it wont be able to register with google, because email already exists, and needs to authenticate with password
         Authentication authentication = authenticate(regUser.getUsername(), googlePass);
 
-        UserSummary user = new UserSummary(regUser.getId(), regUser.getUsername(), regUser.getRole());
+        UserSummary user = new UserSummary(regUser.getId(), regUser.getUsername(), regUser.getRole(), regUser.getProfilePhoto());
         /*String usernameOrEmail = loginRequest.getUsernameOrEmail();
         User logged_user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "username", usernameOrEmail));*/

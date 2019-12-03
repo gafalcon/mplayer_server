@@ -2,18 +2,20 @@ package com.example.demo.repository;
 
 import java.util.List;
 
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.models.Song;
+import com.example.demo.models.SongReproduction;
 
 @Repository
-public interface SongRepository extends CrudRepository<Song, Long>{
+public interface SongReproductionRepository extends CrudRepository<SongReproduction,Long> {
 
-	List<Song> findAllByOrderByTotalReproductionsDesc(Pageable pageable);
-	List<Song> findAllByOrderByTotalLikesDesc(Pageable pageable);
+	long countBySong(Song song);
 	
+	List<Song> findSongByCreatedByOrderByCreatedAtDesc(Long createdBy, Pageable pageable);
 }
+
