@@ -17,6 +17,7 @@ public interface AlbumRepository extends CrudRepository<Album, Long>{
 	
 	List<Album> findAllByOrderByTotalReproductionsDesc(Pageable pageable);
 	List<Album> findAllByOrderByTotalLikesDesc(Pageable pageable);
+	List<Album> findAllByOrderByCreatedAtDesc(Pageable pageable);
 	
 	List<Album> findByCreatedByOrderByTotalReproductionsDesc(@Param("createdBy") Long userId, Pageable pageable);
 

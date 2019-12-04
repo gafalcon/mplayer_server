@@ -22,6 +22,7 @@ import com.amazonaws.services.appstream.model.ResourceNotAvailableException;
 import com.example.demo.models.Comment;
 import com.example.demo.models.Song;
 import com.example.demo.models.SongComment;
+import com.example.demo.payloads.SongComplete;
 import com.example.demo.repository.SongCommentRepository;
 import com.example.demo.repository.SongRepository;
 import com.example.demo.storage.AmazonS3ClientService;
@@ -81,4 +82,10 @@ public class SongController {
 		System.out.println(postParams);
 	}
 	
+	@GetMapping("/{id}")
+	public SongComplete getSong(@PathVariable(value="id") Long songId) {
+		return songRepository.findSongCompleteById(songId).orElseThrow(() -> new ResponseStatusException(
+					HttpStatus.NOT_FOUND, "album not found"
+				));
+	}
 }

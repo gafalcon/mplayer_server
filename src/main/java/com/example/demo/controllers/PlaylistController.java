@@ -23,6 +23,7 @@ import com.example.demo.models.Song;
 import com.example.demo.payloads.ApiResponse;
 import com.example.demo.payloads.PlaylistRequest;
 import com.example.demo.repository.PlaylistRepository;
+import com.example.demo.repository.SongRepository;
 
 @RestController
 @RequestMapping("/api/playlists")
@@ -30,6 +31,9 @@ public class PlaylistController {
 
 	@Autowired
 	PlaylistRepository plrepo;
+
+	@Autowired
+	SongRepository songrepo;
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -64,15 +68,16 @@ public class PlaylistController {
     
 
     @PostMapping("")
-    public PlaylistRequest newPlaylist(@RequestBody PlaylistRequest plRequest) {
+    public Playlist newPlaylist(@RequestBody PlaylistRequest plRequest) {
     	Set<Song> pl_songs = new HashSet<Song>();
-    	for (Long songId : plRequest.getSongIds()) {
-    		pl_songs.add(entityManager.getReference(Song.class, songId));
-		}
-    	Playlist pl = new Playlist(plRequest.getName(), "", pl_songs);
+    	Song song = songrepo.findById(plRequest.getSongId()).orElseThrow(() -> new ResponseStatusException(
+				  HttpStatus.NOT_FOUND, "cannot find song in the database"
+    			));
+
+    	pl_songs.add(song);
+    	Playlist pl = new Playlist(plRequest.getName(), song.getCover_art_url(), pl_songs);
     	pl = plrepo.save(pl);
-    	plRequest.setPlId(pl.getId());
-    	return plRequest;
+    	return pl;
     }
     
     @PostMapping("/{playlist_id}/add/{song_id}")

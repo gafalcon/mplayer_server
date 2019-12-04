@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.models.Album;
@@ -58,8 +60,13 @@ public class ReproductionController {
 	
 	@PostMapping("/albums/{album_id}/repr")
 	public ApiResponse albumRepr(@PathVariable("album_id") Long album_id, @CurrentUser UserPrincipal user) {
-		Album album = entityManager.getReference(Album.class, album_id); // session.load() for native Session API  
+		//Album album = entityManager.getReference(Album.class, album_id); // session.load() for native Session API  
 
+		Album album = albumRepo.findById(album_id).orElseThrow(() -> new ResponseStatusException(
+					HttpStatus.NOT_FOUND, "album not found"
+				));
+		album.setTotalReproductions(album.getTotalReproductions() +1);
+		album = albumRepo.save(album);
 		AlbumReproduction ar = new AlbumReproduction();
 		ar.setAlbum(album);
 		ar_repo.save(ar);
@@ -69,8 +76,10 @@ public class ReproductionController {
 	
 	@PostMapping("/songs/{song_id}/repr")
 	public ApiResponse songRepr(@PathVariable("song_id") Long song_id, @CurrentUser UserPrincipal user) {
-		Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
-
+		//Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
+		Song song = songRepo.findById(song_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "song not found"));
+		song.setTotalReproductions(song.getTotalReproductions() + 1);
+		song = songRepo.save(song);
 		SongReproduction sr = new SongReproduction();
 		sr.setSong(song);
 		sr_repo.save(sr);

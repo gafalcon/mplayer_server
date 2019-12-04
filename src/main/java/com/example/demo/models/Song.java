@@ -34,7 +34,7 @@ public class Song {
 
 	//@NotBlank
 	private String url;
-	private String coverArtUrl;
+	private String cover_art_url;
 	
 	private long totalLikes;
 	private long totalDislikes;
@@ -52,7 +52,7 @@ public class Song {
 		this.artist = artist;
 		this.album = album;
 		this.url = url;
-		this.coverArtUrl = cover_art_url;
+		this.cover_art_url = cover_art_url;
 		this.genres = genres;
 		this.totalDislikes = 0;
 		this.totalLikes = 0;
@@ -64,7 +64,7 @@ public class Song {
 		this.artist = artist;
 		this.album = album;
 		this.url = url;
-		this.coverArtUrl = cover_art_url;
+		this.cover_art_url = cover_art_url;
 	}
 	public String getName() {
 		return name;
@@ -98,15 +98,15 @@ public class Song {
 		this.url = url;
 	}
 	public String getCover_art_url() {
-		return coverArtUrl;
+		return cover_art_url;
 	}
 	public void setCover_art_url(String cover_art_url) {
-		this.coverArtUrl = cover_art_url;
+		this.cover_art_url = cover_art_url;
 	}
 	@Override
 	public String toString() {
 		return "Song [id=" + id + ", name=" + name + ", artist=" + artist + ", url=" + url
-				+ ", cover_art_url=" + coverArtUrl + "]";
+				+ ", cover_art_url=" + cover_art_url + "]";
 	}
 
 	public long getTotalLikes() {

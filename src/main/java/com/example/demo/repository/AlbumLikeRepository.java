@@ -21,7 +21,7 @@ public interface AlbumLikeRepository  extends CrudRepository<AlbumLike, Long>{
 
 	List<AlbumLike> findAllByCreatedBy(Long createdBy);
 	
-    @Query("SELECT NEW com.example.demo.models.AlbumSummary(a.album.id, a.album.name, a.album.coverArt) FROM AlbumLike a WHERE a.createdBy = :createdBy")
+    @Query("SELECT NEW com.example.demo.models.AlbumSummary(a.album.id, a.album.name, a.album.cover_art_url) FROM AlbumLike a WHERE a.createdBy = :createdBy")
     List<AlbumSummary> findLikedAlbums(@Param("createdBy") Long createdBy);
 
 	boolean existsByCreatedByAndAlbum(Long createdBy, Album album);

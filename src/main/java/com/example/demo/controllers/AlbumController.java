@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -52,6 +53,11 @@ public class AlbumController {
 		return (List <Album>) alrepo.findAll();
 	}
 	
+	@GetMapping("/recent")
+	public List<Album> getRecentAlbums(){
+		return (List <Album>) alrepo.findAllByOrderByCreatedAtDesc(PageRequest.of(0, 10));
+	}
+
 	@GetMapping("/{id}")
 	public Album getAlbum(@PathVariable(value="id") Long al_id) {
 		return alrepo.findById(al_id).orElseThrow(() -> new ResponseStatusException(
@@ -76,6 +82,10 @@ public class AlbumController {
 		//songRepository.saveAll(album.getSongs());
 		for(Song s: album.getSongs()) {
 			s.setAlbum(album);
+			if(s.getArtist() == null)
+				s.setArtist(album.getArtist());
+			if(s.getGenres() == null)
+				s.setGenres(album.getGenres());
 			System.out.println(s);
 		}//
 		Album saved_album = alrepo.save(album);
@@ -101,7 +111,7 @@ public class AlbumController {
         filename = String.format("images/%d_album_%s",album.getId(), filename);
         amazonS3ClientService.uploadFileToS3Bucket(file, filename, true);
 //        storageService.store(file,filename, false);
-        album.setCoverArt(this.s3url + filename);
+        album.setCover_art_url(this.s3url + filename);
         for (Song s : album.getSongs()) {
         	s.setCover_art_url(this.s3url + filename);
         }

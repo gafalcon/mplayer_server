@@ -5,17 +5,16 @@ import java.util.List;
 public class PlaylistRequest {
 
 	String name;
-	Long plId;
-	public Long getPlId() {
-		return plId;
+	Long songId;
+	public Long getSongId() {
+		return songId;
 	}
-	public void setPlId(Long plId) {
-		this.plId = plId;
+	public void setSongId(Long songId) {
+		this.songId = songId;
 	}
-	List<Long> songIds;
-	public PlaylistRequest(String name, List<Long> songIds) {
+	public PlaylistRequest(String name, Long songId) {
 		this.name = name;
-		this.songIds = songIds;
+		this.songId = songId;
 	}
 	public String getName() {
 		return name;
@@ -23,12 +22,5 @@ public class PlaylistRequest {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Long> getSongIds() {
-		return songIds;
-	}
-	public void setSongIds(List<Long> songIds) {
-		this.songIds = songIds;
-	}
-
 	
 }

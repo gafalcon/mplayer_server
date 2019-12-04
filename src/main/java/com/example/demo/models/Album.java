@@ -35,8 +35,16 @@ public class Album extends UserDateAudit{
 	private String artist;
 	
 	private Instant releaseDate;
-	private String coverArt;
+	private String cover_art_url;
 	
+	public String getCover_art_url() {
+		return cover_art_url;
+	}
+
+	public void setCover_art_url(String cover_art_url) {
+		this.cover_art_url = cover_art_url;
+	}
+
 	@OneToMany(
 			mappedBy = "album",
 			cascade=CascadeType.ALL,
@@ -52,12 +60,12 @@ public class Album extends UserDateAudit{
 	private long totalReproductions;
 	private String genres;
 	
-	public Album(String name, String artist, Instant releaseDate, String coverArt, Set<Song> songs, String genres) {
+	public Album(String name, String artist, Instant releaseDate, String cover_art_url, Set<Song> songs, String genres) {
 		super();
 		this.name = name;
 		this.artist = artist;
 		this.releaseDate = releaseDate;
-		this.coverArt = coverArt;
+		this.cover_art_url = cover_art_url;
 		this.songs = songs;
 		this.totalDislikes = 0;
 		this.totalLikes = 0;
@@ -69,10 +77,10 @@ public class Album extends UserDateAudit{
 		
 	}
 	
-	public Album(Long id, String name, String coverArt) {
+	public Album(Long id, String name, String cover_art_url) {
 		this.id = id;
 		this.name = name;
-		this.coverArt = coverArt;
+		this.cover_art_url = cover_art_url;
 	}
 
 	public long getId() {
@@ -107,14 +115,6 @@ public class Album extends UserDateAudit{
 		this.releaseDate = releaseDate;
 	}
 
-	public String getCoverArt() {
-		return coverArt;
-	}
-
-	public void setCoverArt(String coverArt) {
-		this.coverArt = coverArt;
-	}
-
 	public Set<Song> getSongs() {
 		return songs;
 	}
@@ -126,7 +126,7 @@ public class Album extends UserDateAudit{
 	@Override
 	public String toString() {
 		return "Album [id=" + id + ", name=" + name + ", artist=" + artist + ", releaseDate=" + releaseDate
-				+ ", coverArt=" + coverArt + ", songs=" + songs + "]";
+				+ ", coverArt=" + cover_art_url + ", songs=" + songs + "]";
 	}
 
 	public long getTotalLikes() {
