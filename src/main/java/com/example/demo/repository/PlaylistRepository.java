@@ -11,4 +11,5 @@ import com.example.demo.models.Playlist;
 public interface PlaylistRepository extends CrudRepository<Playlist, Long>{
 
 	List<Playlist> findAllByCreatedBy(Long userId);
+	List<ModelName>findByNameIgnoreCaseContaining(String name); 
 }

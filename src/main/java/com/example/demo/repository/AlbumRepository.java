@@ -21,6 +21,10 @@ public interface AlbumRepository extends CrudRepository<Album, Long>{
 	
 	List<Album> findByCreatedByOrderByTotalReproductionsDesc(@Param("createdBy") Long userId, Pageable pageable);
 
+	List<ModelName>findByNameIgnoreCaseContaining(String name); 
+
+	List<ModelName>findByGenresIgnoreCaseContaining(String genres); 
+	
 	default List<Album> findTop10ByCreatedByOrderByTotalReproductionsDesc(Long userId) {
 		return findByCreatedByOrderByTotalReproductionsDesc(userId, PageRequest.of(0,10));
 	}	

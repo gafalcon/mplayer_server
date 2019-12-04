@@ -23,6 +23,7 @@ import com.example.demo.models.Comment;
 import com.example.demo.models.Song;
 import com.example.demo.models.SongComment;
 import com.example.demo.payloads.SongComplete;
+import com.example.demo.repository.ModelName;
 import com.example.demo.repository.SongCommentRepository;
 import com.example.demo.repository.SongRepository;
 import com.example.demo.storage.AmazonS3ClientService;
@@ -88,4 +89,9 @@ public class SongController {
 					HttpStatus.NOT_FOUND, "album not found"
 				));
 	}
+	
+    @GetMapping("/search/name/{name}")
+    public List<ModelName> FindByName(@PathVariable("name") String name){
+    	return songRepository.findByNameIgnoreCaseContaining(name);
+    }
 }

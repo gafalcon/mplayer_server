@@ -22,6 +22,7 @@ import com.example.demo.models.Playlist;
 import com.example.demo.models.Song;
 import com.example.demo.payloads.ApiResponse;
 import com.example.demo.payloads.PlaylistRequest;
+import com.example.demo.repository.ModelName;
 import com.example.demo.repository.PlaylistRepository;
 import com.example.demo.repository.SongRepository;
 
@@ -89,5 +90,11 @@ public class PlaylistController {
 		pl.getSongs().add(entityManager.getReference(Song.class, song_id));
 		plrepo.save(pl);
     	return new ApiResponse(true, "Song added to playlist");
+    }
+    
+    
+    @GetMapping("/search/name/{name}")
+    public List<ModelName> FindPlaylistsByName(@PathVariable("name") String name){
+    	return plrepo.findByNameIgnoreCaseContaining(name);
     }
 }

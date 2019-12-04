@@ -22,4 +22,5 @@ public interface SongRepository extends CrudRepository<Song, Long>{
     @Query("SELECT NEW com.example.demo.payloads.SongComplete(s.id, s.name, s.album.name, s.artist, s.url, s.cover_art_url, s.genres, s.lyrics, s.album.id, s.totalLikes, s.totalDislikes, s.totalReproductions) FROM Song s WHERE s.id = :songId")
     Optional<SongComplete> findSongCompleteById(@Param("songId") Long songId);
 
+	List<ModelName>findByNameIgnoreCaseContaining(String name); 
 }

@@ -26,6 +26,7 @@ import com.example.demo.models.Song;
 import com.example.demo.payloads.ApiResponse;
 import com.example.demo.repository.AlbumRepository;
 import com.example.demo.repository.GenreRepository;
+import com.example.demo.repository.ModelName;
 import com.example.demo.storage.AmazonS3ClientService;
 
 
@@ -123,5 +124,15 @@ public class AlbumController {
     @GetMapping("/user/{user_id}")
     public List<Album> getUserAlbums(@PathVariable("user_id") Long userId){
     	return alrepo.findAllByCreatedBy(userId);
+    }
+    
+    @GetMapping("/search/name/{name}")
+    public List<ModelName> FindAlbumsByName(@PathVariable("name") String name){
+    	return alrepo.findByNameIgnoreCaseContaining(name);
+    }
+
+    @GetMapping("/search/genre/{genre}")
+    public List<ModelName> FindAlbumsByGenre(@PathVariable("genre") String genre){
+    	return alrepo.findByGenresIgnoreCaseContaining(genre);
     }
 }
