@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"collection?.length\">\n    <h4>{{ title }}</h4>\n    <p-carousel [value]=\"collection\" [numVisible]=\"4\" [numScroll]=\"1\" [dotsContainerClass]=\"dots\">\n        <ng-template let-album pTemplate=\"item\">\n            <div class=\"song-to-add\">\n                <a href=\"\" [routerLink]=\"[collectionType, album.id]\">\n                    <img src=\"{{ album.cover_art_url }}\"/>\n                </a>\n                <div class=\"row\">\n                    <div class=\"col\" class=\"mx-auto\">\n                        <h5>{{ album.name }}</h5>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col\" class=\"mx-auto\">\n                        <div class=\"btn-group\" role=\"group\" aria-label=\"Button group with nested dropdown\">\n                            <button type=\"button\" class=\"btn btn-outline-primary\" (click)=\"playCollection.emit(album)\" >\n                                <fa-icon [icon]=\"faPlay\"></fa-icon>\n                            </button>\n\n                            <div class=\"btn-group\" role=\"group\">\n                                <button id=\"btnGroupDrop1\" type=\"button\" class=\"btn btn-outline-primary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                                </button>\n                                <div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">\n                                    <a class=\"dropdown-item\" style=\"cursor:pointer\" (click)=\"addToQueue.emit(album)\">Add To Play Queue</a>\n                                    <a *ngIf=\"false\" class=\"dropdown-item\" style=\"cursor:pointer\" (click)=\"addToPlaylist.emit(album)\">Add to Playlist</a>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </ng-template>\n    </p-carousel>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"collection?.length\">\n    <h4>{{ title }}</h4>\n    <p-carousel [value]=\"collection\" [numVisible]=\"collection.length > 3 ? 4 : collection.length\" [numScroll]=\"1\" [dotsContainerClass]=\"dots\">\n        <ng-template let-album pTemplate=\"item\">\n            <div class=\"song-to-add\">\n                <a href=\"\" [routerLink]=\"[collectionType, album.id]\">\n                    <img src=\"{{ album.cover_art_url }}\"/>\n                </a>\n                <div class=\"row\">\n                    <div class=\"col\" class=\"mx-auto\">\n                        <h5>{{ album.name }}</h5>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col\" class=\"mx-auto\">\n                        <div class=\"btn-group\" role=\"group\" aria-label=\"Button group with nested dropdown\">\n                            <button type=\"button\" class=\"btn btn-outline-primary\" (click)=\"playCollection.emit(album)\" >\n                                <fa-icon [icon]=\"faPlay\"></fa-icon>\n                            </button>\n\n                            <div class=\"btn-group\" role=\"group\">\n                                <button id=\"btnGroupDrop1\" type=\"button\" class=\"btn btn-outline-primary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                                </button>\n                                <div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">\n                                    <a class=\"dropdown-item\" style=\"cursor:pointer\" (click)=\"addToQueue.emit(album)\">Add To Play Queue</a>\n                                    <a *ngIf=\"false\" class=\"dropdown-item\" style=\"cursor:pointer\" (click)=\"addToPlaylist.emit(album)\">Add to Playlist</a>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </ng-template>\n    </p-carousel>\n</div>\n");
 
 /***/ }),
 
@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<br />\n<app-album-collection [collection]=\"recentlyPlayedAlbums\"\n                      title=\"Recently Played Albums\"\n                      (addToQueue)=\"addAlbumToQueue($event)\"\n                      (playCollection)=\"playAlbum($event)\">\n</app-album-collection>\n<app-album-collection [collection]=\"mostLikedAlbums\"\n                      title=\"Most Liked Albums\"\n                      (addToQueue)=\"addAlbumToQueue($event)\"\n                      (playCollection)=\"playAlbum($event)\">\n</app-album-collection>\n<app-album-collection [collection]=\"mostPlayedAlbums\"\n                      title=\"Most Played Albums\"\n                      (addToQueue)=\"addAlbumToQueue($event)\"\n                      (playCollection)=\"playAlbum($event)\">\n</app-album-collection>\n<app-album-collection [collection]=\"recentAlbums\"\n                      title=\"Recently Created Albums\"\n                      (addToQueue)=\"addAlbumToQueue($event)\"\n                      (playCollection)=\"playAlbum($event)\">\n</app-album-collection>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<br />\n<app-album-collection *ngIf=\"recentlyPlayedAlbums.length > 0\" [collection]=\"recentlyPlayedAlbums\"\n                      title=\"Recently Played Albums\"\n                      (addToQueue)=\"addAlbumToQueue($event)\"\n                      (playCollection)=\"playAlbum($event)\">\n</app-album-collection>\n<app-album-collection [collection]=\"mostLikedAlbums\"\n                      title=\"Most Liked Albums\"\n                      (addToQueue)=\"addAlbumToQueue($event)\"\n                      (playCollection)=\"playAlbum($event)\">\n</app-album-collection>\n<app-album-collection [collection]=\"mostPlayedAlbums\"\n                      title=\"Most Played Albums\"\n                      (addToQueue)=\"addAlbumToQueue($event)\"\n                      (playCollection)=\"playAlbum($event)\">\n</app-album-collection>\n<app-album-collection [collection]=\"recentAlbums\"\n                      title=\"Recently Created Albums\"\n                      (addToQueue)=\"addAlbumToQueue($event)\"\n                      (playCollection)=\"playAlbum($event)\">\n</app-album-collection>\n");
 
 /***/ }),
 
@@ -1644,11 +1644,6 @@ let HomeComponent = class HomeComponent {
     }
     ngOnInit() {
         this.apiService.getPlaylists().subscribe(playlists => this.playlists = playlists);
-        // this.apiService.getAlbums().subscribe(
-        //     albums => {
-        //         this.albums = albums;
-        //     }
-        // );
         this.apiService.getMostLikedAlbums().subscribe(albums => this.mostLikedAlbums = albums);
         this.apiService.getMostReproducedAlbums().subscribe(albums => {
             this.mostPlayedAlbums = albums;
@@ -1658,8 +1653,13 @@ let HomeComponent = class HomeComponent {
         this.apiService.getRecentAlbums().subscribe(albums => this.recentAlbums = albums);
         this.auth.currentUser.subscribe(user => {
             this.currentUser = user;
-            if (user)
-                this.apiService.getRecentlyPlayedAlbums().subscribe(albums => this.recentlyPlayedAlbums = albums);
+            if (user) {
+                this.apiService.getRecentlyPlayedAlbums().subscribe(albums => {
+                    this.recentlyPlayedAlbums = albums;
+                    console.log("recently played");
+                    console.log(this.recentlyPlayedAlbums);
+                });
+            }
         });
     }
     addPlaylistToQueue(id) {
