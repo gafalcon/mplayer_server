@@ -27,6 +27,7 @@ import com.example.demo.payloads.ApiResponse;
 import com.example.demo.repository.AlbumRepository;
 import com.example.demo.repository.GenreRepository;
 import com.example.demo.repository.ModelName;
+import com.example.demo.repository.SongRepository;
 import com.example.demo.storage.AmazonS3ClientService;
 
 
@@ -39,6 +40,8 @@ public class AlbumController {
     private final AlbumRepository alrepo;
     @Autowired
     private GenreRepository genre_repo;
+    @Autowired
+    private SongRepository song_repo;
     
     @Autowired
     private AmazonS3ClientService amazonS3ClientService;
@@ -113,11 +116,16 @@ public class AlbumController {
         amazonS3ClientService.uploadFileToS3Bucket(file, filename, true);
 //        storageService.store(file,filename, false);
         album.setCover_art_url(this.s3url + filename);
-        for (Song s : album.getSongs()) {
-        	s.setCover_art_url(this.s3url + filename);
-        }
         album = alrepo.save(album);
 
+        for (Song s : album.getSongs()) {
+        	Song song = song_repo.findById(s.getId()).get();
+        	song.setCover_art_url(this.s3url + filename);
+        	song.setName("Hello");
+        	System.out.println(song);
+        	song = song_repo.save(song);
+        	System.out.println(song.getCover_art_url());
+        }
         return album;
     }
     

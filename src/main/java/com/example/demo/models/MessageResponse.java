@@ -14,6 +14,7 @@ public class MessageResponse {
 	Instant createdAt;
 	MessageStatus status;
 	String senderPhoto;
+	String receiverPhoto;
 	
 	public String getSenderPhoto() {
 		return senderPhoto;
@@ -22,7 +23,7 @@ public class MessageResponse {
 		this.senderPhoto = senderPhoto;
 	}
 	public MessageResponse(Long id, String sender, String receiver, Long sender_id, Long receiver_id, String message,
-			Instant createdAt, MessageStatus status, String senderPhoto) {
+			Instant createdAt, MessageStatus status, String senderPhoto, String receiverPhoto) {
 		this.id = id;
 		this.sender = sender;
 		this.receiver = receiver;
@@ -32,6 +33,13 @@ public class MessageResponse {
 		this.createdAt = createdAt;
 		this.status = status;
 		this.senderPhoto = senderPhoto;
+		this.receiverPhoto = receiverPhoto;
+	}
+	public String getReceiverPhoto() {
+		return receiverPhoto;
+	}
+	public void setReceiverPhoto(String receiverPhoto) {
+		this.receiverPhoto = receiverPhoto;
 	}
 	public Long getId() {
 		return id;

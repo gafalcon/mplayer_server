@@ -73,6 +73,8 @@ public class SongController {
         amazonS3ClientService.uploadFileToS3Bucket(file, filename, true);
         //storageService.store(file, filename, true);
         song.setUrl(this.s3url+filename);
+        if (song.getAlbum().getCover_art_url() != null)
+        	song.setCover_art_url(song.getAlbum().getCover_art_url());
         song = songRepository.save(song);
 
         return song;
