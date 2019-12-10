@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"playlist-description row\">\n        <img class=\"col-sm\" src=\"{{ album.cover_art_url }}\">\n        <div class=\"col-sm\" >\n            <h3>\n                {{ album.name }}\n            </h3>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\">Artist</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.artist }}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\">Release Date</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.releaseDate | date }}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\">Genres</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.genres }}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\"># Likes</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.totalLikes }}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\"># Dislikes</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.totalDislikes }}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\"># Reproductions</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.totalReproductions }}\n                </div>\n            </div>\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"playAlbum()\">\n                Play Album <fa-icon [icon]=\"faPlay\"></fa-icon>\n            </button>\n            <button type=\"button\" style=\"margin-left: 5px\" class=\"btn btn-primary\" (click)=\"addPlaylistToQueue()\">\n                Add To Queue <fa-icon [icon]=\"faPlus\"></fa-icon>\n            </button>\n        </div>\n    </div>\n    <br />\n    <app-likes *ngIf=\"enableLikes\" [model]=\"album\" [enabled]=\"enableLikes\"\n               [modelType]=\"'albums'\" (likeEvent)=\"likeEvent($event)\" [liked]=\"liked\" [disliked]=\"disliked\"></app-likes>\n    <app-song-list [songs]=\"album.songs\" [isLoggedIn]=\"currentUser\"></app-song-list>\n    <br />\n    <div class=\"row\">\n        <div class=\"col\">\n            <app-comments [comments]=\"comments\"\n                          (postComment)=\"createComment($event)\"\n                          [enablePost]=\"currentUser\"\n            ></app-comments>\n        </div>\n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"playlist-description row\">\n        <img class=\"col-sm\" src=\"{{ album.cover_art_url }}\">\n        <div class=\"col-sm\" >\n            <h3>\n                {{ album.name }} <small><a routerLink=\"/users/{{ album.createdBy }}\">View author</a></small>\n            </h3>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\">Artist</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.artist }}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\">Release Date</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.releaseDate | date }}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\">Genres</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.genres }}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\"># Likes</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.totalLikes }}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\"># Dislikes</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.totalDislikes }}\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\"># Reproductions</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ album.totalReproductions }}\n                </div>\n            </div>\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"playAlbum()\">\n                Play Album <fa-icon [icon]=\"faPlay\"></fa-icon>\n            </button>\n            <button type=\"button\" style=\"margin-left: 5px\" class=\"btn btn-primary\" (click)=\"addPlaylistToQueue()\">\n                Add To Queue <fa-icon [icon]=\"faPlus\"></fa-icon>\n            </button>\n        </div>\n    </div>\n    <br />\n    <app-likes *ngIf=\"enableLikes\" [model]=\"album\" [enabled]=\"enableLikes\"\n               [modelType]=\"'albums'\" (likeEvent)=\"likeEvent($event)\" [liked]=\"liked\" [disliked]=\"disliked\"></app-likes>\n    <app-song-list [songs]=\"album.songs\" [isLoggedIn]=\"currentUser\"></app-song-list>\n    <br />\n    <div class=\"row\">\n        <div class=\"col\">\n            <app-comments [comments]=\"comments\"\n                          (postComment)=\"createComment($event)\"\n                          [enablePost]=\"currentUser\"\n            ></app-comments>\n        </div>\n    </div>\n</div>\n");
 
 /***/ }),
 
@@ -136,7 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row\">\n\n        <div class=\"conversation-wrap col-lg-3\">\n\n            <div class=\"media conversation\" *ngFor=\"let conversation of conversations; index as i\" (click)=\"selectConversation(i)\">\n                <a class=\"pull-left\" href=\"#\">\n                    <img class=\"media-object\" data-src=\"holder.js/64x64\" alt=\"64x64\" style=\"width: 50px; height: 50px;\" src=\"{{ conversation.userPhoto }}\">\n                </a>\n                <div class=\"media-body\">\n                    <h6 class=\"media-heading\">{{ conversation.user }}</h6>\n                    <small>{{ conversation.messages.length }} Messages</small>\n                </div>\n            </div>\n\n        </div>\n\n\n\n        <div class=\"message-wrap col-lg-8\">\n            <div class=\"msg-wrap\" *ngIf=\"selectedConversation != null\">\n\n                <div class=\"media msg\" *ngFor=\"let message of conversations[selectedConversation].messages\">\n                    <a class=\"pull-left\" href=\"#\">\n                        <img class=\"media-object\" data-src=\"holder.js/64x64\" alt=\"64x64\" style=\"width: 32px; height: 32px;\" src=\"{{ message.senderPhoto }}\">\n                    </a>\n                    <div class=\"media-body\">\n                        <small class=\"pull-right time\"><i class=\"fa fa-clock-o\"></i>{{ message.createdAt | date }}</small>\n\n                        <h5 class=\"media-heading\">{{ message.sender }}</h5>\n                        <small class=\"col-lg-10\">{{ message.message }}</small>\n                    </div>\n                </div>\n\n            </div>\n\n            <div class=\"send-wrap \">\n                <textarea class=\"form-control send-message\" name=\"newMessage\" rows=\"3\" placeholder=\"Write a reply...\" [(ngModel)]=\"newMessage\"></textarea>\n            </div>\n            <div class=\"btn-panel\">\n                <button class=\" col btn btn-primary send-message-btn pull-right\" role=\"button\" (click)=\"postMessage()\"><i class=\"fa fa-plus\"></i> Send Message</button>\n            </div>\n        </div>\n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"row\" *ngIf=\"showTitle\">\n        <div class=\"col\">\n            <br />\n            <h2>Messages</h2>\n        </div>\n    </div>\n    <div class=\"row\">\n\n        <div class=\"conversation-wrap col-lg-3\">\n\n            <div class=\"media conversation\" *ngFor=\"let conversation of conversations; index as i\" (click)=\"selectConversation(i)\">\n                <a class=\"pull-left\" href=\"#\">\n                    <img class=\"media-object\" data-src=\"holder.js/64x64\" alt=\"64x64\" style=\"width: 50px; height: 50px;\" src=\"{{ conversation.userPhoto }}\">\n                </a>\n                <div class=\"media-body\">\n                    <h6 class=\"media-heading\">{{ conversation.user }}</h6>\n                    <small>{{ conversation.messages.length }} Messages</small>\n                </div>\n            </div>\n\n        </div>\n\n\n\n        <div class=\"message-wrap col-lg-8\">\n            <div class=\"msg-wrap\" *ngIf=\"selectedConversation != null\">\n\n                <div class=\"media msg\" *ngFor=\"let message of conversations[selectedConversation].messages\">\n                    <a class=\"pull-left\" href=\"#\">\n                        <img class=\"media-object\" data-src=\"holder.js/64x64\" alt=\"64x64\" style=\"width: 32px; height: 32px;\" src=\"{{ message.senderPhoto }}\">\n                    </a>\n                    <div class=\"media-body\">\n                        <small class=\"pull-right time\"><i class=\"fa fa-clock-o\"></i>{{ message.createdAt | date }}</small>\n\n                        <h5 class=\"media-heading\">{{ message.sender }}</h5>\n                        <small class=\"col-lg-10\">{{ message.message }}</small>\n                    </div>\n                </div>\n\n            </div>\n\n            <div class=\"send-wrap \">\n                <textarea class=\"form-control send-message\" name=\"newMessage\" rows=\"3\" placeholder=\"Write a reply...\" [(ngModel)]=\"newMessage\"></textarea>\n            </div>\n            <div class=\"btn-panel\">\n                <button class=\" col btn btn-primary send-message-btn pull-right\" role=\"button\" (click)=\"postMessage()\"><i class=\"fa fa-plus\"></i> Send Message</button>\n            </div>\n        </div>\n    </div>\n</div>\n");
 
 /***/ }),
 
@@ -162,7 +162,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"\" routerLink=\"/\">Music ON!</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"/\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item dropdown\" *ngIf=\"currentUser\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              Upload\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n              <!-- <a class=\"dropdown-item\" href=\"\" routerLink=\"songs/new\">Upload Song</a> -->\n              <a class=\"dropdown-item\" href=\"\" routerLink=\"album/new\">New Album</a>\n          </div>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"isAdmin\">\n          <a class=\"nav-link\" href=\"\" routerLink=\"/admin/users\">Admin</a>\n      </li>\n    </ul>\n\n    <app-search></app-search>\n\n    <ul class=\"navbar-nav left-nav\" *ngIf=\"!currentUser ; else user\">\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/login\">\n                Login\n                <span class=\"oi oi-account-login\" title=\"account login\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/signup\">\n                Sign Up\n                <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n    </ul>\n    <ng-template #user>\n        <ul class=\"navbar-nav left-nav\">\n            <li class=\"nav-item dropdown\">\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    {{ currentUser.username }}\n                    <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n                </a>\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdown\">\n                    <a class=\"dropdown-item\" routerLink=\"/users/profile\">Profile</a>\n                    <div class=\"dropdown-divider\"></div>\n                    <a class=\"dropdown-item\" href=\"\" (click)=\"logout()\">\n                        Logout\n                        <span class=\"oi oi-account-logout\" title=\"account login\" aria-hidden=\"true\"></span>\n                    </a>\n                </div>\n            </li>\n        </ul>\n    </ng-template>\n  </div>\n</nav>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"\" routerLink=\"/\">Music ON!</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"\" routerLink=\"/\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item dropdown\" *ngIf=\"currentUser\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n              Upload\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n              <!-- <a class=\"dropdown-item\" href=\"\" routerLink=\"songs/new\">Upload Song</a> -->\n              <a class=\"dropdown-item\" href=\"\" routerLink=\"album/new\">New Album</a>\n          </div>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"isAdmin\">\n          <a class=\"nav-link\" href=\"\" routerLink=\"/admin/users\">Admin</a>\n      </li>\n    </ul>\n\n    <app-search></app-search>\n\n    <ul class=\"navbar-nav left-nav\" *ngIf=\"!currentUser ; else user\">\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/login\">\n                Login\n                <span class=\"oi oi-account-login\" title=\"account login\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n        <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"\" routerLink=\"/signup\">\n                Sign Up\n                <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n            </a>\n        </li>\n    </ul>\n    <ng-template #user>\n        <ul class=\"navbar-nav left-nav\">\n            <li  class=\"nav-item\">\n                <button class=\"nav-link dropdown-toggle btn btn-link\" id=\"notifDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" (click)=\"markAsRead()\">\n                    <fa-icon [icon]=\"faBell\"></fa-icon><span class=\"badge\" [ngClass]=\"(unread==0) ? 'badge-secondary':'badge-danger'\">{{ unread }}</span>\n                </button>\n\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"notifDropdown\">\n                    <h6 class=\"dropdown-header\" *ngIf=\"notifications.length == 0\">No new notifications</h6>\n                    <a class=\"dropdown-item\" routerLink=\"{{ notif.link }}\" *ngFor=\"let notif of notifications\">\n                        <div>{{ notif.str }} </div>\n                        <small>{{ notif.createdAt | date }}</small>\n                    </a>\n                    <div class=\"dropdown-divider\"></div>\n                    <a class=\"dropdown-item\" routerLink=\"/notifications\">\n                        <fa-icon [icon]=\"faBell\"></fa-icon> View all notifications\n                    </a>\n                </div>\n            </li>\n            <li class=\"nav-item dropdown\">\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    {{ currentUser.username }}\n                    <span class=\"oi oi-person\" title=\"account signup\" aria-hidden=\"true\"></span>\n                </a>\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdown\">\n                    <a class=\"dropdown-item\" routerLink=\"/users/profile\">Profile</a>\n                    <div class=\"dropdown-divider\"></div>\n                    <a class=\"dropdown-item\" href=\"\" (click)=\"logout()\">\n                        Logout\n                        <span class=\"oi oi-account-logout\" title=\"account login\" aria-hidden=\"true\"></span>\n                    </a>\n                </div>\n            </li>\n        </ul>\n    </ng-template>\n  </div>\n</nav>\n");
 
 /***/ }),
 
@@ -214,7 +214,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\" *ngIf=\"playlist\">\n    <div class=\"playlist-description row\">\n        <img class=\"col-sm\" src=\"{{ playlist.cover_art_url }}\">\n        <div class=\"col-sm\" >\n            <h3>\n                {{ playlist.name }}\n            </h3>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\">Created At</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ playlist.createdAt | date }}\n                </div>\n            </div>\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"playPlaylist()\">\n                Play <fa-icon [icon]=\"faPlay\"></fa-icon>\n            </button>\n            <button type=\"button\" style=\"margin-left: 5px\" class=\"btn btn-primary\" (click)=\"addPlaylistToQueue()\">\n                Add To Queue <fa-icon [icon]=\"faPlus\"></fa-icon>\n            </button>\n        </div>\n    </div>\n    <br />\n    <app-song-list [songs]=\"playlist.songs\" [isLoggedIn]=\"currentUser\"></app-song-list>\n    <br />\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\" *ngIf=\"playlist\">\n    <div class=\"playlist-description row\">\n        <img class=\"col-sm\" src=\"{{ playlist.cover_art_url }}\">\n        <div class=\"col-sm\" >\n            <h3>\n                {{ playlist.name }}  <small><a routerLink=\"/users/{{ playlist.createdBy }}\">View author</a></small>\n            </h3>\n            <div class=\"row\">\n                <div class=\"label col-md-4\">\n                    <label for=\"\">Created At</label>\n                </div>\n                <div class=\"col-md-6\">\n                    {{ playlist.createdAt | date }}\n                </div>\n            </div>\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"playPlaylist()\">\n                Play <fa-icon [icon]=\"faPlay\"></fa-icon>\n            </button>\n            <button type=\"button\" style=\"margin-left: 5px\" class=\"btn btn-primary\" (click)=\"addPlaylistToQueue()\">\n                Add To Queue <fa-icon [icon]=\"faPlus\"></fa-icon>\n            </button>\n        </div>\n    </div>\n    <br />\n    <app-song-list [songs]=\"playlist.songs\" [isLoggedIn]=\"currentUser\"></app-song-list>\n    <br />\n</div>\n");
 
 /***/ }),
 
@@ -331,7 +331,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"emp-profile\">\n    <app-user-info [user]=\"user\"></app-user-info>\n    <div class=\"row\">\n        <div id=\"actions\" class=\"col\">\n            <button class=\"btn btn-primary btn-sm btn-action\" (click)=\"editUser()\" *ngIf=\"isCurrentUser(); else msg_button\">\n                Edit Info <fa-icon [icon]=\"faEdit\"></fa-icon>\n            </button>\n            <ng-template #msg_button>\n                <button class=\"btn btn-primary btn-sm btn-action\" (click)=\"sendMessage()\">\n                    Message <fa-icon [icon]=\"faMessage\"></fa-icon>\n                </button>\n            </ng-template>\n            <span *ngIf=\"isAdmin()\">\n                <button class=\"btn btn-warning btn-sm btn-action\" (click)=\"changeRole()\">\n                    Change Role <fa-icon [icon]=\"faUserRole\"></fa-icon>\n                </button>\n                <button class=\"btn btn-warning btn-sm btn-action\" (click)=\"blockUser(false)\" *ngIf=\"isBlocked; else block\">\n                    Unblock <fa-icon [icon]=\"faBan\"></fa-icon>\n                </button>\n                <ng-template #block>\n                    <button class=\"btn btn-danger btn-sm btn-action\" (click)=\"blockUser(true)\">\n                        Block <fa-icon [icon]=\"faBan\"></fa-icon>\n                    </button>\n                </ng-template>\n                <button class=\"btn btn-danger btn-sm btn-action\" (click)=\"deleteUser()\">\n                    Delete <fa-icon [icon]=\"faUserDel\"></fa-icon>\n                </button>\n            </span>\n        </div>\n    </div>\n    <br/>\n    <div class=\"row\">\n        <div class=\"col\">\n            <ngb-tabset>\n                <ngb-tab title=\"Albums\">\n                    <ng-template ngbTabContent>\n                        <div class=\"ngtab-content\">\n                            <h3>{{ albums.length }} Albums</h3>\n                            <app-list-collection\n                                [collection]=\"albums\"\n                                [link]=\"'/album'\"\n                                (onDelete)=\"deleteAlbum($event)\"\n                                [deleteEnabled]=\"isCurrentUser() || isAdmin()\"\n                            ></app-list-collection>\n                        </div>\n                    </ng-template>\n                </ngb-tab>\n                <ngb-tab title=\"Playlists\">\n                    <ng-template ngbTabContent>\n                        <div class=\"ngtab-content\">\n                            <h3>{{ playlists.length }} Playlists</h3>\n                            <app-list-collection\n                                [collection]=\"playlists\"\n                                [link]=\"'/playlist'\"\n                                (onDelete)=\"deletePlaylist($event)\"\n                                [deleteEnabled]=\"isCurrentUser() || isAdmin()\"\n                            ></app-list-collection>\n                        </div>\n                    </ng-template>\n                </ngb-tab>\n                <ngb-tab title=\"Messages\">\n                    <ng-template ngbTabContent>\n                        <div class=\"ngtab-content\">\n                            <h3>Messages</h3>\n                            <app-messages-view></app-messages-view>\n                        </div>\n                    </ng-template>\n                </ngb-tab>\n            </ngb-tabset>\n        </div>\n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"emp-profile\">\n    <app-user-info [user]=\"user\"></app-user-info>\n    <div class=\"row\">\n        <div id=\"actions\" class=\"col\">\n            <button class=\"btn btn-primary btn-sm btn-action\" (click)=\"editUser()\" *ngIf=\"isCurrentUser()\">\n                Edit Info <fa-icon [icon]=\"faEdit\"></fa-icon>\n            </button>\n            <button class=\"btn btn-primary btn-sm btn-action\" (click)=\"requestAgent()\" *ngIf=\"isRegularUser()\">\n                Become Pro! <fa-icon [icon]=\"faUserRole\"></fa-icon>\n            </button>\n            <button class=\"btn btn-primary btn-sm btn-action\" (click)=\"sendMessage()\" *ngIf=\"currentUser && !isCurrentUser()\">\n                Message <fa-icon [icon]=\"faMessage\"></fa-icon>\n            </button>\n            <span *ngIf=\"isAdmin()\">\n                <button class=\"btn btn-warning btn-sm btn-action\" (click)=\"changeRole()\">\n                    Change Role <fa-icon [icon]=\"faUserRole\"></fa-icon>\n                </button>\n                <button class=\"btn btn-warning btn-sm btn-action\" (click)=\"blockUser(false)\" *ngIf=\"isBlocked; else block\">\n                    Unblock <fa-icon [icon]=\"faBan\"></fa-icon>\n                </button>\n                <ng-template #block>\n                    <button class=\"btn btn-danger btn-sm btn-action\" (click)=\"blockUser(true)\">\n                        Block <fa-icon [icon]=\"faBan\"></fa-icon>\n                    </button>\n                </ng-template>\n                <button class=\"btn btn-danger btn-sm btn-action\" (click)=\"deleteUser()\">\n                    Delete <fa-icon [icon]=\"faUserDel\"></fa-icon>\n                </button>\n            </span>\n        </div>\n    </div>\n    <br/>\n    <div class=\"row\">\n        <div class=\"col\">\n            <ngb-tabset>\n                <ngb-tab title=\"Albums\">\n                    <ng-template ngbTabContent>\n                        <div class=\"ngtab-content\">\n                            <h3>{{ albums.length }} Albums</h3>\n                            <app-list-collection\n                                [collection]=\"albums\"\n                                [link]=\"'/album'\"\n                                (onDelete)=\"deleteAlbum($event)\"\n                                [deleteEnabled]=\"isCurrentUser() || isAdmin()\"\n                            ></app-list-collection>\n                        </div>\n                    </ng-template>\n                </ngb-tab>\n                <ngb-tab title=\"Playlists\">\n                    <ng-template ngbTabContent>\n                        <div class=\"ngtab-content\">\n                            <h3>{{ playlists.length }} Playlists</h3>\n                            <app-list-collection\n                                [collection]=\"playlists\"\n                                [link]=\"'/playlist'\"\n                                (onDelete)=\"deletePlaylist($event)\"\n                                [deleteEnabled]=\"isCurrentUser() || isAdmin()\"\n                            ></app-list-collection>\n                        </div>\n                    </ng-template>\n                </ngb-tab>\n                <ngb-tab title=\"Messages\" *ngIf=\"isCurrentUser()\">\n                    <ng-template ngbTabContent>\n                        <div class=\"ngtab-content\">\n                            <h3>Messages</h3>\n                            <app-messages-view [showTitle]=\"false\"></app-messages-view>\n                        </div>\n                    </ng-template>\n                </ngb-tab>\n            </ngb-tabset>\n        </div>\n    </div>\n</div>\n");
 
 /***/ }),
 
@@ -357,7 +357,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"users\">\n    <div class=\"row\">\n        <div class=\"col\">\n            <h2>Users</h2>\n        </div>\n    </div>\n    <!-- <div class=\"row\"> -->\n    <!-- <div class=\"col\"> -->\n    <!-- <form> -->\n    <!-- <div class=\"form-row\"> -->\n    <!-- <input type=\"text\" class=\"col-12 col-md-8 col-lg-8 form-control mb-2 mr-sm-2\" id=\"inlineFormInputGroupUsername2\" placeholder=\"Enter a user to search\"> -->\n    <!-- <button type=\"submit\" class=\"col-12 col-md-2 col-lg-2 btn btn-primary mb-2\" (click)=\"onSubmit()\">Search</button> -->\n    <!-- </div> -->\n    <!-- </form> -->\n    <!-- </div> -->\n    <!-- </div> -->\n    <br />\n    <div class=\"row\">\n        <div class=\"col\">\n            <table class=\"table\">\n                <thead>\n                    <tr>\n                        <th scope=\"col\">#</th>\n                        <th scope=\"col\">Username</th>\n                        <th scope=\"col\">Name</th>\n                        <th scope=\"col\">Email</th>\n                        <th scope=\"col\">Rol</th>\n                        <th scope=\"col\">Options</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr *ngFor=\"let user of users; index as i;\">\n                        <th scope=\"row\">{{ i + 1 }}</th>\n                        <td><a routerLink=\"/users/{{user.id}}\">{{ user.username }}</a></td>\n                        <td>{{ user.firstName }} {{ user.lastName }}</td>\n                        <td>{{ user.email }}</td>\n                        <td>{{ user.role }}</td>\n                        <td>\n                            <button class=\"btn btn-small btn-outline-primary\" type=\"button\" (click)=\"editUser(user)\">\n                                <span class=\"oi oi-pencil\" title=\"plus\" aria-hidden=\"true\"></span>\n                            </button>\n                            <button class=\"btn btn-small btn-outline-primary btn-delete\" type=\"button\" (click)=\"sendMessage(user)\">\n                                <span class=\"oi oi-envelope-closed\" title=\"plus\" aria-hidden=\"true\"></span>\n                            </button>\n                            <button class=\"btn btn-small btn-delete\" [ngClass]=\"isActive(user) ? 'btn-outline-danger' : 'btn-danger'\" type=\"button\" (click)=\"blockUser(user)\">\n                                <span class=\"oi oi-ban\" title=\"plus\" aria-hidden=\"true\"></span>\n                            </button>\n                            <button class=\"btn btn-small btn-outline-danger btn-delete\" type=\"button\" (click)=\"deleteUser(i, user)\">\n                                <span class=\"oi oi-delete\" title=\"plus\" aria-hidden=\"true\"></span>\n                            </button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"users\">\n    <div class=\"row\">\n        <div class=\"col\">\n            <h2>Users</h2>\n        </div>\n    </div>\n    <!-- <div class=\"row\"> -->\n    <!-- <div class=\"col\"> -->\n    <!-- <form> -->\n    <!-- <div class=\"form-row\"> -->\n    <!-- <input type=\"text\" class=\"col-12 col-md-8 col-lg-8 form-control mb-2 mr-sm-2\" id=\"inlineFormInputGroupUsername2\" placeholder=\"Enter a user to search\"> -->\n    <!-- <button type=\"submit\" class=\"col-12 col-md-2 col-lg-2 btn btn-primary mb-2\" (click)=\"onSubmit()\">Search</button> -->\n    <!-- </div> -->\n    <!-- </form> -->\n    <!-- </div> -->\n    <!-- </div> -->\n\n    <div class=\"row\" *ngIf=\"requests.length\">\n        <div class=\"col\">\n            <div class=\"row\"><h3>Professional User Requests</h3></div>\n            <div class=\"row\">\n                <table class=\"table\">\n                    <tbody>\n                        <tr *ngFor=\"let request of requests; index as i\">\n                            <th scope=\"row\">\n                                <a routerLink=\"/users/{{ request.user_id }}\">\n                                    {{ request.username }}\n                                </a>\n                            </th>\n                            <td>{{ request.createdAt | date }}</td>\n                            <td>\n                                <button class=\"btn btn-success btn-sm\" style=\"margin-right: 5px;\" (click)=\"answerRequest(request, i, true)\">\n                                    Accept <fa-icon [icon]=\"faCheck\"></fa-icon>\n                                </button>\n\n                                <button class=\"btn btn-danger btn-sm\" (click)=\"answerRequest(request,i, false)\">\n                                    Deny <fa-icon [icon]=\"faTimes\"></fa-icon>\n                                </button>\n                            </td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n        </div>\n    </div>\n    <br />\n    <div class=\"row\">\n        <div class=\"col\">\n            <table class=\"table\">\n                <thead>\n                    <tr>\n                        <th scope=\"col\">#</th>\n                        <th scope=\"col\">Username</th>\n                        <th scope=\"col\">Name</th>\n                        <th scope=\"col\">Email</th>\n                        <th scope=\"col\">Rol</th>\n                        <th scope=\"col\">Options</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr *ngFor=\"let user of users; index as i;\">\n                        <th scope=\"row\">{{ i + 1 }}</th>\n                        <td><a routerLink=\"/users/{{user.id}}\">{{ user.username }}</a></td>\n                        <td>{{ user.firstName }} {{ user.lastName }}</td>\n                        <td>{{ user.email }}</td>\n                        <td>{{ user.role }}</td>\n                        <td>\n                            <button class=\"btn btn-small btn-outline-primary\" type=\"button\" (click)=\"editUser(user)\">\n                                <span class=\"oi oi-pencil\" title=\"plus\" aria-hidden=\"true\"></span>\n                            </button>\n                            <button class=\"btn btn-small btn-outline-primary btn-delete\" type=\"button\" (click)=\"sendMessage(user)\">\n                                <span class=\"oi oi-envelope-closed\" title=\"plus\" aria-hidden=\"true\"></span>\n                            </button>\n                            <button class=\"btn btn-small btn-delete\" [ngClass]=\"isActive(user) ? 'btn-outline-danger' : 'btn-danger'\" type=\"button\" (click)=\"blockUser(user)\">\n                                <span class=\"oi oi-ban\" title=\"plus\" aria-hidden=\"true\"></span>\n                            </button>\n                            <button class=\"btn btn-small btn-outline-danger btn-delete\" type=\"button\" (click)=\"deleteUser(i, user)\">\n                                <span class=\"oi oi-delete\" title=\"plus\" aria-hidden=\"true\"></span>\n                            </button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>\n");
 
 /***/ }),
 
@@ -1526,8 +1526,8 @@ let ErrorInterceptor = class ErrorInterceptor {
             if (!request.url.startsWith(this.authenticationService.authUrl) && [401, 403].indexOf(err.status) !== -1) {
                 // auto logout if 401 Unauthorized or 403 Forbidden response returned from api
                 this.authenticationService.logout();
-                console.error("LOGOUT");
-                console.log(request.url);
+                console.error("LOGOUT" + request.url);
+                // console.log(request.url)
                 // location.reload(true);
             }
             const error = err.error.message || err.statusText;
@@ -1647,7 +1647,6 @@ let HomeComponent = class HomeComponent {
         this.apiService.getMostLikedAlbums().subscribe(albums => this.mostLikedAlbums = albums);
         this.apiService.getMostReproducedAlbums().subscribe(albums => {
             this.mostPlayedAlbums = albums;
-            console.log("most reproduced");
             console.log(this.mostPlayedAlbums);
         });
         this.apiService.getRecentAlbums().subscribe(albums => this.recentAlbums = albums);
@@ -1656,7 +1655,6 @@ let HomeComponent = class HomeComponent {
             if (user) {
                 this.apiService.getRecentlyPlayedAlbums().subscribe(albums => {
                     this.recentlyPlayedAlbums = albums;
-                    console.log("recently played");
                     console.log(this.recentlyPlayedAlbums);
                 });
             }
@@ -1862,6 +1860,7 @@ let MessagesViewComponent = class MessagesViewComponent {
         this.auth = auth;
         this.notifier = notifier;
         this.conversations = [];
+        this.showTitle = true;
     }
     ngOnInit() {
         this.auth.currentUser.subscribe((user) => { this.currentUser = user; console.log(this.currentUser); });
@@ -1923,6 +1922,9 @@ MessagesViewComponent.ctorParameters = () => [
     { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
     { type: angular2_notifications__WEBPACK_IMPORTED_MODULE_4__["NotificationsService"] }
 ];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], MessagesViewComponent.prototype, "showTitle", void 0);
 MessagesViewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-messages-view',
@@ -2160,16 +2162,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _models_role__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/role */ "./src/app/models/role.ts");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/api.service */ "./src/app/services/api.service.ts");
+
+
 
 
 
 
 
 let NavbarComponent = class NavbarComponent {
-    constructor(auth, router) {
+    constructor(auth, router, api) {
         this.auth = auth;
         this.router = router;
-        this.auth.currentUser.subscribe(user => this.currentUser = user);
+        this.api = api;
+        this.faBell = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faBell"];
+        this.notifications = [];
+        this.unread = 0;
     }
     get isAdmin() {
         return this.currentUser && this.currentUser.role === _models_role__WEBPACK_IMPORTED_MODULE_4__["Role"].Admin;
@@ -2179,11 +2188,51 @@ let NavbarComponent = class NavbarComponent {
         this.router.navigate(['/']);
     }
     ngOnInit() {
+        this.auth.currentUser.subscribe(user => {
+            if (user !== this.currentUser) {
+                this.currentUser = user;
+                if (this.currentUser) {
+                    this.api.getUnreadNotifications().subscribe((notifs) => {
+                        notifs.forEach((notif) => {
+                            if (notif.notifType === 'ROLE_CHANGED') {
+                                notif.str = 'Your role has changed!!';
+                                notif.link = '/users/profile';
+                            }
+                            else if (notif.notifType === 'NEW_MESSAGE') {
+                                notif.str = 'You have new messages';
+                                notif.link = '/users/messages';
+                            }
+                            else if (notif.notifType === 'ROLE_DENIED') {
+                                notif.str = 'Your request to become professional was denied!';
+                                notif.link = '/users/profile';
+                            }
+                            else if (notif.notifType === 'ROLE_REQUEST') {
+                                notif.str = `request to become professional from ${notif.extra}!`;
+                                notif.link = '/admin/users';
+                            }
+                            else {
+                                notif.str = 'new notification';
+                                notif.link = '/users/profile';
+                            }
+                        });
+                        this.notifications = notifs;
+                        this.unread = notifs.length;
+                        console.log(this.notifications);
+                    });
+                }
+            }
+        });
+    }
+    markAsRead() {
+        console.log('mark as read');
+        this.unread = 0;
+        this.api.markAllAsRead().subscribe(res => console.log(res));
     }
 };
 NavbarComponent.ctorParameters = () => [
     { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _services_api_service__WEBPACK_IMPORTED_MODULE_6__["ApiService"] }
 ];
 NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2834,7 +2883,8 @@ let AmplitudeService = class AmplitudeService {
             default_album_art: 'http://cdn.last.fm/flatness/responsive/2/noimage/default_album_300_g4.png',
             callbacks: {
                 song_change: () => {
-                    this.notifier.success('Playing: ' + amplitudejs__WEBPACK_IMPORTED_MODULE_2__["getActiveSongMetadata"]().name);
+                    if (amplitudejs__WEBPACK_IMPORTED_MODULE_2__["getPlayerState"]() === 'playing')
+                        this.notifier.success('Playing: ' + amplitudejs__WEBPACK_IMPORTED_MODULE_2__["getActiveSongMetadata"]().name);
                 },
                 ended: () => {
                     console.log('Ended' + amplitudejs__WEBPACK_IMPORTED_MODULE_2__["getActiveSongMetadata"]().name);
@@ -2877,22 +2927,17 @@ let AmplitudeService = class AmplitudeService {
     removeSong(songIndex) {
         amplitudejs__WEBPACK_IMPORTED_MODULE_2__["removeSong"](songIndex);
         amplitudejs__WEBPACK_IMPORTED_MODULE_2__["bindNewElements"]();
-        this.savePlayQueue();
     }
     playCollection(collection, albumId) {
         amplitudejs__WEBPACK_IMPORTED_MODULE_2__["pause"]();
-        this.currentSongs.forEach((val, i) => {
-            amplitudejs__WEBPACK_IMPORTED_MODULE_2__["removeSong"](i);
+        const length = amplitudejs__WEBPACK_IMPORTED_MODULE_2__["getSongs"]().length;
+        for (let i = 0; i < length; ++i) {
+            amplitudejs__WEBPACK_IMPORTED_MODULE_2__["removeSong"](0);
             amplitudejs__WEBPACK_IMPORTED_MODULE_2__["bindNewElements"]();
-        });
+        }
         this.addSongs(collection, albumId);
-        // this.currentSongs = collection;
-        // Amplitude.bindNewElements();
+        amplitudejs__WEBPACK_IMPORTED_MODULE_2__["next"]();
         this.playSongAtIndex(0);
-        // if (albumId) {
-        //     this.postAlbumReproduced(albumId);
-        // }
-        // this.savePlayQueue();
     }
     savePlayQueue() {
         localStorage.setItem('playQueue', JSON.stringify(this.currentSongs));
@@ -2953,6 +2998,7 @@ let ApiService = class ApiService {
         return this.http.get(`${this.apiURL}/albums/likes/most`);
     }
     getRecentlyPlayedAlbums() {
+        console.log("Get recently played!!!!!");
         return this.http.get(`${this.apiURL}/albums/reprs/recent`);
     }
     getRecentAlbums() {
@@ -3028,6 +3074,15 @@ let ApiService = class ApiService {
     getUsers() {
         return this.http.get(`${this.apiURL}/users`);
     }
+    proRequest() {
+        return this.http.post(`${this.apiURL}/users/role_request`, null);
+    }
+    getRequests() {
+        return this.http.get(`${this.apiURL}/users/role_request`);
+    }
+    deleteRequest(requestId) {
+        return this.http.delete(`${this.apiURL}/users/role_request/${requestId}`);
+    }
     // Comments
     getAlbumComments(albumId) {
         return this.http.get(`${this.apiURL}/albums/${albumId}/comments`);
@@ -3091,6 +3146,12 @@ let ApiService = class ApiService {
             results = results.flat();
             return results;
         }));
+    }
+    getUnreadNotifications() {
+        return this.http.get(`${this.apiURL}/notifs/unread`);
+    }
+    markAllAsRead() {
+        return this.http.put(`${this.apiURL}/notifs/`, null);
     }
 };
 ApiService.ctorParameters = () => [
@@ -3815,6 +3876,9 @@ let ProfileComponent = class ProfileComponent {
     isAdmin() {
         return this.currentUser && this.currentUser.role === src_app_models_role__WEBPACK_IMPORTED_MODULE_5__["Role"].Admin;
     }
+    isRegularUser() {
+        return this.currentUser && this.currentUser.role === src_app_models_role__WEBPACK_IMPORTED_MODULE_5__["Role"].User;
+    }
     isCurrentUser() {
         return this.currentUser && this.user && this.user.id === this.currentUser.id;
     }
@@ -3912,6 +3976,20 @@ let ProfileComponent = class ProfileComponent {
                 });
             }
         }, (reason) => console.log(reason));
+    }
+    requestAgent() {
+        const modalRef = this.modalService.open(src_app_templates_modal_modal_component__WEBPACK_IMPORTED_MODULE_10__["ModalComponent"]);
+        modalRef.componentInstance.title = 'Become Professiona!';
+        modalRef.componentInstance.body = 'A request will be sent to the administrator to upgrade your role to Professional';
+        modalRef.componentInstance.okMsg = 'Send Request';
+        modalRef.result.then((res) => {
+            if (res === 'Ok') {
+                this.api.proRequest().subscribe((result) => {
+                    console.log(result);
+                    this.notifier.success('Request sent');
+                });
+            }
+        });
     }
 };
 ProfileComponent.ctorParameters = () => [
@@ -4016,6 +4094,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var src_app_models_status__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/models/status */ "./src/app/models/status.ts");
 /* harmony import */ var src_app_templates_modal_modal_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/templates/modal/modal.component */ "./src/app/templates/modal/modal.component.ts");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var src_app_models_role__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/models/role */ "./src/app/models/role.ts");
+
+
 
 
 
@@ -4033,6 +4115,9 @@ let UsersComponent = class UsersComponent {
         this.api = api;
         this.modalService = modalService;
         this.auth = auth;
+        this.faCheck = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_11__["faCheck"];
+        this.faTimes = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_11__["faTimes"];
+        this.requests = [];
     }
     ngOnInit() {
         this.api.getUsers().subscribe((users) => {
@@ -4040,6 +4125,10 @@ let UsersComponent = class UsersComponent {
         }, (error) => console.log(error));
         this.auth.currentUser.subscribe((currentUser) => {
             this.currentUser = currentUser;
+        });
+        this.api.getRequests().subscribe((reqs) => {
+            this.requests = reqs;
+            console.log(reqs);
         });
     }
     deleteUser(i, user) {
@@ -4100,6 +4189,30 @@ let UsersComponent = class UsersComponent {
         modalRef.componentInstance.title = `${action} User`;
         modalRef.componentInstance.body = `Are you sure you want to ${action} this user?`;
         modalRef.componentInstance.okMsg = `${action} User`;
+    }
+    answerRequest(request, i, action) {
+        console.log('answer' + action);
+        if (action) {
+            const modalRef = this.modalService.open(src_app_templates_modal_modal_component__WEBPACK_IMPORTED_MODULE_10__["ModalComponent"]);
+            modalRef.componentInstance.title = 'Answer Travel Request';
+            modalRef.componentInstance.body = `Are you sure you want to make ${request.extra} a travel agent?`;
+            modalRef.componentInstance.okMsg = 'Make Travel Agent';
+            modalRef.result.then((res) => {
+                if (res === 'Ok') {
+                    this.api.updateUserRole(request.user_id, src_app_models_role__WEBPACK_IMPORTED_MODULE_12__["Role"].Professional).subscribe((result) => {
+                        console.log(result);
+                        this.notifier.success('Changed User Role');
+                        this.requests.splice(i, 1);
+                    });
+                }
+            });
+        }
+        else {
+            this.api.deleteRequest(request.id).subscribe((result) => {
+                this.notifier.warn('Request denied');
+                this.requests.splice(i, 1);
+            });
+        }
     }
 };
 UsersComponent.ctorParameters = () => [
