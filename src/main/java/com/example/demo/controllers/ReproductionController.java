@@ -125,13 +125,13 @@ public class ReproductionController {
 	}
 	
 	
-	@Secured({"ROLE_USER", "ROLE_ADMIN"})
+	@Secured({"ROLE_USER", "ROLE_PROFESSIONAL", "ROLE_ADMIN"})
 	@GetMapping("/songs/reprs/recent") 
 	public List<Song> getRecentReprSongs(@CurrentUser UserPrincipal user) {
 		return sr_repo.findSongByCreatedByOrderByCreatedAtDesc(user.getId(), PageRequest.of(0, 10));
 	}
 	
-	@Secured({"ROLE_USER", "ROLE_ADMIN"})
+	@Secured({"ROLE_USER", "ROLE_PROFESSIONAL", "ROLE_ADMIN"})
 	@GetMapping("/albums/reprs/recent") 
 	public List<Album> getRecentReprAlbums(@CurrentUser UserPrincipal user) {
 		return ar_repo.findAlbumByCreatedByOrderByCreatedAtDesc(user.getId(), PageRequest.of(0, 10));

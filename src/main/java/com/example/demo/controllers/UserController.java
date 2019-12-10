@@ -18,15 +18,22 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.util.StringUtils;
+
+import com.example.demo.models.Notif;
+import com.example.demo.models.ProfessionalRequest;
 import com.example.demo.models.User;
 import com.example.demo.payloads.ApiResponse;
+import com.example.demo.payloads.RoleRequest;
 import com.example.demo.payloads.UserResponse;
+import com.example.demo.repository.NotifRepository;
+import com.example.demo.repository.ProfessionalRequestRepository;
 import com.example.demo.repository.UserProfile;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.security.CurrentUser;
 import com.example.demo.security.Role;
 import com.example.demo.security.UserPrincipal;
 import com.example.demo.storage.StorageService;
+import com.example.demo.enums.NotifType;
 import com.example.demo.enums.UserStatus;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.storage.AmazonS3ClientService;
@@ -38,6 +45,12 @@ public class UserController {
 	
 	private final UserRepository userRepository;
 	
+	@Autowired
+	private NotifRepository notifRepo;
+
+	@Autowired
+	private ProfessionalRequestRepository requestRepo;
+
     @Autowired
     private AmazonS3ClientService amazonS3ClientService;
     @Value("${aws.s3.url}")
@@ -87,7 +100,14 @@ public class UserController {
 	public UserResponse updateRole(@PathVariable(value="user_id") long id, @RequestParam("role") Role role) {
 		User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
 		user.setRole(role);
-		return new UserResponse(userRepository.save(user));
+		user = userRepository.save(user);
+		
+		Notif n = new Notif(NotifType.ROLE_CHANGED, user, "");
+		notifRepo.save(n);
+		List<ProfessionalRequest> requests = requestRepo.findByUser(user);
+		requestRepo.deleteAll(requests);
+		
+		return new UserResponse(user);
 	}
 	
     @PostMapping("/photo_upload")
@@ -105,6 +125,31 @@ public class UserController {
         return new UserResponse(user);
     }
     
+    @PostMapping("/role_request")
+    public ProfessionalRequest newRequest(@CurrentUser UserPrincipal currentUser) {
+    	User user = userRepository.findById(currentUser.getId()).orElseThrow(() -> new ResourceNotFoundException("User", "id", currentUser));
+    	ProfessionalRequest r = new ProfessionalRequest(user);
+    	r = requestRepo.save(r);
+    	return r;
+    }
+    
+    @GetMapping("/role_request")
+    public List<RoleRequest> findRequests() {
+    	List<RoleRequest> requests = requestRepo.findAllRequests();
+    	return requests;
+    }
+    
+    @DeleteMapping("/role_request/{request_id}")
+    public ApiResponse deleteRequest(@PathVariable(value="request_id") long request_id) {
+    	ProfessionalRequest r = requestRepo.findById(request_id)
+    			.orElseThrow(() -> new ResourceNotFoundException("User", "id", request_id));
+    	User u = r.getUser();
+    	requestRepo.delete(r);
+    	Notif n = new Notif(NotifType.ROLE_DENIED, u, "");
+    	notifRepo.save(n);
+    	return new ApiResponse(true, "request deleted");
+    }
+
 	@PostMapping("/{user_id}/update_status")
 	@Secured("ROLE_ADMIN")
 	public UserResponse updateStatus(@PathVariable(value="user_id") long id, @RequestParam("status") UserStatus status) {

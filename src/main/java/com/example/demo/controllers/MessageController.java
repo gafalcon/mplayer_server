@@ -17,13 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.enums.MessageStatus;
+import com.example.demo.enums.NotifType;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.models.Message;
 import com.example.demo.models.MessageResponse;
+import com.example.demo.models.Notif;
 import com.example.demo.models.User;
 import com.example.demo.payloads.ApiResponse;
 import com.example.demo.payloads.MessageRequest;
 import com.example.demo.repository.MessageRepository;
+import com.example.demo.repository.NotifRepository;
 import com.example.demo.security.CurrentUser;
 import com.example.demo.security.Role;
 import com.example.demo.security.UserPrincipal;
@@ -35,6 +38,9 @@ public class MessageController {
 	@Autowired
 	private MessageRepository messageRepo;
 	
+	@Autowired
+	private NotifRepository notifRepo;
+
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -69,6 +75,10 @@ public class MessageController {
 		
 		Message m = new Message(messageRequest.getMessage(), sender, receiver);
 		m = messageRepo.save(m);
+		
+		Notif n = new Notif(NotifType.NEW_MESSAGE, receiver, "");
+		notifRepo.save(n);
+
 		return new MessageResponse(m.getId(), m.getSender().getUsername(), 
 				m.getReceiver().getUsername(), m.getSender().getId(), 
 				m.getReceiver().getId(), m.getMessage(), m.getCreatedAt(), m.getStatus(), "", "");
