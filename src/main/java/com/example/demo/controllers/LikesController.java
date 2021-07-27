@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.annotation.Secured;
@@ -80,85 +82,158 @@ public class LikesController {
 
 	@PostMapping("/albums/{album_id}/like")
 	public ApiResponse likeAlbum(@PathVariable("album_id") Long album_id, @CurrentUser UserPrincipal user) {
-		System.out.println("Album like");
-		Album album = entityManager.getReference(Album.class, album_id); // session.load() for native Session API  
+    Album album = albumRepo.findById(album_id).orElseThrow(() -> new ResponseStatusException(
+                                                                                             HttpStatus.NOT_FOUND, "album not found"
+                                                                                             ));
+		// Album album = entityManager.getReference(Album.class, album_id); // session.load() for native Session API  
 		if (albumLikeRepo.existsByCreatedByAndAlbum(user.getId(), album)) {
-			System.out.println("Album already liked");
 			return new ApiResponse(false, "album already liked");
 		}
+    if (albumDislikeRepo.existsByCreatedByAndAlbum(user.getId(), album)){
+        deleteAlbumDislike(user.getId(), album);
+    }
 		AlbumLike like = new AlbumLike();
 		like.setAlbum(album);
 		albumLikeRepo.save(like);
+    album.setTotalLikes(album.getTotalLikes() + 1);
+    albumRepo.save(album);
 		System.out.println(like);
 		return new ApiResponse(true, "liked album");
 	}
 
 	@PostMapping("/albums/{album_id}/dislike")
 	public ApiResponse dislikeAlbum(@PathVariable("album_id") Long album_id, @CurrentUser UserPrincipal user) {
-		Album album = entityManager.getReference(Album.class, album_id);
+      Album album = albumRepo.findById(album_id).orElseThrow(() -> new ResponseStatusException(
+                                                                                               HttpStatus.NOT_FOUND, "album not found"
+                                                                                               ));
+		// Album album = entityManager.getReference(Album.class, album_id);
 		if (albumDislikeRepo.existsByCreatedByAndAlbum(user.getId(), album)) {
 			return new ApiResponse(false, "album already disliked");
 		}
+    if (albumLikeRepo.existsByCreatedByAndAlbum(user.getId(), album)) {
+        deleteAlbumLike(user.getId(), album);
+    }
 		AlbumDislike dislike = new AlbumDislike();
 		dislike.setAlbum(album);
 		albumDislikeRepo.save(dislike);
+    album.setTotalDislikes(album.getTotalDislikes() + 1);
+    albumRepo.save(album);
 		return new ApiResponse(true, "disliked album");
 	}
 
 	@PostMapping("/songs/{song_id}/like")
 	public ApiResponse likeSong(@PathVariable("song_id") Long song_id, @CurrentUser UserPrincipal user) {
-		Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
+		// Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
+    Song song = songRepo.findById(song_id).orElseThrow(() -> new ResponseStatusException(
+                                                                                         HttpStatus.NOT_FOUND, "song not found"
+                                                                                         ));
+
 		if (songLikeRepo.existsByCreatedByAndSong(user.getId(), song)) {
 			return new ApiResponse(false, "song already liked");
 		}
+    if (songDislikeRepo.existsByCreatedByAndSong(user.getId(), song)){
+        deleteSongDislike(user.getId(), song);
+    }
 		SongLike like = new SongLike();
 		like.setSong(song);
 		songLikeRepo.save(like);
+
+    song.setTotalLikes(song.getTotalLikes() + 1);
+    songRepo.save(song);
 		return new ApiResponse(true, "liked song");
 	}
 
 	@PostMapping("/songs/{song_id}/dislike")
 	public ApiResponse dislikeSong(@PathVariable("song_id") Long song_id, @CurrentUser UserPrincipal user) {
-		Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
+		// Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
+    Song song = songRepo.findById(song_id).orElseThrow(() -> new ResponseStatusException(
+                                                                                         HttpStatus.NOT_FOUND, "song not found"
+                                                                                         ));
 		if (songDislikeRepo.existsByCreatedByAndSong(user.getId(), song)) {
 			return new ApiResponse(false, "song already disliked");
 		}
+    if (songLikeRepo.existsByCreatedByAndSong(user.getId(), song)){ //If song is liked,delete like before creating dislike
+            deleteSongLike(user.getId(), song);
+    }
 		SongDislike dislike = new SongDislike();
+
 		dislike.setSong(song);
 		songDislikeRepo.save(dislike);
+    song.setTotalDislikes(song.getTotalDislikes() + 1);
+    songRepo.save(song);
 		return new ApiResponse(true, "disliked song");
 	}
 
+    public void deleteAlbumLike(Long userId, Album album){
+        AlbumLike like = albumLikeRepo.findByCreatedByAndAlbum(userId, album).orElseThrow(() -> new ResourceNotFoundException("AlbumLike", "album_id", album.getId()));
+        albumLikeRepo.delete(like);
+        album.setTotalLikes(album.getTotalLikes() - 1);
+        albumRepo.save(album);
+    }
+
 	@DeleteMapping("/albums/{album_id}/like")
 	public ApiResponse deleteAlbumLike(@PathVariable("album_id") Long album_id, @CurrentUser UserPrincipal user) {
-		Album album = entityManager.getReference(Album.class, album_id); // session.load() for native Session API  
-		AlbumLike like = albumLikeRepo.findByCreatedByAndAlbum(user.getId(), album).orElseThrow(() -> new ResourceNotFoundException("AlbumLike", "album_id", album_id));
-		albumLikeRepo.delete(like);
+		// Album album = entityManager.getReference(Album.class, album_id); // session.load() for native Session API  
+
+    Album album = albumRepo.findById(album_id).orElseThrow(() -> new ResponseStatusException(
+                                                                                             HttpStatus.NOT_FOUND, "album not found"
+                                                                                             ));
+    deleteAlbumLike(user.getId(), album);
 		return new ApiResponse(true, "deleted album like");
 	}
 
+    public void deleteAlbumDislike(Long userId, Album album){
+        AlbumDislike dislike = albumDislikeRepo.findByCreatedByAndAlbum(userId, album).orElseThrow(() -> new ResourceNotFoundException("Album Dislike", "album_id", album.getId()));
+        albumDislikeRepo.delete(dislike);
+
+        album.setTotalDislikes(album.getTotalDislikes() - 1);
+        albumRepo.save(album);
+    }
+
 	@DeleteMapping("/albums/{album_id}/dislike")
 	public ApiResponse deleteAlbumDislike(@PathVariable("album_id") Long album_id, @CurrentUser UserPrincipal user) {
-		Album album = entityManager.getReference(Album.class, album_id); // session.load() for native Session API  
-		AlbumDislike dislike = albumDislikeRepo.findByCreatedByAndAlbum(user.getId(), album).orElseThrow(() -> new ResourceNotFoundException("Album Dislike", "album_id", album_id));
-		albumDislikeRepo.delete(dislike);
+		// Album album = entityManager.getReference(Album.class, album_id); // session.load() for native Session API  
+
+    Album album = albumRepo.findById(album_id).orElseThrow(() -> new ResponseStatusException(
+                                                                                             HttpStatus.NOT_FOUND, "album not found"
+                                                                                             ));
+    deleteAlbumDislike(user.getId(), album);
 		return new ApiResponse(true, "deleted album dislike");
 	}
 
+  public void deleteSongLike(Long userId, Song song){
+      SongLike like = songLikeRepo.findByCreatedByAndSong(userId, song).orElseThrow(() -> new ResourceNotFoundException("Song Like", "song_id", song.getId()));
+      songLikeRepo.delete(like);
+      song.setTotalLikes(song.getTotalLikes() - 1);
+      songRepo.save(song);
+  }
+
+   public void deleteSongDislike(Long userId, Song song){
+       SongDislike dislike = songDislikeRepo.findByCreatedByAndSong(userId, song).orElseThrow(() -> new ResourceNotFoundException("Song Dislike", "song_id", song.getId()));
+       songDislikeRepo.delete(dislike);
+       song.setTotalDislikes(song.getTotalDislikes() - 1);
+       songRepo.save(song);
+    }
+    
 	@DeleteMapping("/songs/{song_id}/like")
 	public ApiResponse deleteSongLike(@PathVariable("song_id") Long song_id, @CurrentUser UserPrincipal user) {
-		Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
-		SongLike like = songLikeRepo.findByCreatedByAndSong(user.getId(), song).orElseThrow(() -> new ResourceNotFoundException("Song Like", "song_id", song_id));
-		songLikeRepo.delete(like);
+		// Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
+    Song song = songRepo.findById(song_id).orElseThrow(() -> new ResponseStatusException(
+                                                                                         HttpStatus.NOT_FOUND, "song not found"
+                                                                                         ));
+    deleteSongLike(user.getId(), song);
 		return new ApiResponse(true, "deleted album like");
 	}
 	
 	
 	@DeleteMapping("/songs/{song_id}/dislike")
 	public ApiResponse deleteSongDislike(@PathVariable("song_id") Long song_id, @CurrentUser UserPrincipal user) {
-		Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
-		SongDislike dislike = songDislikeRepo.findByCreatedByAndSong(user.getId(), song).orElseThrow(() -> new ResourceNotFoundException("Song Dislike", "song_id", song_id));
-		songDislikeRepo.delete(dislike);
+		// Song song = entityManager.getReference(Song.class, song_id); // session.load() for native Session API  
+    Song song = songRepo.findById(song_id).orElseThrow(() -> new ResponseStatusException(
+                                                                                         HttpStatus.NOT_FOUND, "song not found"
+                                                                                         ));
+
+    deleteSongDislike(user.getId(), song);
 		return new ApiResponse(true, "deleted song dislike");
 	}
 	

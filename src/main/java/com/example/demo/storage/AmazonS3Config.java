@@ -37,8 +37,8 @@ public class AmazonS3Config
 
     @Bean(name = "awsRegion")
     public Region getAWSPollyRegion() {
-    	return Region.getRegion(Regions.US_EAST_2);
-        //return Region.getRegion(Regions.fromName(awsRegion));
+    	// return Region.getRegion(Regions.US_EAST_1);
+        return Region.getRegion(Regions.fromName(awsRegion));
     }
 
     @Bean(name = "awsCredentialsProvider")
