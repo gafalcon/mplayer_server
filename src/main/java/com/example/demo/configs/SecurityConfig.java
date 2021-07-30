@@ -80,9 +80,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/*.otf",
                         "/*.ttf",
+                        "/*.woff",
+                        "/*.woff2",
                         "/*.map",
                         "/assets/font/fonts/**tf",
                         "/assets/font/fonts/*.woff",
+                        "/assets/font/fonts/*.woff2",
                         "/**/*.js")
                         .permitAll()
                     .antMatchers("/api/auth/**")
